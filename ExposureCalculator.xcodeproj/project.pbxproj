@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
+		AAE9054816C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
+		AAE9054A16C619CE00CD025E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
+		AAE9055016C619CE00CD025E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAE9054E16C619CE00CD025E /* InfoPlist.strings */; };
+		AAE9055216C619CE00CD025E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9055116C619CE00CD025E /* main.m */; };
+		AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9055516C619CE00CD025E /* AppDelegate.m */; };
+		AAE9055816C619CE00CD025E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055716C619CE00CD025E /* Default.png */; };
+		AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055916C619CE00CD025E /* Default@2x.png */; };
+		AAE9055C16C619CE00CD025E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055B16C619CE00CD025E /* Default-568h@2x.png */; };
+		AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */; };
+		AAE9056216C619CE00CD025E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* ViewController.m */; };
+		AAE9056A16C619CE00CD025E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9056916C619CE00CD025E /* SenTestingKit.framework */; };
+		AAE9056B16C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
+		AAE9056C16C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
+		AAE9057416C619CE00CD025E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAE9057216C619CE00CD025E /* InfoPlist.strings */; };
+		AAE9057716C619CE00CD025E /* ExposureCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9057616C619CE00CD025E /* ExposureCalculatorTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAE9056D16C619CE00CD025E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAE9053816C619CE00CD025E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAE9054016C619CE00CD025E;
+			remoteInfo = ExposureCalculator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AAE9054116C619CE00CD025E /* ExposureCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposureCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE9054516C619CE00CD025E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AAE9054716C619CE00CD025E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAE9054916C619CE00CD025E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AAE9054D16C619CE00CD025E /* ExposureCalculator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExposureCalculator-Info.plist"; sourceTree = "<group>"; };
+		AAE9054F16C619CE00CD025E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAE9055116C619CE00CD025E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AAE9055316C619CE00CD025E /* ExposureCalculator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExposureCalculator-Prefix.pch"; sourceTree = "<group>"; };
+		AAE9055416C619CE00CD025E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AAE9055516C619CE00CD025E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AAE9055716C619CE00CD025E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AAE9055916C619CE00CD025E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AAE9055B16C619CE00CD025E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AAE9055E16C619CE00CD025E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		AAE9056016C619CE00CD025E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AAE9056116C619CE00CD025E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AAE9056816C619CE00CD025E /* ExposureCalculatorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExposureCalculatorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE9056916C619CE00CD025E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		AAE9057116C619CE00CD025E /* ExposureCalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExposureCalculatorTests-Info.plist"; sourceTree = "<group>"; };
+		AAE9057316C619CE00CD025E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAE9057516C619CE00CD025E /* ExposureCalculatorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExposureCalculatorTests.h; sourceTree = "<group>"; };
+		AAE9057616C619CE00CD025E /* ExposureCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExposureCalculatorTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAE9053E16C619CE00CD025E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */,
+				AAE9054816C619CE00CD025E /* Foundation.framework in Frameworks */,
+				AAE9054A16C619CE00CD025E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE9056416C619CE00CD025E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE9056A16C619CE00CD025E /* SenTestingKit.framework in Frameworks */,
+				AAE9056B16C619CE00CD025E /* UIKit.framework in Frameworks */,
+				AAE9056C16C619CE00CD025E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAE9053616C619CE00CD025E = {
+			isa = PBXGroup;
+			children = (
+				AAE9054B16C619CE00CD025E /* ExposureCalculator */,
+				AAE9056F16C619CE00CD025E /* ExposureCalculatorTests */,
+				AAE9054416C619CE00CD025E /* Frameworks */,
+				AAE9054216C619CE00CD025E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAE9054216C619CE00CD025E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9054116C619CE00CD025E /* ExposureCalculator.app */,
+				AAE9056816C619CE00CD025E /* ExposureCalculatorTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAE9054416C619CE00CD025E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9054516C619CE00CD025E /* UIKit.framework */,
+				AAE9054716C619CE00CD025E /* Foundation.framework */,
+				AAE9054916C619CE00CD025E /* CoreGraphics.framework */,
+				AAE9056916C619CE00CD025E /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAE9054B16C619CE00CD025E /* ExposureCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9055416C619CE00CD025E /* AppDelegate.h */,
+				AAE9055516C619CE00CD025E /* AppDelegate.m */,
+				AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */,
+				AAE9056016C619CE00CD025E /* ViewController.h */,
+				AAE9056116C619CE00CD025E /* ViewController.m */,
+				AAE9054C16C619CE00CD025E /* Supporting Files */,
+			);
+			path = ExposureCalculator;
+			sourceTree = "<group>";
+		};
+		AAE9054C16C619CE00CD025E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9054D16C619CE00CD025E /* ExposureCalculator-Info.plist */,
+				AAE9054E16C619CE00CD025E /* InfoPlist.strings */,
+				AAE9055116C619CE00CD025E /* main.m */,
+				AAE9055316C619CE00CD025E /* ExposureCalculator-Prefix.pch */,
+				AAE9055716C619CE00CD025E /* Default.png */,
+				AAE9055916C619CE00CD025E /* Default@2x.png */,
+				AAE9055B16C619CE00CD025E /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAE9056F16C619CE00CD025E /* ExposureCalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9057516C619CE00CD025E /* ExposureCalculatorTests.h */,
+				AAE9057616C619CE00CD025E /* ExposureCalculatorTests.m */,
+				AAE9057016C619CE00CD025E /* Supporting Files */,
+			);
+			path = ExposureCalculatorTests;
+			sourceTree = "<group>";
+		};
+		AAE9057016C619CE00CD025E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAE9057116C619CE00CD025E /* ExposureCalculatorTests-Info.plist */,
+				AAE9057216C619CE00CD025E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAE9054016C619CE00CD025E /* ExposureCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAE9057A16C619CE00CD025E /* Build configuration list for PBXNativeTarget "ExposureCalculator" */;
+			buildPhases = (
+				AAE9053D16C619CE00CD025E /* Sources */,
+				AAE9053E16C619CE00CD025E /* Frameworks */,
+				AAE9053F16C619CE00CD025E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExposureCalculator;
+			productName = ExposureCalculator;
+			productReference = AAE9054116C619CE00CD025E /* ExposureCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AAE9056716C619CE00CD025E /* ExposureCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAE9057D16C619CE00CD025E /* Build configuration list for PBXNativeTarget "ExposureCalculatorTests" */;
+			buildPhases = (
+				AAE9056316C619CE00CD025E /* Sources */,
+				AAE9056416C619CE00CD025E /* Frameworks */,
+				AAE9056516C619CE00CD025E /* Resources */,
+				AAE9056616C619CE00CD025E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAE9056E16C619CE00CD025E /* PBXTargetDependency */,
+			);
+			name = ExposureCalculatorTests;
+			productName = ExposureCalculatorTests;
+			productReference = AAE9056816C619CE00CD025E /* ExposureCalculatorTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAE9053816C619CE00CD025E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Steve Gravrock";
+			};
+			buildConfigurationList = AAE9053B16C619CE00CD025E /* Build configuration list for PBXProject "ExposureCalculator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AAE9053616C619CE00CD025E;
+			productRefGroup = AAE9054216C619CE00CD025E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAE9054016C619CE00CD025E /* ExposureCalculator */,
+				AAE9056716C619CE00CD025E /* ExposureCalculatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAE9053F16C619CE00CD025E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE9055016C619CE00CD025E /* InfoPlist.strings in Resources */,
+				AAE9055816C619CE00CD025E /* Default.png in Resources */,
+				AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */,
+				AAE9055C16C619CE00CD025E /* Default-568h@2x.png in Resources */,
+				AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE9056516C619CE00CD025E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE9057416C619CE00CD025E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AAE9056616C619CE00CD025E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAE9053D16C619CE00CD025E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE9055216C619CE00CD025E /* main.m in Sources */,
+				AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */,
+				AAE9056216C619CE00CD025E /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE9056316C619CE00CD025E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE9057716C619CE00CD025E /* ExposureCalculatorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAE9056E16C619CE00CD025E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAE9054016C619CE00CD025E /* ExposureCalculator */;
+			targetProxy = AAE9056D16C619CE00CD025E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AAE9054E16C619CE00CD025E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAE9054F16C619CE00CD025E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAE9055E16C619CE00CD025E /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		AAE9057216C619CE00CD025E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAE9057316C619CE00CD025E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAE9057816C619CE00CD025E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AAE9057916C619CE00CD025E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAE9057B16C619CE00CD025E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
+				INFOPLIST_FILE = "ExposureCalculator/ExposureCalculator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AAE9057C16C619CE00CD025E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
+				INFOPLIST_FILE = "ExposureCalculator/ExposureCalculator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		AAE9057E16C619CE00CD025E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExposureCalculator.app/ExposureCalculator";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
+				INFOPLIST_FILE = "ExposureCalculatorTests/ExposureCalculatorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		AAE9057F16C619CE00CD025E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExposureCalculator.app/ExposureCalculator";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
+				INFOPLIST_FILE = "ExposureCalculatorTests/ExposureCalculatorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAE9053B16C619CE00CD025E /* Build configuration list for PBXProject "ExposureCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE9057816C619CE00CD025E /* Debug */,
+				AAE9057916C619CE00CD025E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAE9057A16C619CE00CD025E /* Build configuration list for PBXNativeTarget "ExposureCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE9057B16C619CE00CD025E /* Debug */,
+				AAE9057C16C619CE00CD025E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AAE9057D16C619CE00CD025E /* Build configuration list for PBXNativeTarget "ExposureCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE9057E16C619CE00CD025E /* Debug */,
+				AAE9057F16C619CE00CD025E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAE9053816C619CE00CD025E /* Project object */;
+}
