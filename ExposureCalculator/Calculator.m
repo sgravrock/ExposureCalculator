@@ -17,8 +17,8 @@
 	
 	// Adjust for ISO
 	double e = log2((double)iso / 100.0);
-	double result = ev - e;
-	// Round to the nearest whole stop
+	double result = 3 * (ev - e);
+	// Round to the nearest third stop
 	return (int)(result + (result < 0 ? -0.5 : 0.5));
 }
 

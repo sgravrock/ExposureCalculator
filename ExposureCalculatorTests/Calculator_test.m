@@ -65,20 +65,26 @@
 
 - (void)testLvEqualsEvAtIso100
 {
-	[self verifyLv:-6 forAperture:@"1.4" shutter:@"120" sensitivity:100];
-	[self verifyLv:-5 forAperture:@"2" shutter:@"120" sensitivity:100];
-	[self verifyLv:-1 forAperture:@"2" shutter:@"8" sensitivity:100];
-	[self verifyLv:-1 forAperture:@"5.6" shutter:@"64" sensitivity:100];
-	[self verifyLv:14 forAperture:@"5.6" shutter:@"1/500" sensitivity:100];
-	[self verifyLv:17 forAperture:@"22" shutter:@"1/250" sensitivity:100];
-	[self verifyLv:14 forAperture:@"5" shutter:@"1/640" sensitivity:100];
+	[self verifyLv:-6*3 forAperture:@"1.4" shutter:@"120" sensitivity:100];
+	[self verifyLv:-5*3 forAperture:@"2" shutter:@"120" sensitivity:100];
+	[self verifyLv:-1*3 forAperture:@"2" shutter:@"8" sensitivity:100];
+	[self verifyLv:-1*3 forAperture:@"5.6" shutter:@"64" sensitivity:100];
+	[self verifyLv:14*3 forAperture:@"5.6" shutter:@"1/500" sensitivity:100];
+	[self verifyLv:17*3 forAperture:@"22" shutter:@"1/250" sensitivity:100];
+	[self verifyLv:14*3 forAperture:@"5" shutter:@"1/640" sensitivity:100];
 }
 
 - (void)testLvAccountsForIso
 {
-	[self verifyLv:-2 forAperture:@"2" shutter:@"8" sensitivity:200];
-	[self verifyLv:11 forAperture:@"5.6" shutter:@"1/500" sensitivity:800];
-	[self verifyLv:16 forAperture:@"8" shutter:@"1/500" sensitivity:50];
+	[self verifyLv:-2*3 forAperture:@"2" shutter:@"8" sensitivity:200];
+	[self verifyLv:11*3 forAperture:@"5.6" shutter:@"1/500" sensitivity:800];
+	[self verifyLv:16*3 forAperture:@"8" shutter:@"1/500" sensitivity:50];
+}
+
+- (void)testLCalculatesThirdStops
+{
+	[self verifyLv:14*3+1 forAperture:@"5.6" shutter:@"1/640" sensitivity:100];
+	[self verifyLv:14*3-1 forAperture:@"5" shutter:@"1/500" sensitivity:100];
 }
 
 @end
