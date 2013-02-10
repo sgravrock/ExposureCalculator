@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "SettingsDataSource.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) SettingsDataSource *meteredSettings;
+@property (nonatomic, strong) SettingsDataSource *chosenSettings;
 @end
 
 @implementation ViewController
@@ -17,7 +19,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	self.meteredSettings = [[SettingsDataSource alloc] init];
+	self.meteredSettingsPicker.dataSource = self.meteredSettings;
+	self.meteredSettingsPicker.delegate = self.meteredSettings;
+	self.chosenSettings = [[SettingsDataSource alloc] init];
+	self.chosenSettingsPicker.dataSource = self.chosenSettings;
+	self.chosenSettingsPicker.delegate = self.chosenSettings;
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,4 +10,7 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UIPickerView *meteredSettingsPicker;
+@property (nonatomic, strong) IBOutlet UIPickerView *chosenSettingsPicker;
+
 @end

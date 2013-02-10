@@ -1,26 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="480" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLP-KD-107">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="mBa-Bu-Y0v"/>
+                                    <constraint firstAttribute="width" constant="240" id="nCg-X7-1wI"/>
+                                </constraints>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvM-mW-NDt"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Metered exposure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8Q-K9-e6f">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="3Az-0M-Ffr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htH-2L-Yti">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="dwX-U8-jn9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="PvM-mW-NDt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="1PV-X1-fxc"/>
+                            <constraint firstItem="htH-2L-Yti" firstAttribute="centerX" secondItem="PvM-mW-NDt" secondAttribute="centerX" type="default" id="2A1-ay-umG"/>
+                            <constraint firstAttribute="trailing" secondItem="htH-2L-Yti" secondAttribute="trailing" constant="13" id="5SD-hF-Etu"/>
+                            <constraint firstItem="iLP-KD-107" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Obs-8K-ugY"/>
+                            <constraint firstItem="T8Q-K9-e6f" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="9" id="Z8O-R3-bmC"/>
+                            <constraint firstItem="PvM-mW-NDt" firstAttribute="top" secondItem="iLP-KD-107" secondAttribute="top" type="default" id="dlu-zg-yE9"/>
+                            <constraint firstItem="htH-2L-Yti" firstAttribute="baseline" secondItem="T8Q-K9-e6f" secondAttribute="baseline" type="default" id="i0y-PI-dKo"/>
+                            <constraint firstAttribute="bottom" secondItem="iLP-KD-107" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="tNZ-kz-n24"/>
+                            <constraint firstItem="PvM-mW-NDt" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="tgA-NT-IHH"/>
+                            <constraint firstItem="T8Q-K9-e6f" firstAttribute="top" secondItem="3" secondAttribute="top" constant="30" id="wQa-et-Z3Y"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="chosenSettingsPicker" destination="PvM-mW-NDt" id="PWt-9y-Ec4"/>
+                        <outlet property="meteredSettingsPicker" destination="iLP-KD-107" id="msI-mk-m3N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="chosenSettingsPicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="meteredSettingsPicker" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
