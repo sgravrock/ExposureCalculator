@@ -9,23 +9,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "Calculator.h"
 #import "NSScanner+Throwing.h"
-
-//struct SampleMapping
-//{
-//	int lv;
-//	const char *aperture;
-//	const char *shutter;
-//	int sensitivity;
-//};
-//
-//static struct SampleMapping *mappings =
-//[
-//	(struct SampleMapping){ -1, "2", "8", 100 },
-//	(struct SampleMapping){ -1, "2", "32", 400 },
-//	(struct SampleMapping){ 13, "5.6", "1/500", 100 },
-//	(struct SampleMapping){ 13, "6.3", "1/400", 100 },
-//	(struct SampleMapping){ 13, "5.6", "1/320", 160 }
-//];
+#import "SupportedSettings.h"
 
 @interface Calculator_test : SenTestCase
 @end
@@ -81,7 +65,7 @@
 	[self verifyLv:16*3 forAperture:@"8" shutter:@"1/500" sensitivity:50];
 }
 
-- (void)testLCalculatesThirdStops
+- (void)testLvCalculatesThirdStops
 {
 	[self verifyLv:14*3+1 forAperture:@"5.6" shutter:@"1/640" sensitivity:100];
 	[self verifyLv:14*3-1 forAperture:@"5" shutter:@"1/500" sensitivity:100];

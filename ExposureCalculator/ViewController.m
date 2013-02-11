@@ -7,11 +7,17 @@
 //
 
 #import "ViewController.h"
-#import "SettingsDataSource.h"
+#import "Calculator.h"
+#import "ArrayDataSource.h"
+#import "SupportedSettings.h"
 
-@interface ViewController ()
-@property (nonatomic, strong) SettingsDataSource *meteredSettings;
-@property (nonatomic, strong) SettingsDataSource *chosenSettings;
+@interface ViewController () {
+	int selectedSettings[3]; // row indices
+	BOOL initializing;
+}
+
+@property (nonatomic, strong) ArrayDataSource *meteredSettings;
+@property (nonatomic, strong) ArrayDataSource *chosenSettings;
 @end
 
 @implementation ViewController
@@ -19,15 +25,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.meteredSettings = [[SettingsDataSource alloc] init];
+	
+	initializing = YES;
+	
+	for (int i = 0; i < 3; i++) {
+		selectedSettings[i] = 0;
+	}
+	
+	self.meteredSettings = [[ArrayDataSource alloc] init];
+	self.meteredSettings.components = @[
+			[SupportedSettings apertures],
+			[SupportedSettings shutterSpeeds],
+			[SupportedSettings sensitivities]
+	];
+	self.chosenSettings = [[ArrayDataSource alloc] init];  // Will be configured later
 	self.meteredSettingsPicker.dataSource = self.meteredSettings;
-	self.chosenSettings = [[SettingsDataSource alloc] init];
 	self.chosenSettingsPicker.dataSource = self.chosenSettings;
 	
 	// Set some reasonable defaults
-	[self.meteredSettingsPicker selectRow:[self.meteredSettings.apertures indexOfObject:[NSNumber numberWithDouble:4.0]] inComponent:0 animated:NO];
-	[self.meteredSettingsPicker selectRow:[self.meteredSettings.shutterSpeeds indexOfObject:[NSNumber numberWithDouble:1.0/30.0]] inComponent:1 animated:NO];
-	[self.meteredSettingsPicker selectRow:[self.meteredSettings.isos indexOfObject:@1600] inComponent:2 animated:NO];
+	[self.meteredSettingsPicker selectRow:[[SupportedSettings apertures] indexOfObject:@4.0]
+							  inComponent:0 animated:NO];
+	[self.meteredSettingsPicker selectRow:[[SupportedSettings shutterSpeeds] indexOfObject:[NSNumber numberWithDouble:1.0/30.0]]
+							  inComponent:1 animated:NO];
+	[self.meteredSettingsPicker selectRow:[[SupportedSettings sensitivities] indexOfObject:@1600]
+							  inComponent:2 animated:NO];
+	
+	initializing = NO;
+	[self recalculate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,26 +64,54 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-	SettingsDataSource *dataSource = (SettingsDataSource *)pickerView.dataSource;
+	ArrayDataSource *dataSource = (ArrayDataSource *)pickerView.dataSource;
 	
-	switch (component) {
-		case 0:
-			return [NSString stringWithFormat:@"f/%@", dataSource.apertures[row]];
-		case 1:
-			return [self formatShutterSpeed:[dataSource.shutterSpeeds[row] doubleValue]];
-		case 2:
-			return [dataSource.isos[row] stringValue];
-		default:
-			@throw [NSException exceptionWithName:@"Invalid argument"
-										   reason:@"Component out of range"
-										 userInfo:nil];
+	if (pickerView == self.meteredSettingsPicker) {
+		NSNumber *value = dataSource.components[component][row];
+		
+		switch (component) {
+			case 0:
+				return [self formatAperture:value];
+			case 1:
+				return [self formatShutterSpeed:value];
+			case 2:
+				return [self formatSensitivity:value];
+			default:
+				@throw [NSException exceptionWithName:@"Invalid argument"
+											   reason:@"Component out of range"
+											 userInfo:nil];
+		}
+	} else {
+		NSDictionary *settings = dataSource.components[component][row];
+		return [NSString stringWithFormat:@"%@, %@, ISO %@",
+				[self formatAperture:settings[@"aperture"]],
+				[self formatShutterSpeed:settings[@"shutterSpeed"]],
+				[self formatSensitivity:settings[@"sensitivity"]]];
 	}
 }
 
-#pragma mark -
-
-- (NSString *)formatShutterSpeed:(double)speed
+- (void)pickerView:(UIPickerView *)pickerView
+	  didSelectRow:(NSInteger)row
+	   inComponent:(NSInteger)component
 {
+	if (pickerView == self.meteredSettingsPicker) {
+		selectedSettings[component] = row;
+		[self recalculate];
+	}
+}
+
+
+#pragma mark -
+				
+- (NSString *)formatAperture:(NSNumber *)aperture
+{
+	return [NSString stringWithFormat:@"f/%@", aperture];
+}
+
+- (NSString *)formatShutterSpeed:(NSNumber *)boxedSpeed
+{
+	double speed = [boxedSpeed doubleValue];
+	
 	if (speed == 60) {
 		return @"1m";
 	} else if (speed > 60) {
@@ -71,6 +123,25 @@
  	}
 }
 
+- (NSString *)formatSensitivity:(NSNumber *)iso
+{
+	return [iso stringValue];
+}
+
+- (void)recalculate
+{
+	if (initializing) {
+		return;
+	}
+	
+	double aperture = [[[SupportedSettings apertures] objectAtIndex:selectedSettings[0]] doubleValue];
+	double shutter = [[[SupportedSettings shutterSpeeds] objectAtIndex:selectedSettings[1]] doubleValue];
+	int iso = [[[SupportedSettings sensitivities] objectAtIndex:selectedSettings[2]] intValue];
+	int lv = [Calculator lvForAperture:aperture shutter:shutter sensitivity:iso];
+	NSArray *validSettings = [Calculator validSettingsForLv:lv];
+	self.chosenSettings.components = @[validSettings];
+	[self.chosenSettingsPicker reloadAllComponents];
+}
 
 
 @end

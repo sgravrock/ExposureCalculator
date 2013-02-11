@@ -12,5 +12,6 @@
 
 // Returns the light value for the specified exposure settings, in thirds of a stop.
 + (int)lvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso;
++ (NSArray *)validSettingsForLv:(int)lv;
 
 @end

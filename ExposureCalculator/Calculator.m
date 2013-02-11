@@ -7,6 +7,7 @@
 //
 
 #import "Calculator.h"
+#import "SupportedSettings.h"
 #include <math.h>
 
 @implementation Calculator
@@ -20,6 +21,26 @@
 	double result = 3 * (ev - e);
 	// Round to the nearest third stop
 	return (int)(result + (result < 0 ? -0.5 : 0.5));
+}
+
++ (NSArray *)validSettingsForLv:(int)lv
+{
+	NSMutableArray *settings = [NSMutableArray array];
+	
+	for (NSNumber *aperture in [SupportedSettings apertures]) {
+		for (NSNumber *shutter in [SupportedSettings shutterSpeeds]) {
+			for (NSNumber *iso in [SupportedSettings sensitivities]) {
+				if (lv == [Calculator lvForAperture:[aperture doubleValue]
+											 shutter:[shutter doubleValue]
+										 sensitivity:[iso intValue]]) {
+					[settings addObject:@{@"aperture": aperture,
+					 @"shutterSpeed": shutter, @"sensitivity": iso}];
+				}
+			}
+		}
+	}
+	
+	return settings;
 }
 
 @end
