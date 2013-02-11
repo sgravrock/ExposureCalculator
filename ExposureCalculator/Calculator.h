@@ -14,7 +14,11 @@
 // Returns the light value for the specified exposure settings, in thirds of a stop.
 + (int)lvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso;
 
+@property (nonatomic, readonly, strong) SupportedSettings *supportedSettings;
 @property (nonatomic) int lv;
+@property (nonatomic, strong) NSNumber *lockedAperture;
+@property (nonatomic, strong) NSNumber *lockedShutterSpeed;
+@property (nonatomic, strong) NSNumber *lockedSensitivity;
 
 - (id)initWithSettings:(SupportedSettings *)settings;
 - (NSArray *)validSettings;

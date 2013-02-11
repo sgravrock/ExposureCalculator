@@ -13,4 +13,8 @@
 @property (nonatomic, strong) IBOutlet UIPickerView *meteredSettingsPicker;
 @property (nonatomic, strong) IBOutlet UIPickerView *chosenSettingsPicker;
 
+- (IBAction)unlockAperture:(id)ignored;
+- (IBAction)unlockShutter:(id)ignored;
+- (IBAction)unlockSensitivity:(id)ignored;
+
 @end

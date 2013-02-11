@@ -91,7 +91,77 @@
 	Calculator *target = [[Calculator alloc] initWithSettings:config];
 	target.lv = [Calculator lvForAperture:4.5 shutter:1.0/80.0 sensitivity:100];
 	NSArray *actual = [target validSettings];
-	STAssertEqualObjects(expected, actual, @"Wrong result");
+	STAssertEqualObjects([NSSet setWithArray:actual], [NSSet setWithArray:expected], @"Wrong result");
+}
+
+- (void)testValidSettingsHonorsLockedAperture
+{
+	// Use a fairly narrow range of settings, so the result isn't huge
+	NSArray *supportedApertures = @[@4.0, @4.5, @5.0, @5.6];
+	NSArray *supportedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60.0],
+	[NSNumber numberWithDouble:1.0/80.0],
+	[NSNumber numberWithDouble:1.0/100.0]];
+	NSArray *supportedIsos = @[@100, @125, @160];
+	NSArray *expected = @[
+		@{@"aperture": @4.5, @"shutterSpeed": [NSNumber numberWithDouble:1.0/100.0], @"sensitivity": @125},
+		@{@"aperture": @4.5, @"shutterSpeed": [NSNumber numberWithDouble:1.0/80.0], @"sensitivity": @100}
+	];
+	
+	SupportedSettings *config = [[SupportedSettings alloc] initWithApertures:supportedApertures
+															   shutterSpeeds:supportedShutterSpeeds
+															   sensitivities:supportedIsos];
+	Calculator *target = [[Calculator alloc] initWithSettings:config];
+	target.lv = [Calculator lvForAperture:4.5 shutter:1.0/80.0 sensitivity:100];
+	target.lockedAperture = @4.5;
+	NSArray *actual = [target validSettings];
+	STAssertEqualObjects([NSSet setWithArray:actual], [NSSet setWithArray:expected], @"Wrong result");
+}
+
+- (void)testValidSettingsHonorsLockedShutter
+{
+	// Use a fairly narrow range of settings, so the result isn't huge
+	NSArray *supportedApertures = @[@4.0, @4.5, @5.0, @5.6];
+	NSArray *supportedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60.0],
+	[NSNumber numberWithDouble:1.0/80.0],
+	[NSNumber numberWithDouble:1.0/100.0]];
+	NSArray *supportedIsos = @[@100, @125, @160];
+	NSArray *expected = @[
+		@{@"aperture": @5.0, @"shutterSpeed": [NSNumber numberWithDouble:1.0/60.0], @"sensitivity": @100},
+		@{@"aperture": @5.6,  @"shutterSpeed": [NSNumber numberWithDouble:1.0/60.0], @"sensitivity": @125},
+	];
+	
+	SupportedSettings *config = [[SupportedSettings alloc] initWithApertures:supportedApertures
+															   shutterSpeeds:supportedShutterSpeeds
+															   sensitivities:supportedIsos];
+	Calculator *target = [[Calculator alloc] initWithSettings:config];
+	target.lv = [Calculator lvForAperture:4.5 shutter:1.0/80.0 sensitivity:100];
+	target.lockedShutterSpeed = [NSNumber numberWithDouble:1.0/60];
+	NSArray *actual = [target validSettings];
+	STAssertEqualObjects([NSSet setWithArray:actual], [NSSet setWithArray:expected], @"Wrong result");
+}
+
+- (void)testValidSettingsHonorsLockedIso
+{
+	// Use a fairly narrow range of settings, so the result isn't huge
+	NSArray *supportedApertures = @[@4.0, @4.5, @5.0, @5.6];
+	NSArray *supportedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60.0],
+	[NSNumber numberWithDouble:1.0/80.0],
+	[NSNumber numberWithDouble:1.0/100.0]];
+	NSArray *supportedIsos = @[@100, @125, @160];
+	NSArray *expected = @[
+		@{@"aperture": @4.0, @"shutterSpeed": [NSNumber numberWithDouble:1.0/100.0], @"sensitivity": @100},
+		@{@"aperture": @4.5, @"shutterSpeed": [NSNumber numberWithDouble:1.0/80.0], @"sensitivity": @100},
+		@{@"aperture": @5.0, @"shutterSpeed": [NSNumber numberWithDouble:1.0/60.0], @"sensitivity": @100},
+	];
+	
+	SupportedSettings *config = [[SupportedSettings alloc] initWithApertures:supportedApertures
+															   shutterSpeeds:supportedShutterSpeeds
+															   sensitivities:supportedIsos];
+	Calculator *target = [[Calculator alloc] initWithSettings:config];
+	target.lv = [Calculator lvForAperture:4.5 shutter:1.0/80.0 sensitivity:100];
+	target.lockedSensitivity = @100;
+	NSArray *actual = [target validSettings];
+	STAssertEqualObjects([NSSet setWithArray:actual], [NSSet setWithArray:expected], @"Wrong result");
 }
 
 @end

@@ -14,7 +14,6 @@
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLP-KD-107">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="mBa-Bu-Y0v"/>
                                     <constraint firstAttribute="width" constant="240" id="nCg-X7-1wI"/>
                                 </constraints>
                                 <connections>
@@ -22,6 +21,9 @@
                                 </connections>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvM-mW-NDt">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="UDE-LA-fJ9"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="lqi-aM-io5"/>
                                 </connections>
@@ -34,7 +36,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htH-2L-Yti">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Chosen settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htH-2L-Yti">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="214" id="dwX-U8-jn9"/>
                                 </constraints>
@@ -42,19 +44,85 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okH-bs-9s3">
+                                <accessibility key="accessibilityConfiguration" label="X">
+                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="O4U-V8-mE2"/>
+                                    <constraint firstAttribute="height" constant="29" id="oH4-eC-jr6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="unlockAperture:" destination="2" eventType="touchUpInside" id="1GC-7u-dGj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfM-6S-IdC">
+                                <accessibility key="accessibilityConfiguration" label="X">
+                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="VBQ-ld-26g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="unlockShutter:" destination="2" eventType="touchUpInside" id="ivh-IB-6Uq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hou-6X-Bi8">
+                                <accessibility key="accessibilityConfiguration" label="X">
+                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="JGU-Et-u5A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="unlockSensitivity:" destination="2" eventType="touchUpInside" id="rJG-b3-NcP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="PvM-mW-NDt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="1PV-X1-fxc"/>
-                            <constraint firstItem="htH-2L-Yti" firstAttribute="centerX" secondItem="PvM-mW-NDt" secondAttribute="centerX" type="default" id="2A1-ay-umG"/>
-                            <constraint firstAttribute="trailing" secondItem="htH-2L-Yti" secondAttribute="trailing" constant="13" id="5SD-hF-Etu"/>
+                            <constraint firstItem="MfM-6S-IdC" firstAttribute="centerX" secondItem="htH-2L-Yti" secondAttribute="centerX" type="default" id="3Ye-03-Vmm"/>
+                            <constraint firstAttribute="trailing" secondItem="okH-bs-9s3" secondAttribute="trailing" constant="181" id="9EG-JE-8o1"/>
+                            <constraint firstAttribute="trailing" secondItem="Hou-6X-Bi8" secondAttribute="trailing" constant="33" id="CAm-MF-OiX"/>
+                            <constraint firstItem="PvM-mW-NDt" firstAttribute="top" secondItem="MfM-6S-IdC" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N6w-z6-DdS"/>
                             <constraint firstItem="iLP-KD-107" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Obs-8K-ugY"/>
-                            <constraint firstItem="T8Q-K9-e6f" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="9" id="Z8O-R3-bmC"/>
+                            <constraint firstItem="Hou-6X-Bi8" firstAttribute="top" secondItem="MfM-6S-IdC" secondAttribute="top" type="default" id="R5M-YI-8ca"/>
+                            <constraint firstItem="T8Q-K9-e6f" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="5" id="T9G-Ud-8oK"/>
+                            <constraint firstItem="T8Q-K9-e6f" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="VCt-Bd-dXm"/>
+                            <constraint firstItem="okH-bs-9s3" firstAttribute="top" secondItem="3" secondAttribute="top" constant="27" id="XGh-Xd-lF6"/>
                             <constraint firstItem="PvM-mW-NDt" firstAttribute="top" secondItem="iLP-KD-107" secondAttribute="top" type="default" id="dlu-zg-yE9"/>
-                            <constraint firstItem="htH-2L-Yti" firstAttribute="baseline" secondItem="T8Q-K9-e6f" secondAttribute="baseline" type="default" id="i0y-PI-dKo"/>
+                            <constraint firstItem="htH-2L-Yti" firstAttribute="top" secondItem="3" secondAttribute="top" constant="5" id="iTj-l9-iM0"/>
+                            <constraint firstItem="MfM-6S-IdC" firstAttribute="top" secondItem="okH-bs-9s3" secondAttribute="top" type="default" id="kC5-C7-orT"/>
+                            <constraint firstItem="PvM-mW-NDt" firstAttribute="top" secondItem="okH-bs-9s3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kdh-IU-CEu"/>
+                            <constraint firstItem="PvM-mW-NDt" firstAttribute="top" secondItem="Hou-6X-Bi8" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pHa-kZ-154"/>
                             <constraint firstAttribute="bottom" secondItem="iLP-KD-107" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="tNZ-kz-n24"/>
                             <constraint firstItem="PvM-mW-NDt" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="tgA-NT-IHH"/>
-                            <constraint firstItem="T8Q-K9-e6f" firstAttribute="top" secondItem="3" secondAttribute="top" constant="30" id="wQa-et-Z3Y"/>
+                            <constraint firstAttribute="trailing" secondItem="htH-2L-Yti" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uTF-LF-4kU"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -75,6 +143,9 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="unlockAperture:"/>
+                <relationship kind="action" name="unlockSensitivity:"/>
+                <relationship kind="action" name="unlockShutter:"/>
                 <relationship kind="outlet" name="chosenSettingsPicker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="meteredSettingsPicker" candidateClass="UIPickerView"/>
             </relationships>

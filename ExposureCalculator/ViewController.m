@@ -9,17 +9,18 @@
 #import "ViewController.h"
 #import "Calculator.h"
 #import "ArrayDataSource.h"
+#import "ConstrainedSettingsDataSource.h"
 #import "SupportedSettings.h"
 
 @interface ViewController () {
-	int selectedSettings[3]; // row indices
+	int meteredSettings[3]; // row indices
 	BOOL initializing;
 }
 
 @property (nonatomic, strong) SupportedSettings *supportedSettings;
 @property (nonatomic, strong) Calculator *calculator;
-@property (nonatomic, strong) ArrayDataSource *meteredSettings;
-@property (nonatomic, strong) ArrayDataSource *chosenSettings;
+@property (nonatomic, strong) ArrayDataSource *meteredSettingsDataSource;
+@property (nonatomic, strong) ConstrainedSettingsDataSource *chosenSettingsDataSource;
 @end
 
 @implementation ViewController
@@ -31,17 +32,17 @@
 	initializing = YES;
 	
 	for (int i = 0; i < 3; i++) {
-		selectedSettings[i] = 0;
+		meteredSettings[i] = 0;
 	}
 	
 	self.supportedSettings = [SupportedSettings defaultSettings];
 	self.calculator = [[Calculator alloc] initWithSettings:self.supportedSettings];
-	self.meteredSettings = [[ArrayDataSource alloc] init];
-	self.meteredSettings.components = @[self.supportedSettings.apertures,
+	self.meteredSettingsDataSource = [[ArrayDataSource alloc] init];
+	self.meteredSettingsDataSource.components = @[self.supportedSettings.apertures,
 		self.supportedSettings.shutterSpeeds, self.supportedSettings.sensitivities];
-	self.chosenSettings = [[ArrayDataSource alloc] init];  // Will be configured later
-	self.meteredSettingsPicker.dataSource = self.meteredSettings;
-	self.chosenSettingsPicker.dataSource = self.chosenSettings;
+	self.chosenSettingsDataSource = [[ConstrainedSettingsDataSource alloc] initWithCalculator:self.calculator];
+	self.meteredSettingsPicker.dataSource = self.meteredSettingsDataSource;
+	self.chosenSettingsPicker.dataSource = self.chosenSettingsDataSource;
 	
 	// Set some reasonable defaults
 	[self.meteredSettingsPicker selectRow:[self.supportedSettings.apertures indexOfObject:@4.0]
@@ -67,28 +68,19 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
 	ArrayDataSource *dataSource = (ArrayDataSource *)pickerView.dataSource;
-	
-	if (pickerView == self.meteredSettingsPicker) {
-		NSNumber *value = dataSource.components[component][row];
-		
-		switch (component) {
-			case 0:
-				return [self formatAperture:value];
-			case 1:
-				return [self formatShutterSpeed:value];
-			case 2:
-				return [self formatSensitivity:value];
-			default:
-				@throw [NSException exceptionWithName:@"Invalid argument"
-											   reason:@"Component out of range"
-											 userInfo:nil];
-		}
-	} else {
-		NSDictionary *settings = dataSource.components[component][row];
-		return [NSString stringWithFormat:@"%@, %@, ISO %@",
-				[self formatAperture:settings[@"aperture"]],
-				[self formatShutterSpeed:settings[@"shutterSpeed"]],
-				[self formatSensitivity:settings[@"sensitivity"]]];
+	NSNumber *value = dataSource.components[component][row];
+
+	switch (component) {
+		case 0:
+			return [self formatAperture:value];
+		case 1:
+			return [self formatShutterSpeed:value];
+		case 2:
+			return [self formatSensitivity:value];
+		default:
+			@throw [NSException exceptionWithName:@"Invalid argument"
+										   reason:@"Component out of range"
+										 userInfo:nil];
 	}
 }
 
@@ -97,8 +89,32 @@
 	   inComponent:(NSInteger)component
 {
 	if (pickerView == self.meteredSettingsPicker) {
-		selectedSettings[component] = row;
+		meteredSettings[component] = row;
 		[self recalculate];
+	} else {
+		// Lock the aperture/shutter/sensitivity to the selected one
+		// We could do this with an array of selectors, but with the necessary ARC warning cruft
+		// that version ends up uglier than this one.
+		switch (component) {
+			case 0:
+				self.calculator.lockedAperture = self.supportedSettings.apertures[row];
+				break;
+				
+			case 1:
+				self.calculator.lockedShutterSpeed = self.supportedSettings.shutterSpeeds[row];
+				break;
+				
+			case 2:
+				self.calculator.lockedSensitivity = self.supportedSettings.sensitivities[row];
+				break;
+				
+			default:
+				@throw [NSException exceptionWithName:@"Invalid argument"
+											   reason:@"Component out of range"
+											 userInfo:nil];
+		}
+		
+		[self recalculateChosenSettings];
 	}
 }
 
@@ -136,13 +152,37 @@
 		return;
 	}
 	
-	double aperture = [[self.supportedSettings.apertures objectAtIndex:selectedSettings[0]] doubleValue];
-	double shutter = [[self.supportedSettings.shutterSpeeds objectAtIndex:selectedSettings[1]] doubleValue];
-	int iso = [[self.supportedSettings.sensitivities objectAtIndex:selectedSettings[2]] intValue];
+	double aperture = [[self.supportedSettings.apertures objectAtIndex:meteredSettings[0]]
+					   doubleValue];
+	double shutter = [[self.supportedSettings.shutterSpeeds objectAtIndex:meteredSettings[1]]
+					  doubleValue];
+	int iso = [[self.supportedSettings.sensitivities objectAtIndex:meteredSettings[2]] intValue];
 	self.calculator.lv = [Calculator lvForAperture:aperture shutter:shutter sensitivity:iso];
-	NSArray *validSettings = [self.calculator validSettings];
-	self.chosenSettings.components = @[validSettings];
+	[self recalculateChosenSettings];
+}
+
+- (void)recalculateChosenSettings
+{
+	[self.chosenSettingsDataSource update];
 	[self.chosenSettingsPicker reloadAllComponents];
+}
+
+- (IBAction)unlockAperture:(id)ignored
+{
+	self.calculator.lockedAperture = nil;
+	[self recalculateChosenSettings];
+}
+
+- (IBAction)unlockShutter:(id)ignored
+{
+	self.calculator.lockedShutterSpeed = nil;
+	[self recalculateChosenSettings];
+}
+
+- (IBAction)unlockSensitivity:(id)ignored
+{
+	self.calculator.lockedSensitivity = nil;
+	[self recalculateChosenSettings];
 }
 
 
