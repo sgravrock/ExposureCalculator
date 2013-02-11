@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SettingsDataSource : NSObject<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface SettingsDataSource : NSObject<UIPickerViewDataSource>
+
+@property (nonatomic, strong) NSArray *apertures;
+@property (nonatomic, strong) NSArray *shutterSpeeds;
+@property (nonatomic, strong) NSArray *isos;
+
 
 @end

@@ -17,8 +17,15 @@
                                     <constraint firstAttribute="height" constant="216" id="mBa-Bu-Y0v"/>
                                     <constraint firstAttribute="width" constant="240" id="nCg-X7-1wI"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="5NL-EN-yCk"/>
+                                </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvM-mW-NDt"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvM-mW-NDt">
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="lqi-aM-io5"/>
+                                </connections>
+                            </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Metered exposure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8Q-K9-e6f">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="3Az-0M-Ffr"/>

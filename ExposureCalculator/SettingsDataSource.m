@@ -8,12 +8,6 @@
 
 #import "SettingsDataSource.h"
 
-@interface SettingsDataSource()
-@property (nonatomic, strong) NSArray *apertures;
-@property (nonatomic, strong) NSArray *shutterSpeeds;
-@property (nonatomic, strong) NSArray *isos;
-@end
-
 @implementation SettingsDataSource
 
 - (id)init
@@ -80,39 +74,5 @@
 										 userInfo:nil];
 	}
 }
-
-#pragma mark - UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-	switch (component) {
-		case 0:
-			return [NSString stringWithFormat:@"f/%@", self.apertures[row]];
-		case 1:
-			return [self formatShutterSpeed:[self.shutterSpeeds[row] doubleValue]];
-		case 2:
-			return [self.isos[row] stringValue];
-		default:
-			@throw [NSException exceptionWithName:@"Invalid argument"
-										   reason:@"Component out of range"
-										 userInfo:nil];
-	}
-}
-
-#pragma mark -
-
-- (NSString *)formatShutterSpeed:(double)speed
-{
-	if (speed == 60) {
-		return @"1m";
-	} else if (speed > 60) {
-		return [NSString stringWithFormat:@"%dm", (int)speed / 60];
-	} else if (speed >= 1) {
-		return [NSString stringWithFormat:@"%g", speed];
-	} else {
-		return [NSString stringWithFormat:@"1/%g", 1.0/speed]; // display e.g. 1.0/500.0 as "1/500"
- 	}
-}
-
 
 @end
