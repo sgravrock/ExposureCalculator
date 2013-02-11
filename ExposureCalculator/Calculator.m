@@ -10,6 +10,10 @@
 #import "SupportedSettings.h"
 #include <math.h>
 
+@interface Calculator()
+@property (nonatomic, strong) SupportedSettings *supportedSettings;
+@end
+
 @implementation Calculator
 
 + (int)lvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso
@@ -23,14 +27,26 @@
 	return (int)(result + (result < 0 ? -0.5 : 0.5));
 }
 
-+ (NSArray *)validSettingsForLv:(int)lv
+- (id)initWithSettings:(SupportedSettings *)settings
+{
+	self = [super init];
+	
+	if (self) {
+		self.supportedSettings = settings;
+		self.lv = 0;
+	}
+	
+	return self;
+}
+
+- (NSArray *)validSettings
 {
 	NSMutableArray *settings = [NSMutableArray array];
 	
-	for (NSNumber *aperture in [SupportedSettings apertures]) {
-		for (NSNumber *shutter in [SupportedSettings shutterSpeeds]) {
-			for (NSNumber *iso in [SupportedSettings sensitivities]) {
-				if (lv == [Calculator lvForAperture:[aperture doubleValue]
+	for (NSNumber *aperture in self.supportedSettings.apertures) {
+		for (NSNumber *shutter in self.supportedSettings.shutterSpeeds) {
+			for (NSNumber *iso in self.supportedSettings.sensitivities) {
+				if (self.lv == [Calculator lvForAperture:[aperture doubleValue]
 											 shutter:[shutter doubleValue]
 										 sensitivity:[iso intValue]]) {
 					[settings addObject:@{@"aperture": aperture,

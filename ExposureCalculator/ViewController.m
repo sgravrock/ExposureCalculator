@@ -16,6 +16,8 @@
 	BOOL initializing;
 }
 
+@property (nonatomic, strong) SupportedSettings *supportedSettings;
+@property (nonatomic, strong) Calculator *calculator;
 @property (nonatomic, strong) ArrayDataSource *meteredSettings;
 @property (nonatomic, strong) ArrayDataSource *chosenSettings;
 @end
@@ -32,22 +34,22 @@
 		selectedSettings[i] = 0;
 	}
 	
+	self.supportedSettings = [SupportedSettings defaultSettings];
+	self.calculator = [[Calculator alloc] initWithSettings:self.supportedSettings];
 	self.meteredSettings = [[ArrayDataSource alloc] init];
-	self.meteredSettings.components = @[
-			[SupportedSettings apertures],
-			[SupportedSettings shutterSpeeds],
-			[SupportedSettings sensitivities]
-	];
+	self.meteredSettings.components = @[self.supportedSettings.apertures,
+		self.supportedSettings.shutterSpeeds, self.supportedSettings.sensitivities];
 	self.chosenSettings = [[ArrayDataSource alloc] init];  // Will be configured later
 	self.meteredSettingsPicker.dataSource = self.meteredSettings;
 	self.chosenSettingsPicker.dataSource = self.chosenSettings;
 	
 	// Set some reasonable defaults
-	[self.meteredSettingsPicker selectRow:[[SupportedSettings apertures] indexOfObject:@4.0]
+	[self.meteredSettingsPicker selectRow:[self.supportedSettings.apertures indexOfObject:@4.0]
 							  inComponent:0 animated:NO];
-	[self.meteredSettingsPicker selectRow:[[SupportedSettings shutterSpeeds] indexOfObject:[NSNumber numberWithDouble:1.0/30.0]]
+	[self.meteredSettingsPicker selectRow:[self.supportedSettings.shutterSpeeds
+										   indexOfObject:[NSNumber numberWithDouble:1.0/30.0]]
 							  inComponent:1 animated:NO];
-	[self.meteredSettingsPicker selectRow:[[SupportedSettings sensitivities] indexOfObject:@1600]
+	[self.meteredSettingsPicker selectRow:[self.supportedSettings.sensitivities indexOfObject:@1600]
 							  inComponent:2 animated:NO];
 	
 	initializing = NO;
@@ -134,11 +136,11 @@
 		return;
 	}
 	
-	double aperture = [[[SupportedSettings apertures] objectAtIndex:selectedSettings[0]] doubleValue];
-	double shutter = [[[SupportedSettings shutterSpeeds] objectAtIndex:selectedSettings[1]] doubleValue];
-	int iso = [[[SupportedSettings sensitivities] objectAtIndex:selectedSettings[2]] intValue];
-	int lv = [Calculator lvForAperture:aperture shutter:shutter sensitivity:iso];
-	NSArray *validSettings = [Calculator validSettingsForLv:lv];
+	double aperture = [[self.supportedSettings.apertures objectAtIndex:selectedSettings[0]] doubleValue];
+	double shutter = [[self.supportedSettings.shutterSpeeds objectAtIndex:selectedSettings[1]] doubleValue];
+	int iso = [[self.supportedSettings.sensitivities objectAtIndex:selectedSettings[2]] intValue];
+	self.calculator.lv = [Calculator lvForAperture:aperture shutter:shutter sensitivity:iso];
+	NSArray *validSettings = [self.calculator validSettings];
 	self.chosenSettings.components = @[validSettings];
 	[self.chosenSettingsPicker reloadAllComponents];
 }

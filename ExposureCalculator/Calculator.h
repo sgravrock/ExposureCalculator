@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+@class SupportedSettings;
 
 @interface Calculator : NSObject
 
 // Returns the light value for the specified exposure settings, in thirds of a stop.
 + (int)lvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso;
-+ (NSArray *)validSettingsForLv:(int)lv;
+
+@property (nonatomic) int lv;
+
+- (id)initWithSettings:(SupportedSettings *)settings;
+- (NSArray *)validSettings;
 
 @end
