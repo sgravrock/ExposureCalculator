@@ -45,13 +45,13 @@
 	self.chosenSettingsPicker.dataSource = self.chosenSettingsDataSource;
 	
 	// Set some reasonable defaults
-	[self.meteredSettingsPicker selectRow:[self.supportedSettings.apertures indexOfObject:@4.0]
-							  inComponent:0 animated:NO];
-	[self.meteredSettingsPicker selectRow:[self.supportedSettings.shutterSpeeds
-										   indexOfObject:[NSNumber numberWithDouble:1.0/30.0]]
-							  inComponent:1 animated:NO];
-	[self.meteredSettingsPicker selectRow:[self.supportedSettings.sensitivities indexOfObject:@1600]
-							  inComponent:2 animated:NO];
+	meteredSettings[0] = [self.supportedSettings.apertures indexOfObject:@4.0];
+	meteredSettings[1] = [self.supportedSettings.shutterSpeeds
+						  indexOfObject:[NSNumber numberWithDouble:1.0/30.0]];
+	meteredSettings[2] = [self.supportedSettings.sensitivities indexOfObject:@1600];
+	[self.meteredSettingsPicker selectRow:meteredSettings[0] inComponent:0 animated:NO];
+	[self.meteredSettingsPicker selectRow:meteredSettings[1] inComponent:1 animated:NO];
+	[self.meteredSettingsPicker selectRow:meteredSettings[2] inComponent:2 animated:NO];
 	
 	initializing = NO;
 	[self recalculate];
