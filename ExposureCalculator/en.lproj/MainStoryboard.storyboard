@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okH-bs-9s3">
-                                <accessibility key="accessibilityConfiguration" label="X">
+                                <accessibility key="accessibilityConfiguration" label="">
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <constraints>
@@ -53,7 +53,7 @@
                                     <constraint firstAttribute="height" constant="29" id="oH4-eC-jr6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="X">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -65,14 +65,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfM-6S-IdC">
-                                <accessibility key="accessibilityConfiguration" label="X">
+                                <accessibility key="accessibilityConfiguration" label="">
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                 </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="VBQ-ld-26g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="X">
+                                <state key="normal">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -91,7 +91,7 @@
                                     <constraint firstAttribute="width" constant="30" id="JGU-Et-u5A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="X">
+                                <state key="normal">
                                     <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -128,8 +128,11 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="apertureLockButton" destination="okH-bs-9s3" id="BjR-cK-Qu4"/>
                         <outlet property="chosenSettingsPicker" destination="PvM-mW-NDt" id="PWt-9y-Ec4"/>
                         <outlet property="meteredSettingsPicker" destination="iLP-KD-107" id="msI-mk-m3N"/>
+                        <outlet property="sensitivityLockButton" destination="Hou-6X-Bi8" id="nfx-nq-JKr"/>
+                        <outlet property="shutterLockButton" destination="MfM-6S-IdC" id="rMJ-3x-bpr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -146,8 +149,11 @@
                 <relationship kind="action" name="unlockAperture:"/>
                 <relationship kind="action" name="unlockSensitivity:"/>
                 <relationship kind="action" name="unlockShutter:"/>
+                <relationship kind="outlet" name="apertureLockButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="chosenSettingsPicker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="meteredSettingsPicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="sensitivityLockButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="shutterLockButton" candidateClass="UIButton"/>
             </relationships>
         </class>
     </classes>

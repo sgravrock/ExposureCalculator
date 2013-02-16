@@ -98,14 +98,17 @@
 		switch (component) {
 			case 0:
 				self.calculator.lockedAperture = self.supportedSettings.apertures[row];
+				[self lockButton:self.apertureLockButton];
 				break;
 				
 			case 1:
 				self.calculator.lockedShutterSpeed = self.supportedSettings.shutterSpeeds[row];
+				[self lockButton:self.shutterLockButton];
 				break;
 				
 			case 2:
 				self.calculator.lockedSensitivity = self.supportedSettings.sensitivities[row];
+				[self lockButton:self.sensitivityLockButton];
 				break;
 				
 			default:
@@ -167,22 +170,35 @@
 	[self.chosenSettingsPicker reloadAllComponents];
 }
 
-- (IBAction)unlockAperture:(id)ignored
+- (IBAction)unlockAperture:(UIButton *)sender
 {
+	[self unlockButton:sender];
 	self.calculator.lockedAperture = nil;
 	[self recalculateChosenSettings];
 }
 
-- (IBAction)unlockShutter:(id)ignored
+- (IBAction)unlockShutter:(UIButton *)sender
 {
+	[self unlockButton:sender];
 	self.calculator.lockedShutterSpeed = nil;
 	[self recalculateChosenSettings];
 }
 
-- (IBAction)unlockSensitivity:(id)ignored
+- (IBAction)unlockSensitivity:(UIButton *)sender
 {
+	[self unlockButton:sender];
 	self.calculator.lockedSensitivity = nil;
 	[self recalculateChosenSettings];
+}
+
+- (void)unlockButton:(UIButton *)button
+{
+	[button setTitle:@"" forState:UIControlStateNormal];
+}
+
+- (void)lockButton:(UIButton *)button
+{
+	[button setTitle:@"x" forState:UIControlStateNormal];
 }
 
 
