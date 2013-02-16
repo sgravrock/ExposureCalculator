@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA1662B016C6C55400CD606F /* NSScanner+Throwing.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */; };
 		AA3E231216D0109100297797 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AA3E231316D0109100297797 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AA3E231416D0109100297797 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -16,12 +15,8 @@
 		AA3E231F16D0109200297797 /* Cedar-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3E231E16D0109200297797 /* Cedar-iOS.framework */; };
 		AA3E232716D010D700297797 /* ViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA3E232616D010D700297797 /* ViewControllerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AA59804616C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */; };
-		AA59804716C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */; };
 		AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
-		AA98CA2216C8792F00C13E14 /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
 		AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */; };
-		AAA0503716C9FAAC00AE0CE4 /* ConstrainedSettingsDataSource_test.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA0503616C9FAAC00AE0CE4 /* ConstrainedSettingsDataSource_test.m */; };
-		AAA0503B16D00C0400AE0CE4 /* ViewController_test.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA0503A16D00C0400AE0CE4 /* ViewController_test.m */; };
 		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AAE9054816C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AAE9054A16C619CE00CD025E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -33,13 +28,7 @@
 		AAE9055C16C619CE00CD025E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055B16C619CE00CD025E /* Default-568h@2x.png */; };
 		AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */; };
 		AAE9056216C619CE00CD025E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* ViewController.m */; };
-		AAE9056A16C619CE00CD025E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9056916C619CE00CD025E /* SenTestingKit.framework */; };
-		AAE9056B16C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
-		AAE9056C16C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
-		AAE9057416C619CE00CD025E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAE9057216C619CE00CD025E /* InfoPlist.strings */; };
 		AAE9058916C61AFD00CD025E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
-		AAE9058A16C61AFD00CD025E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
-		AAE9058D16C61C7700CD025E /* Calculator_test.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058C16C61C7700CD025E /* Calculator_test.m */; };
 		AAFDF95216D013FB00A4DCDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* ViewController.m */; };
 		AAFDF95416D0142200A4DCDC /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
 		AAFDF95516D0142200A4DCDC /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
@@ -47,21 +36,14 @@
 		AAFDF95716D0142200A4DCDC /* ConstrainedSettingsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */; };
 		AAFDF96416D01B4600A4DCDC /* FakeProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */; };
 		AAFDF96616D02F6C00A4DCDC /* FakePropertiesSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96516D02F6C00A4DCDC /* FakePropertiesSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AAFDF96916D0412C00A4DCDC /* CalculatorSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96816D0412C00A4DCDC /* CalculatorSpec.mm */; };
+		AAFDF96A16D0456700A4DCDC /* NSScanner+Throwing.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */; };
+		AAFDF96C16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96B16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		AAE9056D16C619CE00CD025E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAE9053816C619CE00CD025E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AAE9054016C619CE00CD025E;
-			remoteInfo = ExposureCalculator;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+Throwing.h"; sourceTree = "<group>"; };
-		AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+Throwing.m"; sourceTree = "<group>"; };
+		AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSScanner+Throwing.h"; path = "../ExposureCalculatorTests/NSScanner+Throwing.h"; sourceTree = "<group>"; };
+		AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Throwing.m"; path = "../ExposureCalculatorTests/NSScanner+Throwing.m"; sourceTree = "<group>"; };
 		AA3E231016D0109100297797 /* Exposure Calculator Specs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exposure Calculator Specs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3E231716D0109100297797 /* Exposure Calculator Specs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exposure Calculator Specs-Info.plist"; sourceTree = "<group>"; };
 		AA3E231916D0109100297797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -75,8 +57,6 @@
 		AA98CA2016C8792E00C13E14 /* SupportedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportedSettings.m; sourceTree = "<group>"; };
 		AA98CA2816C8851B00C13E14 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
-		AAA0503616C9FAAC00AE0CE4 /* ConstrainedSettingsDataSource_test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstrainedSettingsDataSource_test.m; sourceTree = "<group>"; };
-		AAA0503A16D00C0400AE0CE4 /* ViewController_test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_test.m; sourceTree = "<group>"; };
 		AAE9054116C619CE00CD025E /* ExposureCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposureCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE9054516C619CE00CD025E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAE9054716C619CE00CD025E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,16 +73,14 @@
 		AAE9055E16C619CE00CD025E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		AAE9056016C619CE00CD025E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AAE9056116C619CE00CD025E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AAE9056816C619CE00CD025E /* ExposureCalculatorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExposureCalculatorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE9056916C619CE00CD025E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		AAE9057116C619CE00CD025E /* ExposureCalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExposureCalculatorTests-Info.plist"; sourceTree = "<group>"; };
-		AAE9057316C619CE00CD025E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AAE9058716C61AFD00CD025E /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		AAE9058816C61AFD00CD025E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
-		AAE9058C16C61C7700CD025E /* Calculator_test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator_test.m; sourceTree = "<group>"; };
 		AAFDF96216D01B4600A4DCDC /* FakeProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeProperties.h; sourceTree = "<group>"; };
 		AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FakeProperties.mm; sourceTree = "<group>"; };
 		AAFDF96516D02F6C00A4DCDC /* FakePropertiesSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FakePropertiesSpec.mm; sourceTree = "<group>"; };
+		AAFDF96816D0412C00A4DCDC /* CalculatorSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CalculatorSpec.mm; sourceTree = "<group>"; };
+		AAFDF96B16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConstrainedSettingsDataSourceSpec.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,16 +105,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAE9056416C619CE00CD025E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAE9056A16C619CE00CD025E /* SenTestingKit.framework in Frameworks */,
-				AAE9056B16C619CE00CD025E /* UIKit.framework in Frameworks */,
-				AAE9056C16C619CE00CD025E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -145,10 +113,11 @@
 			children = (
 				AA3E231E16D0109200297797 /* Cedar-iOS.framework */,
 				AA3E231616D0109100297797 /* Supporting Files */,
+				AAFDF96716D040EF00A4DCDC /* Spec helpers */,
 				AA3E232616D010D700297797 /* ViewControllerSpec.mm */,
-				AAFDF96216D01B4600A4DCDC /* FakeProperties.h */,
-				AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */,
 				AAFDF96516D02F6C00A4DCDC /* FakePropertiesSpec.mm */,
+				AAFDF96816D0412C00A4DCDC /* CalculatorSpec.mm */,
+				AAFDF96B16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm */,
 			);
 			path = "Exposure Calculator Specs";
 			sourceTree = "<group>";
@@ -168,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				AAE9054B16C619CE00CD025E /* ExposureCalculator */,
-				AAE9056F16C619CE00CD025E /* ExposureCalculatorTests */,
 				AA3E231516D0109100297797 /* Exposure Calculator Specs */,
 				AAE9054416C619CE00CD025E /* Frameworks */,
 				AAE9054216C619CE00CD025E /* Products */,
@@ -179,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				AAE9054116C619CE00CD025E /* ExposureCalculator.app */,
-				AAE9056816C619CE00CD025E /* ExposureCalculatorTests.octest */,
 				AA3E231016D0109100297797 /* Exposure Calculator Specs.app */,
 			);
 			name = Products;
@@ -231,26 +198,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AAE9056F16C619CE00CD025E /* ExposureCalculatorTests */ = {
+		AAFDF96716D040EF00A4DCDC /* Spec helpers */ = {
 			isa = PBXGroup;
 			children = (
-				AAE9057016C619CE00CD025E /* Supporting Files */,
-				AAE9058C16C61C7700CD025E /* Calculator_test.m */,
+				AAFDF96216D01B4600A4DCDC /* FakeProperties.h */,
+				AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */,
 				AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */,
 				AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */,
-				AAA0503616C9FAAC00AE0CE4 /* ConstrainedSettingsDataSource_test.m */,
-				AAA0503A16D00C0400AE0CE4 /* ViewController_test.m */,
 			);
-			path = ExposureCalculatorTests;
-			sourceTree = "<group>";
-		};
-		AAE9057016C619CE00CD025E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AAE9057116C619CE00CD025E /* ExposureCalculatorTests-Info.plist */,
-				AAE9057216C619CE00CD025E /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = "Spec helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,25 +246,6 @@
 			productReference = AAE9054116C619CE00CD025E /* ExposureCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AAE9056716C619CE00CD025E /* ExposureCalculatorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AAE9057D16C619CE00CD025E /* Build configuration list for PBXNativeTarget "ExposureCalculatorTests" */;
-			buildPhases = (
-				AAE9056316C619CE00CD025E /* Sources */,
-				AAE9056416C619CE00CD025E /* Frameworks */,
-				AAE9056516C619CE00CD025E /* Resources */,
-				AAE9056616C619CE00CD025E /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AAE9056E16C619CE00CD025E /* PBXTargetDependency */,
-			);
-			name = ExposureCalculatorTests;
-			productName = ExposureCalculatorTests;
-			productReference = AAE9056816C619CE00CD025E /* ExposureCalculatorTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -331,7 +268,6 @@
 			projectRoot = "";
 			targets = (
 				AAE9054016C619CE00CD025E /* ExposureCalculator */,
-				AAE9056716C619CE00CD025E /* ExposureCalculatorTests */,
 				AA3E230F16D0109100297797 /* Exposure Calculator Specs */,
 			);
 		};
@@ -358,31 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAE9056516C619CE00CD025E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAE9057416C619CE00CD025E /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		AAE9056616C619CE00CD025E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA3E230C16D0109100297797 /* Sources */ = {
@@ -398,6 +310,9 @@
 				AAFDF95216D013FB00A4DCDC /* ViewController.m in Sources */,
 				AAFDF96416D01B4600A4DCDC /* FakeProperties.mm in Sources */,
 				AAFDF96616D02F6C00A4DCDC /* FakePropertiesSpec.mm in Sources */,
+				AAFDF96916D0412C00A4DCDC /* CalculatorSpec.mm in Sources */,
+				AAFDF96A16D0456700A4DCDC /* NSScanner+Throwing.m in Sources */,
+				AAFDF96C16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,29 +330,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAE9056316C619CE00CD025E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAE9058A16C61AFD00CD025E /* Calculator.m in Sources */,
-				AAE9058D16C61C7700CD025E /* Calculator_test.m in Sources */,
-				AA1662B016C6C55400CD606F /* NSScanner+Throwing.m in Sources */,
-				AA98CA2216C8792F00C13E14 /* SupportedSettings.m in Sources */,
-				AA59804716C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m in Sources */,
-				AAA0503716C9FAAC00AE0CE4 /* ConstrainedSettingsDataSource_test.m in Sources */,
-				AAA0503B16D00C0400AE0CE4 /* ViewController_test.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AAE9056E16C619CE00CD025E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AAE9054016C619CE00CD025E /* ExposureCalculator */;
-			targetProxy = AAE9056D16C619CE00CD025E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AA3E231816D0109100297797 /* InfoPlist.strings */ = {
@@ -462,14 +355,6 @@
 				AAE9055E16C619CE00CD025E /* en */,
 			);
 			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		AAE9057216C619CE00CD025E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AAE9057316C619CE00CD025E /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -594,42 +479,6 @@
 			};
 			name = Release;
 		};
-		AAE9057E16C619CE00CD025E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExposureCalculator.app/ExposureCalculator";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				INFOPLIST_FILE = "ExposureCalculatorTests/ExposureCalculatorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		AAE9057F16C619CE00CD025E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExposureCalculator.app/ExposureCalculator";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				INFOPLIST_FILE = "ExposureCalculatorTests/ExposureCalculatorTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -656,15 +505,6 @@
 			buildConfigurations = (
 				AAE9057B16C619CE00CD025E /* Debug */,
 				AAE9057C16C619CE00CD025E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AAE9057D16C619CE00CD025E /* Build configuration list for PBXNativeTarget "ExposureCalculatorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AAE9057E16C619CE00CD025E /* Debug */,
-				AAE9057F16C619CE00CD025E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
