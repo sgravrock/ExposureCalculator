@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Exposure Calculator Specs' target in the 'Exposure Calculator Specs' project
+//
+
+#ifdef __OBJC__
+	#import <UIKit/UIKit.h>
+	#import <Foundation/Foundation.h>
+	#import <Cedar-iOS/SpecHelper.h>
+#endif

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UIPickerViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIPickerView *meteredSettingsPicker;
 @property (nonatomic, strong) IBOutlet UIPickerView *chosenSettingsPicker;

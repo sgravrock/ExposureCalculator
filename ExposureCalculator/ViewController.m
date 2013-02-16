@@ -14,6 +14,7 @@
 
 @interface ViewController () {
 	int meteredSettings[3]; // row indices
+	NSNumber *chosenSettings[3]; // Values instead of row indices, since the set of rows changes
 	BOOL initializing;
 }
 
@@ -88,6 +89,8 @@
 	  didSelectRow:(NSInteger)row
 	   inComponent:(NSInteger)component
 {
+	NSLog(@"didSelectRow:%d inComponent:%d", row, component);
+	
 	if (pickerView == self.meteredSettingsPicker) {
 		meteredSettings[component] = row;
 		[self recalculate];
@@ -95,19 +98,22 @@
 		// Lock the aperture/shutter/sensitivity to the selected one
 		// We could do this with an array of selectors, but with the necessary ARC warning cruft
 		// that version ends up uglier than this one.
+		NSNumber *value = self.chosenSettingsDataSource.components[component][row];
+		chosenSettings[component] = value;
+		
 		switch (component) {
 			case 0:
-				self.calculator.lockedAperture = self.supportedSettings.apertures[row];
+				self.calculator.lockedAperture = value;
 				[self lockButton:self.apertureLockButton];
 				break;
 				
 			case 1:
-				self.calculator.lockedShutterSpeed = self.supportedSettings.shutterSpeeds[row];
+				self.calculator.lockedShutterSpeed = value;
 				[self lockButton:self.shutterLockButton];
 				break;
 				
 			case 2:
-				self.calculator.lockedSensitivity = self.supportedSettings.sensitivities[row];
+				self.calculator.lockedSensitivity = value;
 				[self lockButton:self.sensitivityLockButton];
 				break;
 				
@@ -120,6 +126,7 @@
 		[self recalculateChosenSettings];
 	}
 }
+
 
 
 #pragma mark -
@@ -166,8 +173,20 @@
 
 - (void)recalculateChosenSettings
 {
+	NSLog(@"recalculateChosenSettings starting");
 	[self.chosenSettingsDataSource update];
 	[self.chosenSettingsPicker reloadAllComponents];
+	
+	for (int i = 0; i < 3; i++) {
+		NSNumber *setting = chosenSettings[i];
+		
+		if (setting) {
+			int row = [self.chosenSettingsDataSource.components[i] indexOfObject:setting];
+			[self.chosenSettingsPicker selectRow:row inComponent:i animated:NO];
+		}
+	}
+	
+	NSLog(@"recalculateChosenSettings done");
 }
 
 - (IBAction)unlockAperture:(UIButton *)sender
