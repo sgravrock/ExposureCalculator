@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'exposure' target in the 'exposure' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+#endif

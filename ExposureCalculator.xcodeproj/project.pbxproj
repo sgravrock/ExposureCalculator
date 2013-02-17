@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA271BCD16D0620300DBF4BE /* CliUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA271BCC16D0620300DBF4BE /* CliUtils.m */; };
 		AA3E231216D0109100297797 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AA3E231316D0109100297797 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AA3E231416D0109100297797 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -15,6 +16,11 @@
 		AA3E231F16D0109200297797 /* Cedar-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3E231E16D0109200297797 /* Cedar-iOS.framework */; };
 		AA3E232716D010D700297797 /* ViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA3E232616D010D700297797 /* ViewControllerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AA59804616C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */; };
+		AA648B6D16D1784D00441DBE /* CliUtilsSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA648B6C16D1784D00441DBE /* CliUtilsSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AA648B6E16D1792200441DBE /* CliUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA271BCC16D0620300DBF4BE /* CliUtils.m */; };
+		AA648B7016D1842B00441DBE /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
+		AA66910A16D0618D009A4E3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
+		AA66910D16D0618D009A4E3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA66910C16D0618D009A4E3B /* main.m */; };
 		AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
 		AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */; };
 		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
@@ -36,14 +42,28 @@
 		AAFDF95716D0142200A4DCDC /* ConstrainedSettingsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */; };
 		AAFDF96416D01B4600A4DCDC /* FakeProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */; };
 		AAFDF96616D02F6C00A4DCDC /* FakePropertiesSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96516D02F6C00A4DCDC /* FakePropertiesSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AAFDF96916D0412C00A4DCDC /* CalculatorSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96816D0412C00A4DCDC /* CalculatorSpec.mm */; };
+		AAFDF96916D0412C00A4DCDC /* CalculatorSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96816D0412C00A4DCDC /* CalculatorSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AAFDF96A16D0456700A4DCDC /* NSScanner+Throwing.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */; };
-		AAFDF96C16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96B16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm */; };
+		AAFDF96C16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAFDF96B16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA66910616D0618D009A4E3B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSScanner+Throwing.h"; path = "../ExposureCalculatorTests/NSScanner+Throwing.h"; sourceTree = "<group>"; };
 		AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Throwing.m"; path = "../ExposureCalculatorTests/NSScanner+Throwing.m"; sourceTree = "<group>"; };
+		AA271BCB16D0620300DBF4BE /* CliUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CliUtils.h; sourceTree = "<group>"; };
+		AA271BCC16D0620300DBF4BE /* CliUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CliUtils.m; sourceTree = "<group>"; };
 		AA3E231016D0109100297797 /* Exposure Calculator Specs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exposure Calculator Specs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3E231716D0109100297797 /* Exposure Calculator Specs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exposure Calculator Specs-Info.plist"; sourceTree = "<group>"; };
 		AA3E231916D0109100297797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -53,6 +73,11 @@
 		AA3E232616D010D700297797 /* ViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewControllerSpec.mm; sourceTree = "<group>"; };
 		AA59804416C8CC5800EE71A4 /* ConstrainedSettingsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstrainedSettingsDataSource.h; sourceTree = "<group>"; };
 		AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstrainedSettingsDataSource.m; sourceTree = "<group>"; };
+		AA648B6C16D1784D00441DBE /* CliUtilsSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CliUtilsSpec.mm; sourceTree = "<group>"; };
+		AA648B6F16D17A3100441DBE /* cedar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cedar.h; sourceTree = "<group>"; };
+		AA66910816D0618D009A4E3B /* exposure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = exposure; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA66910C16D0618D009A4E3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA66910F16D0618D009A4E3B /* exposure-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "exposure-Prefix.pch"; sourceTree = "<group>"; };
 		AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportedSettings.h; sourceTree = "<group>"; };
 		AA98CA2016C8792E00C13E14 /* SupportedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportedSettings.m; sourceTree = "<group>"; };
 		AA98CA2816C8851B00C13E14 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
@@ -95,6 +120,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA66910516D0618D009A4E3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA66910A16D0618D009A4E3B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAE9053E16C619CE00CD025E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,6 +151,8 @@
 				AAFDF96516D02F6C00A4DCDC /* FakePropertiesSpec.mm */,
 				AAFDF96816D0412C00A4DCDC /* CalculatorSpec.mm */,
 				AAFDF96B16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm */,
+				AA648B6C16D1784D00441DBE /* CliUtilsSpec.mm */,
+				AA648B6F16D17A3100441DBE /* cedar.h */,
 			);
 			path = "Exposure Calculator Specs";
 			sourceTree = "<group>";
@@ -133,10 +168,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AA66910B16D0618D009A4E3B /* exposure */ = {
+			isa = PBXGroup;
+			children = (
+				AA271BCB16D0620300DBF4BE /* CliUtils.h */,
+				AA271BCC16D0620300DBF4BE /* CliUtils.m */,
+				AA66910C16D0618D009A4E3B /* main.m */,
+				AA66910E16D0618D009A4E3B /* Supporting Files */,
+			);
+			path = exposure;
+			sourceTree = "<group>";
+		};
+		AA66910E16D0618D009A4E3B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA66910F16D0618D009A4E3B /* exposure-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		AAE9053616C619CE00CD025E = {
 			isa = PBXGroup;
 			children = (
 				AAE9054B16C619CE00CD025E /* ExposureCalculator */,
+				AA66910B16D0618D009A4E3B /* exposure */,
 				AA3E231516D0109100297797 /* Exposure Calculator Specs */,
 				AAE9054416C619CE00CD025E /* Frameworks */,
 				AAE9054216C619CE00CD025E /* Products */,
@@ -148,6 +203,7 @@
 			children = (
 				AAE9054116C619CE00CD025E /* ExposureCalculator.app */,
 				AA3E231016D0109100297797 /* Exposure Calculator Specs.app */,
+				AA66910816D0618D009A4E3B /* exposure */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -229,6 +285,23 @@
 			productReference = AA3E231016D0109100297797 /* Exposure Calculator Specs.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA66910716D0618D009A4E3B /* exposure */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA66911416D0618D009A4E3B /* Build configuration list for PBXNativeTarget "exposure" */;
+			buildPhases = (
+				AA66910416D0618D009A4E3B /* Sources */,
+				AA66910516D0618D009A4E3B /* Frameworks */,
+				AA66910616D0618D009A4E3B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = exposure;
+			productName = exposure;
+			productReference = AA66910816D0618D009A4E3B /* exposure */;
+			productType = "com.apple.product-type.tool";
+		};
 		AAE9054016C619CE00CD025E /* ExposureCalculator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAE9057A16C619CE00CD025E /* Build configuration list for PBXNativeTarget "ExposureCalculator" */;
@@ -269,6 +342,7 @@
 			targets = (
 				AAE9054016C619CE00CD025E /* ExposureCalculator */,
 				AA3E230F16D0109100297797 /* Exposure Calculator Specs */,
+				AA66910716D0618D009A4E3B /* exposure */,
 			);
 		};
 /* End PBXProject section */
@@ -313,6 +387,18 @@
 				AAFDF96916D0412C00A4DCDC /* CalculatorSpec.mm in Sources */,
 				AAFDF96A16D0456700A4DCDC /* NSScanner+Throwing.m in Sources */,
 				AAFDF96C16D0494E00A4DCDC /* ConstrainedSettingsDataSourceSpec.mm in Sources */,
+				AA648B6D16D1784D00441DBE /* CliUtilsSpec.mm in Sources */,
+				AA648B6E16D1792200441DBE /* CliUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA66910416D0618D009A4E3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA66910D16D0618D009A4E3B /* main.m in Sources */,
+				AA271BCD16D0620300DBF4BE /* CliUtils.m in Sources */,
+				AA648B7016D1842B00441DBE /* Calculator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +491,35 @@
 			};
 			name = Release;
 		};
+		AA66911216D0618D009A4E3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "exposure/exposure-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AA66911316D0618D009A4E3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "exposure/exposure-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		AAE9057816C619CE00CD025E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -487,6 +602,15 @@
 			buildConfigurations = (
 				AA3E232216D0109200297797 /* Debug */,
 				AA3E232316D0109200297797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA66911416D0618D009A4E3B /* Build configuration list for PBXNativeTarget "exposure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA66911216D0618D009A4E3B /* Debug */,
+				AA66911316D0618D009A4E3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

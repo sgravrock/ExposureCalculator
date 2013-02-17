@@ -1,6 +1,7 @@
 #import "ConstrainedSettingsDataSource.h"
 #import "Calculator.h"
 #import "SupportedSettings.h"
+#import "cedar.h"
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;

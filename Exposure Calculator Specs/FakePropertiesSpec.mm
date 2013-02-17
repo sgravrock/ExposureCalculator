@@ -1,4 +1,5 @@
 #import "FakeProperties.h"
+#import "cedar.h"
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;

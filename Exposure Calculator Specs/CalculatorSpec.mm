@@ -1,13 +1,14 @@
 #import "Calculator.h"
 #import "NSScanner+Throwing.h"
 #import "SupportedSettings.h"
+#import "CliUtils.h"
+#import "cedar.h"
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
 
 
 @interface CDRSpec(CalculatorSpecHelpers)
-- (double)secondsFromShutterString:(NSString *)s;
 - (void)verifyLv:(int)expectedLv
 	 forAperture:(NSString *)aperture
 		 shutter:(NSString *)shutter
@@ -134,30 +135,12 @@ describe(@"Calculator", ^{
 	});
 });
 
-describe(@"Test gear", ^{
-	describe(@"secondsFromShutterString:", ^{
-		it(@"should convert the string to the corresponding shutter speed", ^{
-			expect([self secondsFromShutterString:@"1/500"]).to(equal(1.0/500.0));
-			expect([self secondsFromShutterString:@"8"]).to(equal(8.0));
-		});
-	});
-});
 
 SPEC_END
 
 
 
 @implementation CDRSpec(CalculatorSpecHelpers)
-
-- (double)secondsFromShutterString:(NSString *)s
-{
-	if (s.length > 2 && [[s substringToIndex:2] isEqualToString:@"1/"]) {
-		s = [s substringFromIndex:2];
-		return 1.0/((double)[[NSScanner scannerWithString:s] requireInt]);
-	} else {
-		return [[NSScanner scannerWithString:s] requireInt];
-	}
-}
 
 - (void)verifyLv:(int)expectedLv
 	 forAperture:(NSString *)aperture
@@ -168,7 +151,7 @@ SPEC_END
 //	NSString *msg = [NSString stringWithFormat:@"Wrong result for f/%@, %@s, ISO %d",
 //					 aperture, shutter, sensitivity];
 	double fNumber = [[NSScanner scannerWithString:aperture] requireDouble];
-	double seconds = [self secondsFromShutterString:shutter];
+	double seconds = [[CliUtils shutterFromString:[shutter UTF8String]] doubleValue];
 	int result = [Calculator lvForAperture:fNumber shutter:seconds sensitivity:sensitivity];
 	expect(result).to(equal(expectedLv));
 	
