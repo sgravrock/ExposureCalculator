@@ -7,17 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChosenSettingsModel.h"
 
-@interface ViewController : UIViewController<UIPickerViewDelegate>
+@interface ViewController : UIViewController<UIPickerViewDelegate, ChosenSettingsModelDelegate>
 
 @property (nonatomic, strong) IBOutlet UIPickerView *meteredSettingsPicker;
 @property (nonatomic, strong) IBOutlet UIPickerView *chosenSettingsPicker;
-@property (nonatomic, strong) IBOutlet UIButton *apertureLockButton;
-@property (nonatomic, strong) IBOutlet UIButton *shutterLockButton;
-@property (nonatomic, strong) IBOutlet UIButton *sensitivityLockButton;
-
-- (IBAction)unlockAperture:(id)ignored;
-- (IBAction)unlockShutter:(id)ignored;
-- (IBAction)unlockSensitivity:(id)ignored;
 
 @end

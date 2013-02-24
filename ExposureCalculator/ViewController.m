@@ -14,14 +14,13 @@
 
 @interface ViewController () {
 	int meteredSettings[3]; // row indices
-	NSNumber *chosenSettings[3]; // Values instead of row indices, since the set of rows changes
-	BOOL initializing;
+	BOOL updating;
 }
 
 @property (nonatomic, strong) SupportedSettings *supportedSettings;
 @property (nonatomic, strong) Calculator *calculator;
 @property (nonatomic, strong) ArrayDataSource *meteredSettingsDataSource;
-@property (nonatomic, strong) ConstrainedSettingsDataSource *chosenSettingsDataSource;
+@property (nonatomic, strong) ChosenSettingsModel *chosenSettings;
 @end
 
 @implementation ViewController
@@ -30,7 +29,7 @@
 {
     [super viewDidLoad];
 	
-	initializing = YES;
+	updating = YES;
 	
 	for (int i = 0; i < 3; i++) {
 		meteredSettings[i] = 0;
@@ -41,9 +40,7 @@
 	self.meteredSettingsDataSource = [[ArrayDataSource alloc] init];
 	self.meteredSettingsDataSource.components = @[self.supportedSettings.apertures,
 		self.supportedSettings.shutterSpeeds, self.supportedSettings.sensitivities];
-	self.chosenSettingsDataSource = [[ConstrainedSettingsDataSource alloc] initWithCalculator:self.calculator];
 	self.meteredSettingsPicker.dataSource = self.meteredSettingsDataSource;
-	self.chosenSettingsPicker.dataSource = self.chosenSettingsDataSource;
 	
 	// Set some reasonable defaults
 	meteredSettings[0] = [self.supportedSettings.apertures indexOfObject:@4.0];
@@ -54,7 +51,10 @@
 	[self.meteredSettingsPicker selectRow:meteredSettings[1] inComponent:1 animated:NO];
 	[self.meteredSettingsPicker selectRow:meteredSettings[2] inComponent:2 animated:NO];
 	
-	initializing = NO;
+	self.chosenSettings = [[ChosenSettingsModel alloc] initWithCalculator:self.calculator];
+	self.chosenSettings.delegate = self;
+	self.chosenSettingsPicker.dataSource = self.chosenSettings.dataSource;
+	updating = NO;
 	[self recalculate];
 }
 
@@ -95,26 +95,22 @@
 		meteredSettings[component] = row;
 		[self recalculate];
 	} else {
-		// Lock the aperture/shutter/sensitivity to the selected one
-		// We could do this with an array of selectors, but with the necessary ARC warning cruft
-		// that version ends up uglier than this one.
-		NSNumber *value = self.chosenSettingsDataSource.components[component][row];
-		chosenSettings[component] = value;
+		// TODO: probably don't need this check
+		if (updating) {
+			return;
+		}
 		
 		switch (component) {
 			case 0:
-				self.calculator.lockedAperture = value;
-				[self lockButton:self.apertureLockButton];
+				[self.chosenSettings selectAperture:row];
 				break;
 				
 			case 1:
-				self.calculator.lockedShutterSpeed = value;
-				[self lockButton:self.shutterLockButton];
+				[self.chosenSettings selectShutter:row];
 				break;
 				
 			case 2:
-				self.calculator.lockedSensitivity = value;
-				[self lockButton:self.sensitivityLockButton];
+				[self.chosenSettings selectSensitivity:row];
 				break;
 				
 			default:
@@ -122,8 +118,6 @@
 											   reason:@"Component out of range"
 											 userInfo:nil];
 		}
-		
-		[self recalculateChosenSettings];
 	}
 }
 
@@ -158,7 +152,7 @@
 
 - (void)recalculate
 {
-	if (initializing) {
+	if (updating) {
 		return;
 	}
 	
@@ -168,57 +162,29 @@
 					  doubleValue];
 	int iso = [[self.supportedSettings.sensitivities objectAtIndex:meteredSettings[2]] intValue];
 	self.calculator.lv = [Calculator lvForAperture:aperture shutter:shutter sensitivity:iso];
-	[self recalculateChosenSettings];
 }
 
-- (void)recalculateChosenSettings
+#pragma mark - ChosenSettingsModelDelegate
+
+- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedApertureToIndex:(int)index
 {
-	NSLog(@"recalculateChosenSettings starting");
-	[self.chosenSettingsDataSource update];
-	[self.chosenSettingsPicker reloadAllComponents];
-	
-	for (int i = 0; i < 3; i++) {
-		NSNumber *setting = chosenSettings[i];
-		
-		if (setting) {
-			int row = [self.chosenSettingsDataSource.components[i] indexOfObject:setting];
-			[self.chosenSettingsPicker selectRow:row inComponent:i animated:NO];
-		}
-	}
-	
-	NSLog(@"recalculateChosenSettings done");
+	updating = YES;
+	[self.chosenSettingsPicker selectRow:index inComponent:0 animated:YES];
+	updating = NO;
 }
 
-- (IBAction)unlockAperture:(UIButton *)sender
+- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedShutterToIndex:(int)index
 {
-	[self unlockButton:sender];
-	self.calculator.lockedAperture = nil;
-	[self recalculateChosenSettings];
+	updating = YES;
+	[self.chosenSettingsPicker selectRow:index inComponent:1 animated:YES];
+	updating = NO;
 }
 
-- (IBAction)unlockShutter:(UIButton *)sender
+- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedSensitivityToIndex:(int)index
 {
-	[self unlockButton:sender];
-	self.calculator.lockedShutterSpeed = nil;
-	[self recalculateChosenSettings];
+	updating = YES;
+	[self.chosenSettingsPicker selectRow:index inComponent:2 animated:YES];
+	updating = NO;
 }
-
-- (IBAction)unlockSensitivity:(UIButton *)sender
-{
-	[self unlockButton:sender];
-	self.calculator.lockedSensitivity = nil;
-	[self recalculateChosenSettings];
-}
-
-- (void)unlockButton:(UIButton *)button
-{
-	[button setTitle:@"" forState:UIControlStateNormal];
-}
-
-- (void)lockButton:(UIButton *)button
-{
-	[button setTitle:@"x" forState:UIControlStateNormal];
-}
-
 
 @end

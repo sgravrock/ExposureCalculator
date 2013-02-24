@@ -33,7 +33,6 @@
 	
 	if (self) {
 		self.supportedSettings = settings;
-		self.lockedAperture = self.lockedSensitivity = self.lockedShutterSpeed = nil;
 		self.lv = 0;
 	}
 	
@@ -43,16 +42,10 @@
 - (NSArray *)validSettings
 {
 	NSMutableArray *settings = [NSMutableArray array];
-	NSArray *apertures = self.lockedAperture ? [NSArray arrayWithObject:self.lockedAperture]
-		: self.supportedSettings.apertures;
-	NSArray *shutters = self.lockedShutterSpeed ? [NSArray arrayWithObject:self.lockedShutterSpeed]
-		: self.supportedSettings.shutterSpeeds;
-	NSArray *isos = self.lockedSensitivity ? [NSArray arrayWithObject:self.lockedSensitivity]
-		: self.supportedSettings.sensitivities;
 
-	for (NSNumber *aperture in apertures) {
-		for (NSNumber *shutter in shutters) {
-			for (NSNumber *iso in isos) {
+	for (NSNumber *aperture in self.supportedSettings.apertures) {
+		for (NSNumber *shutter in self.supportedSettings.shutterSpeeds) {
+			for (NSNumber *iso in self.supportedSettings.sensitivities) {
 				if (self.lv == [Calculator lvForAperture:[aperture doubleValue]
 											 shutter:[shutter doubleValue]
 										 sensitivity:[iso intValue]]) {

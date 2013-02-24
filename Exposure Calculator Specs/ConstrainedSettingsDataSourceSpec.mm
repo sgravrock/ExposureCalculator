@@ -31,18 +31,7 @@ describe(@"ConstrainedSettingsDataSource", ^{
 		NSArray *expectedIsos = @[@125, @160];
 		expect(target.components[0]).to(equal(expectedApertures));
 		expect(target.components[1]).to(equal(expectedShutterSpeeds));
-		expect(target.components[2]).to(equal(expectedIsos));
-		
-		// After also setting a sensitivity, only the settings that give the specified Lv at the
-		// specified sensitivity should be available
-		calculator.lockedSensitivity = @125;
-		[target update];
-		expectedApertures = @[@4.0];
-		expectedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60]];
-		expectedIsos = @[@125];
-		expect(target.components[0]).to(equal(expectedApertures));
-		expect(target.components[1]).to(equal(expectedShutterSpeeds));
-		expect(target.components[2]).to(equal(expectedIsos));
+		expect(target.components[2]).to(equal(expectedIsos));		
 	});
 });
 

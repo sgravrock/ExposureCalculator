@@ -16,9 +16,6 @@
 
 @property (nonatomic, readonly, strong) SupportedSettings *supportedSettings;
 @property (nonatomic) int lv;
-@property (nonatomic, strong) NSNumber *lockedAperture;
-@property (nonatomic, strong) NSNumber *lockedShutterSpeed;
-@property (nonatomic, strong) NSNumber *lockedSensitivity;
 
 - (id)initWithSettings:(SupportedSettings *)settings;
 - (NSArray *)validSettings;
