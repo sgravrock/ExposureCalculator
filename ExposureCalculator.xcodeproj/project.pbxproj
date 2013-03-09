@@ -20,6 +20,7 @@
 		AA648B7016D1842B00441DBE /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
 		AA66910A16D0618D009A4E3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AA66910D16D0618D009A4E3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA66910C16D0618D009A4E3B /* main.m */; };
+		AA68813716EBBDC600B4897F /* StubChosenSettingsModelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68813616EBBDC600B4897F /* StubChosenSettingsModelDelegate.m */; };
 		AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
 		AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */; };
 		AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
@@ -81,6 +82,8 @@
 		AA66910816D0618D009A4E3B /* exposure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = exposure; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA66910C16D0618D009A4E3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA66910F16D0618D009A4E3B /* exposure-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "exposure-Prefix.pch"; sourceTree = "<group>"; };
+		AA68813516EBBDC600B4897F /* StubChosenSettingsModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubChosenSettingsModelDelegate.h; sourceTree = "<group>"; };
+		AA68813616EBBDC600B4897F /* StubChosenSettingsModelDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubChosenSettingsModelDelegate.m; sourceTree = "<group>"; };
 		AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportedSettings.h; sourceTree = "<group>"; };
 		AA98CA2016C8792E00C13E14 /* SupportedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportedSettings.m; sourceTree = "<group>"; };
 		AA98CA2816C8851B00C13E14 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
@@ -273,6 +276,8 @@
 				AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */,
 				AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */,
 				AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */,
+				AA68813516EBBDC600B4897F /* StubChosenSettingsModelDelegate.h */,
+				AA68813616EBBDC600B4897F /* StubChosenSettingsModelDelegate.m */,
 			);
 			name = "Spec helpers";
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 				AA9915B516D9CC3100346457 /* ChosenSettingsModel.m in Sources */,
 				AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */,
 				AAA6991916DA75EA003F0E0C /* ChosenSetting.m in Sources */,
+				AA68813716EBBDC600B4897F /* StubChosenSettingsModelDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
