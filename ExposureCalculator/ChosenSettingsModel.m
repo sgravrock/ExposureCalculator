@@ -61,9 +61,16 @@ static void * const kvo_context = (void * const)&kvo_context;
 
 - (void)addChoice:(int)index forComponent:(int)component
 {
-	self.secondChoice = self.firstChoice;
-	self.firstChoice = [ChosenSetting settingWithComponent:component
-													 value:self.dataSource.components[component][index]];
+	NSNumber *value = self.dataSource.components[component][index];
+	ChosenSetting *setting = [ChosenSetting settingWithComponent:component value:value];
+
+	if (self.firstChoice && self.firstChoice.component == component) {
+		self.firstChoice = setting;
+	} else {
+		self.secondChoice = self.firstChoice;
+		self.firstChoice = setting;
+	}
+	
 	[self findSettings];
 }
 

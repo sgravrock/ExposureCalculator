@@ -113,6 +113,21 @@ describe(@"ChosenSettingsModel", ^{
 			});
 		});
 	});
+	
+	describe(@"Responding to selections", ^{
+		it(@"should discard a previous selection of the same control", ^{
+			calculator.lv = 21;
+			selectShutterSpeed(1.0/40.0);
+			selectShutterSpeed(1.0/30.0);
+			verifySettings(1.4, 1.0/30.0, 50);
+			
+			// Now set the shutter again after the aperture else in between.
+			// We should keep the latest shutter speed as well as the aperture.
+			selectAperture(2);
+			selectShutterSpeed(1.0/60);
+			verifySettings(2, 1.0/60.0, 200);
+		});
+	});
 });
 
 SPEC_END

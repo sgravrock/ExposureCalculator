@@ -14,5 +14,6 @@
 @property (nonatomic, readonly, strong) NSNumber *value;
 
 + (ChosenSetting *)settingWithComponent:(int)component value:(NSNumber *)value;
++ (NSString *)formatSettingWithComponent:(int)component value:(NSNumber *)value;
 
 @end

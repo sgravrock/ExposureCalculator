@@ -11,6 +11,7 @@
 #import "ArrayDataSource.h"
 #import "ConstrainedSettingsDataSource.h"
 #import "SupportedSettings.h"
+#import "ChosenSetting.h"
 
 @interface ViewController () {
 	int meteredSettings[3]; // row indices
@@ -70,19 +71,7 @@
 {
 	ArrayDataSource *dataSource = (ArrayDataSource *)pickerView.dataSource;
 	NSNumber *value = dataSource.components[component][row];
-
-	switch (component) {
-		case 0:
-			return [self formatAperture:value];
-		case 1:
-			return [self formatShutterSpeed:value];
-		case 2:
-			return [self formatSensitivity:value];
-		default:
-			@throw [NSException exceptionWithName:@"Invalid argument"
-										   reason:@"Component out of range"
-										 userInfo:nil];
-	}
+	return [ChosenSetting formatSettingWithComponent:component value:value];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
@@ -124,31 +113,6 @@
 
 
 #pragma mark -
-				
-- (NSString *)formatAperture:(NSNumber *)aperture
-{
-	return [NSString stringWithFormat:@"f/%@", aperture];
-}
-
-- (NSString *)formatShutterSpeed:(NSNumber *)boxedSpeed
-{
-	double speed = [boxedSpeed doubleValue];
-	
-	if (speed == 60) {
-		return @"1m";
-	} else if (speed > 60) {
-		return [NSString stringWithFormat:@"%dm", (int)speed / 60];
-	} else if (speed >= 1) {
-		return [NSString stringWithFormat:@"%g", speed];
-	} else {
-		return [NSString stringWithFormat:@"1/%g", 1.0/speed]; // display e.g. 1.0/500.0 as "1/500"
- 	}
-}
-
-- (NSString *)formatSensitivity:(NSNumber *)iso
-{
-	return [iso stringValue];
-}
 
 - (void)recalculate
 {
