@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA271BCD16D0620300DBF4BE /* CliUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA271BCC16D0620300DBF4BE /* CliUtils.m */; };
+		AA35666B16ECFE6E00CED8D2 /* SettingSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA35666A16ECFE6E00CED8D2 /* SettingSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AA3E231216D0109100297797 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AA3E231316D0109100297797 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AA3E231416D0109100297797 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -69,6 +70,7 @@
 		AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Throwing.m"; path = "../ExposureCalculatorTests/NSScanner+Throwing.m"; sourceTree = "<group>"; };
 		AA271BCB16D0620300DBF4BE /* CliUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CliUtils.h; sourceTree = "<group>"; };
 		AA271BCC16D0620300DBF4BE /* CliUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CliUtils.m; sourceTree = "<group>"; };
+		AA35666A16ECFE6E00CED8D2 /* SettingSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingSpec.mm; sourceTree = "<group>"; };
 		AA3E231016D0109100297797 /* Exposure Calculator Specs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exposure Calculator Specs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3E231716D0109100297797 /* Exposure Calculator Specs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Exposure Calculator Specs-Info.plist"; sourceTree = "<group>"; };
 		AA3E231916D0109100297797 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				AA648B6C16D1784D00441DBE /* CliUtilsSpec.mm */,
 				AA648B6F16D17A3100441DBE /* cedar.h */,
 				AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */,
+				AA35666A16ECFE6E00CED8D2 /* SettingSpec.mm */,
 			);
 			path = "Exposure Calculator Specs";
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */,
 				AA68813716EBBDC600B4897F /* StubChosenSettingsModelDelegate.m in Sources */,
 				AA68814E16EC224E00B4897F /* Setting.m in Sources */,
+				AA35666B16ECFE6E00CED8D2 /* SettingSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

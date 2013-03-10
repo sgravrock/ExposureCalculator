@@ -29,25 +29,31 @@ static SupportedSettings *_defaultSettings;
 		NSArray *sensitivities = @[@50, @64, @100, @125, @160, @200, @250, @320, @400, @500, @640,
 			@800, @1000, @1250, @1600, @2000, @2500, @3200, @4000, @5000, @6400];
 		
-		// Calculate full stop increments for shutter speeds slower than 30 seconds, to keep the
-		// total number of possible settings sane. Above 30 seconds, switch to third stops
-		// and hardcode because the third stop values used by cameras are slightly different
-		// than what the math expects.
-		NSMutableArray *speeds = [NSMutableArray arrayWithCapacity:51];
+		NSMutableArray *speeds = [NSMutableArray arrayWithCapacity:63];
 		
-		for (int i = 32 * 60; i >= 30; i /= 2) {
-			[speeds addObject:[NSNumber numberWithDouble:(double)i]];
+		// For shutter speeds longer than 30 seconds, calculate third-stop increments using the
+		// cube root method. The accumulated error from a less accurate method would be
+		// considerable. The user's camera settings most likely don't extend into this range
+		// (bulb will be used instead), so we don't need to worry about matching the approximations
+		// that would be displayed on the camera.
+		double cbrt2 = cbrt(2);
+
+		for (double i = 32 * 60; i > 30; i /= cbrt2) {
+			[speeds addObject:[NSNumber numberWithDouble:i]];
 		}
 		
-		NSArray *overlappingRange = @[@25.0, @20.0, @15.0, @13.0, @10.0, @8.0, @6.0, @5.0, @4.0,
-		@3.0, @2.5, @2.0, @1.6, @1.3, @1];
+		// For speeds faster than 30 seconds, hardcode the approximations that are displayed on
+		// a typical camera. The error from this is small enough that rounding Lv calculations to
+		// the nearest third stop will take care of it.
+		NSArray *overlappingRange = @[@30, @25, @20, @15, @13, @10, @8, @6, @5, @4, @3, @2.5, @2,
+		@1.6, @1.3, @1];
 		[speeds addObjectsFromArray:overlappingRange];
 		
 		for (int i = overlappingRange.count - 2; i >= 0; i--) {
 			[speeds addObject:[NSNumber numberWithDouble:1.0/[overlappingRange[i] doubleValue]]];
 		}
 		
-		NSArray *higher = @[@30, @40, @50, @60, @80, @100, @125, @160, @200, @250, @320, @400,
+		NSArray *higher = @[@40, @50, @60, @80, @100, @125, @160, @200, @250, @320, @400,
 		@500, @640, @800];
 		
 		for (NSNumber *n in higher) {

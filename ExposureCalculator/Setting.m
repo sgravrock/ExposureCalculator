@@ -1,23 +1,23 @@
 //
-//  ChosenSetting.m
+//  Setting.m
 //  ExposureCalculator
 //
 //  Created by Steve Gravrock on 2/24/13.
 //  Copyright (c) 2013 Steve Gravrock. All rights reserved.
 //
 
-#import "ChosenSetting.h"
+#import "Setting.h"
 
-@interface ChosenSetting()
+@interface Setting()
 @property (nonatomic, assign) int component;
 @property (nonatomic, strong) NSNumber *value;
 @end
 
-@implementation ChosenSetting
+@implementation Setting
 
-+ (ChosenSetting *)settingWithComponent:(int)component value:(NSNumber *)value
++ (Setting *)settingWithComponent:(int)component value:(NSNumber *)value
 {
-	ChosenSetting *s = [[ChosenSetting alloc] init];
+	Setting *s = [[Setting alloc] init];
 	s.component = component;
 	s.value = value;
 	return s;
@@ -27,9 +27,11 @@
 {
 	const char *prefixes[] = { "aperture: ", "shutter: ", "sensitivity: " };
 	return [NSString stringWithFormat:@"%s%@", prefixes[self.component],
-			[ChosenSetting formatSettingWithComponent:self.component value:self.value]];
+			[Setting formatSettingWithComponent:self.component value:self.value]];
 }
 
+// This display logic might more properly belong in the view controller, but having it here
+// means that it can be used for debugger display as well (see the description method above).
 + (NSString *)formatSettingWithComponent:(int)component value:(NSNumber *)value
 {
 	switch (component) {
@@ -58,7 +60,16 @@
 	if (speed == 60) {
 		return @"1m";
 	} else if (speed > 60) {
-		return [NSString stringWithFormat:@"%dm", (int)speed / 60];
+		int minutes = (int)speed / 60;
+		int seconds = lround(speed - 60 * minutes);
+		
+		if (seconds == 0) {
+			return [NSString stringWithFormat:@"%dm", minutes];
+		} else {
+			return [NSString stringWithFormat:@"%dm%ds", minutes, seconds];
+		}
+	} else if (speed >= 10) {
+		return [NSString stringWithFormat:@"%ld", lround(speed)];
 	} else if (speed >= 1) {
 		return [NSString stringWithFormat:@"%g", speed];
 	} else {

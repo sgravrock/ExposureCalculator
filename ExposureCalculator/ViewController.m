@@ -99,6 +99,21 @@
 	}
 }
 
+- (UIView *)pickerView:(UIPickerView *)pickerView
+			viewForRow:(NSInteger)row
+		  forComponent:(NSInteger)component
+		   reusingView:(UIView *)view
+{
+	UILabel* label = (UILabel*)label;
+	
+	if (!label) {
+		label = [[UILabel alloc] init];
+	}
+	
+	label.font = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+	label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    return label;
+}
 
 
 #pragma mark -
