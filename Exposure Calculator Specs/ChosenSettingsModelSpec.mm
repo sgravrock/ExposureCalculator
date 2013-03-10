@@ -100,16 +100,27 @@ describe(@"ChosenSettingsModel", ^{
 				verifySettings(1.4, 960, 50);
 			});
 			
-			it(@"should keep a compatible selection", ^{
+			it(@"should keep the most recent setting if it's compatible", ^{
+				// This test depends on the configured max ISO
+				expect([[SupportedSettings defaultSettings].sensitivities lastObject]).to(equal(@6400));
+				selectAperture(2.8);
+				selectShutterSpeed(6);
+				calculator.lv = 3 * -6.7;
+				// We can reach -6.7 with either f/2.8 or 6s, but not both.
+				// Since the shutter speed was selected most recently, we drop the aperture.
+				verifySettings(1.4, 6, 3200);
+			});
+			
+			it(@"should keep a compatible older selection if the most recent is incompatible", ^{
 				// This test depends on our configured longest shutter speed.
 				NSNumber *minShutter = @1920;
 				expect([SupportedSettings defaultSettings].shutterSpeeds[0]).to(equal(minShutter));
 				selectAperture(2.8);
 				selectShutterSpeed(6);
-				calculator.lv = -21;
-				// We can't get to Lv -7 at 6s, so that setting gets dropped
+				calculator.lv = 3 * -8;
+				// We can't get to Lv -8 at 6s, so that setting gets dropped
 				// even though it was the most recently specified.
-				verifySettings(2.8, [minShutter doubleValue], 50);
+				verifySettings(2.8, [minShutter doubleValue], 100);
 			});
 		});
 	});
@@ -127,6 +138,7 @@ describe(@"ChosenSettingsModel", ^{
 			selectShutterSpeed(1.0/60);
 			verifySettings(2, 1.0/60.0, 200);
 		});
+
 	});
 });
 

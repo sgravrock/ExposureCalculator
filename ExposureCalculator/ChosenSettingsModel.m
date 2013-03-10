@@ -71,7 +71,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 		self.firstChoice = setting;
 	}
 	
-	[self findSettings];
+	[self updateSettings];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
@@ -79,30 +79,13 @@ static void * const kvo_context = (void * const)&kvo_context;
 					   context:(void *)context
 {
 	[self.dataSource update];
-	[self findSettings];
+	[self updateSettings];
 }
 
-- (void)findSettings
+- (void)updateSettings
 {
-	int i = NSNotFound;
+	NSDictionary *settings = [self.calculator.validSettings objectAtIndex:[self findSettings]];
 	
-	// Search for settings that match the current Lv and the user's choices, discarding choices
-	// until we find a valid setting
-	while (i == NSNotFound) {
-		i = [self.calculator.validSettings indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-			return [self settings:obj matchUserChoice:self.firstChoice]
-				&& [self settings:obj matchUserChoice:self.secondChoice];
-		}];
-		
-		if (i == NSNotFound) {
-			NSAssert(self.firstChoice != nil, @"Didn't find a matching setting");
-			// Discard one of the user's choices and search again
-			self.firstChoice = self.secondChoice;
-			self.secondChoice = nil;
-		}
-	}
-		
-	NSDictionary *settings = [self.calculator.validSettings objectAtIndex:i];
 	int apertureIx = [self.dataSource.components[0] indexOfObject:settings[@"aperture"]];
 	int shutterIx = [self.dataSource.components[1] indexOfObject:settings[@"shutterSpeed"]];
 	int isoIx = [self.dataSource.components[2] indexOfObject:settings[@"sensitivity"]];
@@ -112,6 +95,38 @@ static void * const kvo_context = (void * const)&kvo_context;
 	[self.delegate chosenSettingsModel:self changedApertureToIndex:apertureIx];
 	[self.delegate chosenSettingsModel:self changedShutterToIndex:shutterIx];
 	[self.delegate chosenSettingsModel:self changedSensitivityToIndex:isoIx];
+}
+
+- (int)findSettings
+{
+	// Try to find valid settings, preferring the user's more recent choice if any.
+	int scenarios[][2] = {{0, 1}, {0, -1}, {1, -1}, {-1, -1}};
+	
+	for (int i = 0; i < 4; i++) {
+		int *s = scenarios[i];
+		ChosenSetting *a = s[0] == 0 ? self.firstChoice : (s[0] == 1 ? self.secondChoice : nil);
+		ChosenSetting *b = s[1] == 0 ? self.firstChoice : (s[1] == 1 ? self.secondChoice : nil);
+		int result = [self indexOfFirstSettingsMatchingChoice:a andChoice:b];
+		
+		if (result != NSNotFound) {
+			return result;
+		}
+	}
+	
+	// Can't happen
+	@throw [NSException exceptionWithName:NSInternalInconsistencyException
+								   reason:@"Couldn't find any valid setting" userInfo:nil];
+}
+
+// Either argument may be nil.
+- (int)indexOfFirstSettingsMatchingChoice:(ChosenSetting *)choice1
+								andChoice:(ChosenSetting *)choice2
+{
+	return [self.calculator.validSettings indexOfObjectPassingTest:
+			 ^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+				return [self settings:obj matchUserChoice:choice1]
+				 && [self settings:obj matchUserChoice:choice2];
+			 }];
 }
 
 - (BOOL)settings:(NSDictionary *)settings matchUserChoice:(ChosenSetting *)choice
