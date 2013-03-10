@@ -15,7 +15,6 @@
 
 @interface ViewController () {
 	int meteredSettings[3]; // row indices
-	BOOL updating;
 }
 
 @property (nonatomic, strong) SupportedSettings *supportedSettings;
@@ -29,8 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	updating = YES;
 	
 	for (int i = 0; i < 3; i++) {
 		meteredSettings[i] = 0;
@@ -55,7 +52,6 @@
 	self.chosenSettings = [[ChosenSettingsModel alloc] initWithCalculator:self.calculator];
 	self.chosenSettings.delegate = self;
 	self.chosenSettingsPicker.dataSource = self.chosenSettings.dataSource;
-	updating = NO;
 	[self recalculate];
 }
 
@@ -77,18 +73,11 @@
 - (void)pickerView:(UIPickerView *)pickerView
 	  didSelectRow:(NSInteger)row
 	   inComponent:(NSInteger)component
-{
-	NSLog(@"didSelectRow:%d inComponent:%d", row, component);
-	
+{	
 	if (pickerView == self.meteredSettingsPicker) {
 		meteredSettings[component] = row;
 		[self recalculate];
 	} else {
-		// TODO: probably don't need this check
-		if (updating) {
-			return;
-		}
-		
 		switch (component) {
 			case 0:
 				[self.chosenSettings selectAperture:row];
@@ -116,39 +105,31 @@
 
 - (void)recalculate
 {
-	if (updating) {
-		return;
-	}
-	
 	double aperture = [[self.supportedSettings.apertures objectAtIndex:meteredSettings[0]]
 					   doubleValue];
 	double shutter = [[self.supportedSettings.shutterSpeeds objectAtIndex:meteredSettings[1]]
 					  doubleValue];
 	int iso = [[self.supportedSettings.sensitivities objectAtIndex:meteredSettings[2]] intValue];
-	self.calculator.thirdsLv = [Calculator thirdsLvForAperture:aperture shutter:shutter sensitivity:iso];
+	int lv = [Calculator thirdsLvForAperture:aperture shutter:shutter sensitivity:iso];
+	self.calculator.thirdsLv = lv;
+	[self.chosenSettingsPicker reloadAllComponents];
 }
 
 #pragma mark - ChosenSettingsModelDelegate
 
 - (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedApertureToIndex:(int)index
 {
-	updating = YES;
 	[self.chosenSettingsPicker selectRow:index inComponent:0 animated:YES];
-	updating = NO;
 }
 
 - (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedShutterToIndex:(int)index
 {
-	updating = YES;
 	[self.chosenSettingsPicker selectRow:index inComponent:1 animated:YES];
-	updating = NO;
 }
 
 - (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedSensitivityToIndex:(int)index
 {
-	updating = YES;
 	[self.chosenSettingsPicker selectRow:index inComponent:2 animated:YES];
-	updating = NO;
 }
 
 @end
