@@ -61,7 +61,7 @@ describe(@"Calculator", ^{
 																	   shutterSpeeds:supportedShutterSpeeds
 																	   sensitivities:supportedIsos];
 			Calculator *target = [[Calculator alloc] initWithSettings:config];
-			target.lv = [Calculator lvForAperture:4.5 shutter:1.0/80.0 sensitivity:100];
+			target.thirdsLv = [Calculator thirdsLvForAperture:4.5 shutter:1.0/80.0 sensitivity:100];
 			NSArray *actual = [target validSettings];
 			expect([NSSet setWithArray:actual]).to(equal([NSSet setWithArray:expected]));
 		});
@@ -85,7 +85,7 @@ SPEC_END
 //					 aperture, shutter, sensitivity];
 	double fNumber = [[NSScanner scannerWithString:aperture] requireDouble];
 	double seconds = [[CliUtils shutterFromString:[shutter UTF8String]] doubleValue];
-	int result = [Calculator lvForAperture:fNumber shutter:seconds sensitivity:sensitivity];
+	int result = [Calculator thirdsLvForAperture:fNumber shutter:seconds sensitivity:sensitivity];
 	expect(result).to(equal(expectedLv));
 	
 }

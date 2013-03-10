@@ -35,9 +35,9 @@ int main(int argc, const char * argv[])
 		}
 		
 		if (aperture && shutter && iso) {
-			int lv = [Calculator lvForAperture:[aperture doubleValue]
+			int lv = [Calculator thirdsLvForAperture:[aperture doubleValue]
 									   shutter:[shutter doubleValue]
-								   sensitivity:[iso intValue]];
+										 sensitivity:[iso intValue]];
 			int whole = lv / 3;
 			int fract = lv % 3;
 			

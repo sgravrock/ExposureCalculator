@@ -21,13 +21,13 @@
 		AA66910A16D0618D009A4E3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AA66910D16D0618D009A4E3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA66910C16D0618D009A4E3B /* main.m */; };
 		AA68813716EBBDC600B4897F /* StubChosenSettingsModelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68813616EBBDC600B4897F /* StubChosenSettingsModelDelegate.m */; };
+		AA68814D16EC21D800B4897F /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68814C16EC21D800B4897F /* Setting.m */; };
+		AA68814E16EC224E00B4897F /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68814C16EC21D800B4897F /* Setting.m */; };
 		AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
 		AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */; };
 		AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B516D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AAA6991816DA75EA003F0E0C /* ChosenSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA6991716DA75EA003F0E0C /* ChosenSetting.m */; };
-		AAA6991916DA75EA003F0E0C /* ChosenSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA6991716DA75EA003F0E0C /* ChosenSetting.m */; };
 		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AAE9054816C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AAE9054A16C619CE00CD025E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -84,6 +84,7 @@
 		AA66910F16D0618D009A4E3B /* exposure-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "exposure-Prefix.pch"; sourceTree = "<group>"; };
 		AA68813516EBBDC600B4897F /* StubChosenSettingsModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubChosenSettingsModelDelegate.h; sourceTree = "<group>"; };
 		AA68813616EBBDC600B4897F /* StubChosenSettingsModelDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubChosenSettingsModelDelegate.m; sourceTree = "<group>"; };
+		AA68814C16EC21D800B4897F /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
 		AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportedSettings.h; sourceTree = "<group>"; };
 		AA98CA2016C8792E00C13E14 /* SupportedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportedSettings.m; sourceTree = "<group>"; };
 		AA98CA2816C8851B00C13E14 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
@@ -91,8 +92,7 @@
 		AA9915B216D9CC3100346457 /* ChosenSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChosenSettingsModel.h; sourceTree = "<group>"; };
 		AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChosenSettingsModel.m; sourceTree = "<group>"; };
 		AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChosenSettingsModelSpec.mm; sourceTree = "<group>"; };
-		AAA6991616DA75EA003F0E0C /* ChosenSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChosenSetting.h; sourceTree = "<group>"; };
-		AAA6991716DA75EA003F0E0C /* ChosenSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChosenSetting.m; sourceTree = "<group>"; };
+		AAA6991616DA75EA003F0E0C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
 		AAE9054116C619CE00CD025E /* ExposureCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposureCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE9054516C619CE00CD025E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAE9054716C619CE00CD025E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,8 +249,8 @@
 				AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */,
 				AA9915B216D9CC3100346457 /* ChosenSettingsModel.h */,
 				AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */,
-				AAA6991616DA75EA003F0E0C /* ChosenSetting.h */,
-				AAA6991716DA75EA003F0E0C /* ChosenSetting.m */,
+				AAA6991616DA75EA003F0E0C /* Setting.h */,
+				AA68814C16EC21D800B4897F /* Setting.m */,
 			);
 			path = ExposureCalculator;
 			sourceTree = "<group>";
@@ -407,8 +407,8 @@
 				AA648B6E16D1792200441DBE /* CliUtils.m in Sources */,
 				AA9915B516D9CC3100346457 /* ChosenSettingsModel.m in Sources */,
 				AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */,
-				AAA6991916DA75EA003F0E0C /* ChosenSetting.m in Sources */,
 				AA68813716EBBDC600B4897F /* StubChosenSettingsModelDelegate.m in Sources */,
+				AA68814E16EC224E00B4897F /* Setting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +434,7 @@
 				AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */,
 				AA59804616C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m in Sources */,
 				AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */,
-				AAA6991816DA75EA003F0E0C /* ChosenSetting.m in Sources */,
+				AA68814D16EC21D800B4897F /* Setting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

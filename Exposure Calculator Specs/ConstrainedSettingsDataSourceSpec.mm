@@ -24,7 +24,7 @@ describe(@"ConstrainedSettingsDataSource", ^{
 												 initWithCalculator:calculator];
 		
 		// After setting an Lv, only the settings that give that Lv should be available
-		calculator.lv = [Calculator lvForAperture:4.0 shutter:1.0/60.0 sensitivity:125];
+		calculator.thirdsLv = [Calculator thirdsLvForAperture:4.0 shutter:1.0/60.0 sensitivity:125];
 		[target update];
 		NSArray *expectedApertures = @[@4.0, @4.5];
 		NSArray *expectedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60], [NSNumber numberWithDouble:1.0/80]];

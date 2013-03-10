@@ -11,7 +11,7 @@
 #import "ArrayDataSource.h"
 #import "ConstrainedSettingsDataSource.h"
 #import "SupportedSettings.h"
-#import "ChosenSetting.h"
+#import "Setting.h"
 
 @interface ViewController () {
 	int meteredSettings[3]; // row indices
@@ -71,7 +71,7 @@
 {
 	ArrayDataSource *dataSource = (ArrayDataSource *)pickerView.dataSource;
 	NSNumber *value = dataSource.components[component][row];
-	return [ChosenSetting formatSettingWithComponent:component value:value];
+	return [Setting formatSettingWithComponent:component value:value];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
@@ -125,7 +125,7 @@
 	double shutter = [[self.supportedSettings.shutterSpeeds objectAtIndex:meteredSettings[1]]
 					  doubleValue];
 	int iso = [[self.supportedSettings.sensitivities objectAtIndex:meteredSettings[2]] intValue];
-	self.calculator.lv = [Calculator lvForAperture:aperture shutter:shutter sensitivity:iso];
+	self.calculator.thirdsLv = [Calculator thirdsLvForAperture:aperture shutter:shutter sensitivity:iso];
 }
 
 #pragma mark - ChosenSettingsModelDelegate

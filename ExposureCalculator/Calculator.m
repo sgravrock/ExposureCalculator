@@ -16,7 +16,7 @@
 
 @implementation Calculator
 
-+ (int)lvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso
++ (int)thirdsLvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso
 {
 	double ev = log2(fNumber * fNumber / seconds);
 	
@@ -33,7 +33,7 @@
 	
 	if (self) {
 		self.supportedSettings = settings;
-		self.lv = 0;
+		self.thirdsLv = 0;
 	}
 	
 	return self;
@@ -46,9 +46,9 @@
 	for (NSNumber *aperture in self.supportedSettings.apertures) {
 		for (NSNumber *shutter in self.supportedSettings.shutterSpeeds) {
 			for (NSNumber *iso in self.supportedSettings.sensitivities) {
-				if (self.lv == [Calculator lvForAperture:[aperture doubleValue]
-											 shutter:[shutter doubleValue]
-										 sensitivity:[iso intValue]]) {
+				if (self.thirdsLv == [Calculator thirdsLvForAperture:[aperture doubleValue]
+															 shutter:[shutter doubleValue]
+														 sensitivity:[iso intValue]]) {
 					[settings addObject:@{@"aperture": aperture,
 					 @"shutterSpeed": shutter, @"sensitivity": iso}];
 				}

@@ -9,13 +9,13 @@
 #import "ChosenSettingsModel.h"
 #import "ConstrainedSettingsDataSource.h"
 #import "Calculator.h"
-#import "ChosenSetting.h"
+#import "Setting.h"
 
 static void * const kvo_context = (void * const)&kvo_context;
 
 @interface ChosenSettingsModel()
-@property (nonatomic, strong) ChosenSetting *firstChoice;
-@property (nonatomic, strong) ChosenSetting *secondChoice;
+@property (nonatomic, strong) Setting *firstChoice;
+@property (nonatomic, strong) Setting *secondChoice;
 @property (nonatomic, strong) Calculator *calculator;
 @property (nonatomic, strong) ConstrainedSettingsDataSource *dataSource;
 @end
@@ -31,7 +31,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 		self.dataSource = [[ConstrainedSettingsDataSource alloc] initWithCalculator:calculator];
 		// Subscribe to changes in the calculated Lv
 		[calculator addObserver:self
-					 forKeyPath:@"lv"
+					 forKeyPath:@"thirdsLv"
 						options:NSKeyValueObservingOptionNew
 						context:kvo_context];
 	}
@@ -41,7 +41,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 
 - (void)dealloc
 {
-	[self.calculator removeObserver:self forKeyPath:@"lv" context:kvo_context];
+	[self.calculator removeObserver:self forKeyPath:@"thirdsLv" context:kvo_context];
 }
 
 - (void)selectAperture:(int)index
@@ -62,7 +62,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 - (void)addChoice:(int)index forComponent:(int)component
 {
 	NSNumber *value = self.dataSource.components[component][index];
-	ChosenSetting *setting = [ChosenSetting settingWithComponent:component value:value];
+	Setting *setting = [Setting settingWithComponent:component value:value];
 
 	if (self.firstChoice && self.firstChoice.component == component) {
 		self.firstChoice = setting;
@@ -104,8 +104,8 @@ static void * const kvo_context = (void * const)&kvo_context;
 	
 	for (int i = 0; i < 4; i++) {
 		int *s = scenarios[i];
-		ChosenSetting *a = s[0] == 0 ? self.firstChoice : (s[0] == 1 ? self.secondChoice : nil);
-		ChosenSetting *b = s[1] == 0 ? self.firstChoice : (s[1] == 1 ? self.secondChoice : nil);
+		Setting *a = s[0] == 0 ? self.firstChoice : (s[0] == 1 ? self.secondChoice : nil);
+		Setting *b = s[1] == 0 ? self.firstChoice : (s[1] == 1 ? self.secondChoice : nil);
 		int result = [self indexOfFirstSettingsMatchingChoice:a andChoice:b];
 		
 		if (result != NSNotFound) {
@@ -119,8 +119,8 @@ static void * const kvo_context = (void * const)&kvo_context;
 }
 
 // Either argument may be nil.
-- (int)indexOfFirstSettingsMatchingChoice:(ChosenSetting *)choice1
-								andChoice:(ChosenSetting *)choice2
+- (int)indexOfFirstSettingsMatchingChoice:(Setting *)choice1
+								andChoice:(Setting *)choice2
 {
 	return [self.calculator.validSettings indexOfObjectPassingTest:
 			 ^BOOL(id obj, NSUInteger idx, BOOL *stop) {
@@ -129,7 +129,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 			 }];
 }
 
-- (BOOL)settings:(NSDictionary *)settings matchUserChoice:(ChosenSetting *)choice
+- (BOOL)settings:(NSDictionary *)settings matchUserChoice:(Setting *)choice
 {
 	static NSArray *componentKeys = nil;
 	
