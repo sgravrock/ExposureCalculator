@@ -46,20 +46,16 @@ describe(@"Calculator", ^{
 	describe(@"Finding valid settings for a given Lv", ^{
 		it(@"should return the set of settings that give the specified Lv", ^{
 			// Use a fairly narrow range of settings, so the result isn't huge
-			NSArray *supportedApertures = @[@4.0, @4.5, @5.0, @5.6];
-			NSArray *supportedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60.0],
-			[NSNumber numberWithDouble:1.0/80.0],
-			[NSNumber numberWithDouble:1.0/100.0]];
-			NSArray *supportedIsos = @[@100, @1600];
+			SupportedSettings *config = [[SupportedSettings alloc] init];
+			[config includeAperturesFrom:@4 to:@4.5];
+			[config includeShutterSpeedsFrom:@(1.0/60.0) to:@(1.0/100.0)];
+			[config includeSensitivitiesFrom:@100 to:@125];
 			NSArray *expected = @[
-				@{@"aperture": @4.0, @"shutterSpeed": [NSNumber numberWithDouble:1.0/100.0], @"sensitivity": @100},
-				@{@"aperture": @4.5, @"shutterSpeed": [NSNumber numberWithDouble:1.0/80.0], @"sensitivity": @100},
-				@{@"aperture": @5.0, @"shutterSpeed": [NSNumber numberWithDouble:1.0/60.0], @"sensitivity": @100},
+				@{@"aperture": @4.0, @"shutterSpeed":@(1.0/100.0), @"sensitivity": @100},
+				@{@"aperture": @4.5, @"shutterSpeed":@(1.0/80.0), @"sensitivity": @100},
+				@{@"aperture": @4.5, @"shutterSpeed":@(1.0/100.0), @"sensitivity": @125},
 			];
 			
-			SupportedSettings *config = [[SupportedSettings alloc] initWithApertures:supportedApertures
-																	   shutterSpeeds:supportedShutterSpeeds
-																	   sensitivities:supportedIsos];
 			Calculator *target = [[Calculator alloc] initWithSettings:config];
 			target.thirdsLv = [Calculator thirdsLvForAperture:4.5 shutter:1.0/80.0 sensitivity:100];
 			NSArray *actual = [target validSettings];

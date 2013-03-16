@@ -10,15 +10,11 @@ SPEC_BEGIN(ConstrainedSettingsDataSourceSpec)
 
 describe(@"ConstrainedSettingsDataSource", ^{
 	it(@"should only offer settings that are possible with the given constraints", ^{
-		NSArray *supportedApertures = @[@4.0, @4.5, @5.0, @5.6];
-		NSArray *supportedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60.0],
-		[NSNumber numberWithDouble:1.0/80.0],
-		[NSNumber numberWithDouble:1.0/100.0]];
-		NSArray *supportedIsos = @[@100, @125, @160];
+		SupportedSettings *config = [[SupportedSettings alloc] init];
+		[config includeAperturesFrom:@4 to:@5.6];
+		[config includeShutterSpeedsFrom:@(1.0/60.0) to:@(1.0/100.0)];
+		[config includeSensitivitiesFrom:@100 to:@160];
 		
-		SupportedSettings *config = [[SupportedSettings alloc] initWithApertures:supportedApertures
-																   shutterSpeeds:supportedShutterSpeeds
-																   sensitivities:supportedIsos];
 		Calculator *calculator = [[Calculator alloc] initWithSettings:config];
 		ConstrainedSettingsDataSource *target = [[ConstrainedSettingsDataSource alloc]
 												 initWithCalculator:calculator];

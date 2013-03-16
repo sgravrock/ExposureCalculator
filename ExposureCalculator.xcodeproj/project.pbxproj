@@ -37,10 +37,10 @@
 		AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9055516C619CE00CD025E /* AppDelegate.m */; };
 		AAE9055816C619CE00CD025E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055716C619CE00CD025E /* Default.png */; };
 		AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055916C619CE00CD025E /* Default@2x.png */; };
-		AAE9055C16C619CE00CD025E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055B16C619CE00CD025E /* Default-568h@2x.png */; };
 		AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */; };
 		AAE9056216C619CE00CD025E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* ViewController.m */; };
 		AAE9058916C61AFD00CD025E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
+		AAEC21AE16F4FABB000BA5EE /* SupportedSettingsSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAEC21AD16F4FABB000BA5EE /* SupportedSettingsSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AAFDF95216D013FB00A4DCDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* ViewController.m */; };
 		AAFDF95416D0142200A4DCDC /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
 		AAFDF95516D0142200A4DCDC /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
@@ -114,6 +114,7 @@
 		AAE9056916C619CE00CD025E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		AAE9058716C61AFD00CD025E /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		AAE9058816C61AFD00CD025E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		AAEC21AD16F4FABB000BA5EE /* SupportedSettingsSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SupportedSettingsSpec.mm; sourceTree = "<group>"; };
 		AAFDF96216D01B4600A4DCDC /* FakeProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeProperties.h; sourceTree = "<group>"; };
 		AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FakeProperties.mm; sourceTree = "<group>"; };
 		AAFDF96516D02F6C00A4DCDC /* FakePropertiesSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FakePropertiesSpec.mm; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 				AA648B6F16D17A3100441DBE /* cedar.h */,
 				AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */,
 				AA35666A16ECFE6E00CED8D2 /* SettingSpec.mm */,
+				AAEC21AD16F4FABB000BA5EE /* SupportedSettingsSpec.mm */,
 			);
 			path = "Exposure Calculator Specs";
 			sourceTree = "<group>";
@@ -383,7 +385,6 @@
 				AAE9055016C619CE00CD025E /* InfoPlist.strings in Resources */,
 				AAE9055816C619CE00CD025E /* Default.png in Resources */,
 				AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */,
-				AAE9055C16C619CE00CD025E /* Default-568h@2x.png in Resources */,
 				AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +414,7 @@
 				AA68813716EBBDC600B4897F /* StubChosenSettingsModelDelegate.m in Sources */,
 				AA68814E16EC224E00B4897F /* Setting.m in Sources */,
 				AA35666B16ECFE6E00CED8D2 /* SettingSpec.mm in Sources */,
+				AAEC21AE16F4FABB000BA5EE /* SupportedSettingsSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

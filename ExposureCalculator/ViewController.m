@@ -33,7 +33,7 @@
 		meteredSettings[i] = 0;
 	}
 	
-	self.supportedSettings = [SupportedSettings defaultSettings];
+	self.supportedSettings = [[SupportedSettings alloc] init];
 	self.calculator = [[Calculator alloc] initWithSettings:self.supportedSettings];
 	self.meteredSettingsDataSource = [[ArrayDataSource alloc] init];
 	self.meteredSettingsDataSource.components = @[self.supportedSettings.apertures,

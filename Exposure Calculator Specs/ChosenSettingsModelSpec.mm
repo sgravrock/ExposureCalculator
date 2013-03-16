@@ -55,7 +55,7 @@ describe(@"ChosenSettingsModel", ^{
 	};
 	
 	beforeEach(^{
-		calculator = [[Calculator alloc] initWithSettings:[SupportedSettings defaultSettings]];
+		calculator = [[Calculator alloc] initWithSettings:[[SupportedSettings alloc] init]];
 		target = [[ChosenSettingsModel alloc] initWithCalculator:calculator];
 		delegate = [[StubChosenSettingsModelDelegate alloc] init];
 		target.delegate = delegate;
@@ -102,7 +102,7 @@ describe(@"ChosenSettingsModel", ^{
 			
 			it(@"should keep the most recent setting if it's compatible", ^{
 				// This test depends on the configured max ISO
-				expect([[SupportedSettings defaultSettings].sensitivities lastObject]).to(equal(@6400));
+				expect([[[SupportedSettings alloc] init].sensitivities lastObject]).to(equal(@6400));
 				selectAperture(2.8);
 				selectShutterSpeed(6);
 				calculator.thirdsLv = 3 * -6.7;
@@ -114,7 +114,7 @@ describe(@"ChosenSettingsModel", ^{
 			it(@"should keep a compatible older selection if the most recent is incompatible", ^{
 				// This test depends on our configured longest shutter speed.
 				NSNumber *minShutter = @1920;
-				expect([SupportedSettings defaultSettings].shutterSpeeds[0]).to(equal(minShutter));
+				expect([[SupportedSettings alloc] init].shutterSpeeds[0]).to(equal(minShutter));
 				selectAperture(2.8);
 				selectShutterSpeed(6);
 				calculator.thirdsLv = 3 * -8;
