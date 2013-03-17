@@ -29,6 +29,8 @@
 		AA68813716EBBDC600B4897F /* StubChosenSettingsModelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68813616EBBDC600B4897F /* StubChosenSettingsModelDelegate.m */; };
 		AA68814D16EC21D800B4897F /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68814C16EC21D800B4897F /* Setting.m */; };
 		AA68814E16EC224E00B4897F /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = AA68814C16EC21D800B4897F /* Setting.m */; };
+		AA8F9CFF16F6594100FBB78B /* ViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA8F9CFE16F6594100FBB78B /* ViewControllerSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AA8F9D0316F65EF800FBB78B /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F9D0216F65EF800FBB78B /* JRSwizzle.m */; };
 		AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
 		AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */; };
 		AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
@@ -98,6 +100,9 @@
 		AA68813516EBBDC600B4897F /* StubChosenSettingsModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubChosenSettingsModelDelegate.h; sourceTree = "<group>"; };
 		AA68813616EBBDC600B4897F /* StubChosenSettingsModelDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubChosenSettingsModelDelegate.m; sourceTree = "<group>"; };
 		AA68814C16EC21D800B4897F /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
+		AA8F9CFE16F6594100FBB78B /* ViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewControllerSpec.mm; sourceTree = "<group>"; };
+		AA8F9D0116F65EF800FBB78B /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRSwizzle.h; path = submodules/jrswizzle/JRSwizzle.h; sourceTree = SOURCE_ROOT; };
+		AA8F9D0216F65EF800FBB78B /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRSwizzle.m; path = submodules/jrswizzle/JRSwizzle.m; sourceTree = SOURCE_ROOT; };
 		AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportedSettings.h; sourceTree = "<group>"; };
 		AA98CA2016C8792E00C13E14 /* SupportedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportedSettings.m; sourceTree = "<group>"; };
 		AA98CA2816C8851B00C13E14 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 		AA9915B216D9CC3100346457 /* ChosenSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChosenSettingsModel.h; sourceTree = "<group>"; };
 		AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChosenSettingsModel.m; sourceTree = "<group>"; };
 		AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChosenSettingsModelSpec.mm; sourceTree = "<group>"; };
+		AA9A79EE16F6356000FA91E9 /* ConfigViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAA6991616DA75EA003F0E0C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
 		AAE9054116C619CE00CD025E /* ExposureCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposureCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE9054516C619CE00CD025E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -183,6 +189,7 @@
 				AA35666A16ECFE6E00CED8D2 /* SettingSpec.mm */,
 				AAEC21AD16F4FABB000BA5EE /* SupportedSettingsSpec.mm */,
 				AA33396316F5851C003C2454 /* MinMaxPairSpec.mm */,
+				AA8F9CFE16F6594100FBB78B /* ViewControllerSpec.mm */,
 			);
 			path = "Exposure Calculator Specs";
 			sourceTree = "<group>";
@@ -215,6 +222,20 @@
 				AA66910F16D0618D009A4E3B /* exposure-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA9A79ED16F6353800FA91E9 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				AAEC21C016F52FC3000BA5EE /* ConfigViewController.h */,
+				AAEC21C116F52FC3000BA5EE /* ConfigViewController.m */,
+				AA33396016F56A17003C2454 /* MinMaxPair.h */,
+				AA33396116F56A17003C2454 /* MinMaxPair.m */,
+				AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */,
+				AA98CA2016C8792E00C13E14 /* SupportedSettings.m */,
+				AA9A79EE16F6356000FA91E9 /* ConfigViewControllerDelegate.h */,
+			);
+			name = Configuration;
 			sourceTree = "<group>";
 		};
 		AAE9053616C619CE00CD025E = {
@@ -252,6 +273,7 @@
 		AAE9054B16C619CE00CD025E /* ExposureCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				AA9A79ED16F6353800FA91E9 /* Configuration */,
 				AAE9055416C619CE00CD025E /* AppDelegate.h */,
 				AAE9055516C619CE00CD025E /* AppDelegate.m */,
 				AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */,
@@ -260,8 +282,6 @@
 				AAE9054C16C619CE00CD025E /* Supporting Files */,
 				AAE9058716C61AFD00CD025E /* Calculator.h */,
 				AAE9058816C61AFD00CD025E /* Calculator.m */,
-				AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */,
-				AA98CA2016C8792E00C13E14 /* SupportedSettings.m */,
 				AA98CA2816C8851B00C13E14 /* ArrayDataSource.h */,
 				AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */,
 				AA59804416C8CC5800EE71A4 /* ConstrainedSettingsDataSource.h */,
@@ -270,10 +290,6 @@
 				AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */,
 				AAA6991616DA75EA003F0E0C /* Setting.h */,
 				AA68814C16EC21D800B4897F /* Setting.m */,
-				AAEC21C016F52FC3000BA5EE /* ConfigViewController.h */,
-				AAEC21C116F52FC3000BA5EE /* ConfigViewController.m */,
-				AA33396016F56A17003C2454 /* MinMaxPair.h */,
-				AA33396116F56A17003C2454 /* MinMaxPair.m */,
 				AA33396616F5917C003C2454 /* NSArray+Functional.h */,
 				AA33396716F5917C003C2454 /* NSArray+Functional.m */,
 			);
@@ -297,6 +313,8 @@
 		AAFDF96716D040EF00A4DCDC /* Spec helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AA8F9D0116F65EF800FBB78B /* JRSwizzle.h */,
+				AA8F9D0216F65EF800FBB78B /* JRSwizzle.m */,
 				AAFDF96216D01B4600A4DCDC /* FakeProperties.h */,
 				AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */,
 				AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */,
@@ -438,6 +456,8 @@
 				AA33396416F5851C003C2454 /* MinMaxPairSpec.mm in Sources */,
 				AA33396516F5863F003C2454 /* MinMaxPair.m in Sources */,
 				AA33396916F5917D003C2454 /* NSArray+Functional.m in Sources */,
+				AA8F9CFF16F6594100FBB78B /* ViewControllerSpec.mm in Sources */,
+				AA8F9D0316F65EF800FBB78B /* JRSwizzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

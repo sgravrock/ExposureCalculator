@@ -17,6 +17,8 @@
 @property (nonatomic, weak) id<ChosenSettingsModelDelegate> delegate;
 
 - (id)initWithCalculator:(Calculator *)calculator;
+- (void)update;
+
 // All three select* methods take the index of the selected values, within the list of
 // available values for the setting in question. 
 - (void)selectAperture:(int)index;

@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ConfigViewControllerDelegate;
+
 @interface ConfigViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,
 	UIPickerViewDelegate>
 
+@property (nonatomic, weak) id<ConfigViewControllerDelegate> delegate;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIPickerView *pickerView;
 

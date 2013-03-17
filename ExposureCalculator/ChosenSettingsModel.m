@@ -71,19 +71,19 @@ static void * const kvo_context = (void * const)&kvo_context;
 		self.firstChoice = setting;
 	}
 	
-	[self updateSettings];
+	[self update];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
 						change:(NSDictionary *)change
 					   context:(void *)context
 {
-	[self.dataSource update];
-	[self updateSettings];
+	[self update];
 }
 
-- (void)updateSettings
+- (void)update
 {
+	[self.dataSource update];
 	NSDictionary *settings = [self.calculator.validSettings objectAtIndex:[self findSettings]];
 	
 	int apertureIx = [self.dataSource.components[0] indexOfObject:settings[@"aperture"]];

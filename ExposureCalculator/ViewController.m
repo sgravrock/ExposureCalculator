@@ -13,41 +13,35 @@
 #import "SupportedSettings.h"
 #import "Setting.h"
 
-@interface ViewController () {
-	int meteredSettings[3]; // row indices
-}
-
-@property (nonatomic, strong) SupportedSettings *supportedSettings;
+@interface ViewController ()
 @property (nonatomic, strong) Calculator *calculator;
 @property (nonatomic, strong) ArrayDataSource *meteredSettingsDataSource;
+@property (nonatomic, strong) NSMutableArray *selectedMeteredSettings; // of NSNumber
 @property (nonatomic, strong) ChosenSettingsModel *chosenSettings;
 @end
 
 @implementation ViewController
+@synthesize configuration;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	for (int i = 0; i < 3; i++) {
-		meteredSettings[i] = 0;
-	}
-	
-	self.supportedSettings = [[SupportedSettings alloc] init];
-	self.calculator = [[Calculator alloc] initWithSettings:self.supportedSettings];
+		
+	self.configuration = [[SupportedSettings alloc] init];
+	self.calculator = [[Calculator alloc] initWithSettings:self.configuration];
 	self.meteredSettingsDataSource = [[ArrayDataSource alloc] init];
-	self.meteredSettingsDataSource.components = @[self.supportedSettings.apertures,
-		self.supportedSettings.shutterSpeeds, self.supportedSettings.sensitivities];
+	self.meteredSettingsDataSource.components = @[self.configuration.apertures,
+		self.configuration.shutterSpeeds, self.configuration.sensitivities];
 	self.meteredSettingsPicker.dataSource = self.meteredSettingsDataSource;
 	
 	// Set some reasonable defaults
-	meteredSettings[0] = [self.supportedSettings.apertures indexOfObject:@4.0];
-	meteredSettings[1] = [self.supportedSettings.shutterSpeeds
-						  indexOfObject:[NSNumber numberWithDouble:1.0/30.0]];
-	meteredSettings[2] = [self.supportedSettings.sensitivities indexOfObject:@1600];
-	[self.meteredSettingsPicker selectRow:meteredSettings[0] inComponent:0 animated:NO];
-	[self.meteredSettingsPicker selectRow:meteredSettings[1] inComponent:1 animated:NO];
-	[self.meteredSettingsPicker selectRow:meteredSettings[2] inComponent:2 animated:NO];
+	// TODO: Once we start saving & restoring configuration, filter these to within the allowed settings.
+	self.selectedMeteredSettings = [NSMutableArray arrayWithArray:@[@4, @(1.0/30.0), @1600]];
+	
+	for (int i = 0; i < 3; i++) {
+		int rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
+		[self.meteredSettingsPicker selectRow:rowIx inComponent:i animated:NO];
+	}
 	
 	self.chosenSettings = [[ChosenSettingsModel alloc] initWithCalculator:self.calculator];
 	self.chosenSettings.delegate = self;
@@ -55,10 +49,40 @@
 	[self recalculate];
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Configuration UI support
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	// The only segue we use is to the settings view. Before it's performed, we need to let
+	// the settings view know about us so it can get the current settings and let us know
+	// when it's done.
+	[segue.destinationViewController setDelegate:self];
+}
+
+- (void)configViewControllerShouldClose:(ConfigViewController *)sender
+{
+	[self dismissViewControllerAnimated:YES completion:^{
+		self.meteredSettingsDataSource.components = @[self.configuration.apertures,
+												self.configuration.shutterSpeeds,
+												self.configuration.sensitivities];
+		[self.meteredSettingsPicker reloadAllComponents];
+
+		
+		// Because the range of settings may have changed, we need to re-select each setting.
+		// Additionally, the previously-selected settings may be out of the new configured range.
+		for (int i = 0; i < 3; i++) {
+			int rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
+			
+			if (rowIx == NSNotFound) {
+				rowIx = 0;
+				self.selectedMeteredSettings[i] = [self valueForRow:0 inComponent:i];
+			}
+			
+			[self.meteredSettingsPicker selectRow:rowIx inComponent:i animated:NO];
+		}		
+		
+		[self recalculate];
+	}];
 }
 
 #pragma mark - UIPickerViewDelegate
@@ -75,7 +99,8 @@
 	   inComponent:(NSInteger)component
 {	
 	if (pickerView == self.meteredSettingsPicker) {
-		meteredSettings[component] = row;
+		[self.selectedMeteredSettings setObject:[self valueForRow:row inComponent:component]
+							 atIndexedSubscript:component];
 		[self recalculate];
 	} else {
 		switch (component) {
@@ -118,15 +143,34 @@
 
 #pragma mark -
 
+- (NSArray *)configuredValuesForComponent:(int)componentIx
+{
+	NSArray *components[] = {
+		self.configuration.apertures,
+		self.configuration.shutterSpeeds,
+		self.configuration.sensitivities
+	};
+	return components[componentIx];
+}
+
+- (NSNumber *)valueForRow:(int)rowIx inComponent:(int)componentIx
+{
+	return [self configuredValuesForComponent:componentIx][rowIx];
+}
+
+- (int)indexOfValue:(NSNumber *)value inComponent:(int)componentIx
+{
+	return [[self configuredValuesForComponent:componentIx] indexOfObject:value];
+}
+
 - (void)recalculate
 {
-	double aperture = [[self.supportedSettings.apertures objectAtIndex:meteredSettings[0]]
-					   doubleValue];
-	double shutter = [[self.supportedSettings.shutterSpeeds objectAtIndex:meteredSettings[1]]
-					  doubleValue];
-	int iso = [[self.supportedSettings.sensitivities objectAtIndex:meteredSettings[2]] intValue];
-	int lv = [Calculator thirdsLvForAperture:aperture shutter:shutter sensitivity:iso];
-	self.calculator.thirdsLv = lv;
+	double aperture = [self.selectedMeteredSettings[0] doubleValue];
+	double shutter = [self.selectedMeteredSettings[1] doubleValue];
+	int iso = [self.selectedMeteredSettings[2] intValue];
+	self.calculator.thirdsLv = [Calculator thirdsLvForAperture:aperture
+													   shutter:shutter
+												   sensitivity:iso];
 	[self.chosenSettingsPicker reloadAllComponents];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "ConfigViewController.h"
+#import "ConfigViewControllerDelegate.h"
 #import "MinMaxPair.h"
 #import "SupportedSettings.h"
 #import "Setting.h"
@@ -49,7 +50,26 @@
 
 - (IBAction)close:(id)sender
 {
-	[[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+	// Update the configuration with the user's selections. Then tell the delegate that we're done.
+	SEL selectors[] = { @selector(includeAperturesFrom:to:),
+		@selector(includeShutterSpeedsFrom:to:),
+		@selector(includeSensitivitiesFrom:to:)
+	};
+	SupportedSettings *config = self.delegate.configuration;
+	
+	for (int i = 0; i < 3; i++) {
+		ArrayDataSource *ds = self.possibleSettings[i];
+		NSArray *values = ds.components[0];
+		MinMaxPair *selected = self.selections[i];
+		NSNumber *min = values[selected.min];
+		NSNumber *max = values[selected.max];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+		[config performSelector:selectors[i] withObject:min withObject:max];
+#pragma clang diagnostic pop
+	}
+	
+	[self.delegate configViewControllerShouldClose:self];
 }
 
 #pragma mark - Table view data source
