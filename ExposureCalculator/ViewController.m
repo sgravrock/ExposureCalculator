@@ -104,7 +104,7 @@
 		  forComponent:(NSInteger)component
 		   reusingView:(UIView *)view
 {
-	UILabel* label = (UILabel*)label;
+	UILabel* label = (UILabel*)view;
 	
 	if (!label) {
 		label = [[UILabel alloc] init];
