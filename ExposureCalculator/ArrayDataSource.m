@@ -21,6 +21,19 @@
 	return self;
 }
 
+- (void)setComponents:(NSArray *)value
+{
+	for (id c in value) {
+		if (![c isKindOfClass:[NSArray class]]) {
+			@throw [NSException exceptionWithName:NSInternalInconsistencyException
+										   reason:@"ArrayDataSource components must be arrays"
+										 userInfo:nil];
+		}
+	}
+	
+	_components = value;
+}
+
 #pragma mark - UIPickerViewDataSource methods
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
