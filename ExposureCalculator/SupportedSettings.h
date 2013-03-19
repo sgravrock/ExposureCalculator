@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SupportedSettings : NSObject
+@interface SupportedSettings : NSObject<NSCoding>
 
 // Constructs a SupportedSettings object set to the full range of possible settings.
 - (id)init;

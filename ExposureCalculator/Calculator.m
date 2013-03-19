@@ -10,10 +10,6 @@
 #import "SupportedSettings.h"
 #include <math.h>
 
-@interface Calculator()
-@property (nonatomic, strong) SupportedSettings *supportedSettings;
-@end
-
 @implementation Calculator
 
 + (int)thirdsLvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso

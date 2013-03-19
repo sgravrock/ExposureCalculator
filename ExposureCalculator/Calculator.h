@@ -14,7 +14,7 @@
 // Returns the light value for the specified exposure settings, in thirds of a stop.
 + (int)thirdsLvForAperture:(double)fNumber shutter:(double)seconds sensitivity:(int)iso;
 
-@property (nonatomic, readonly, strong) SupportedSettings *supportedSettings;
+@property (nonatomic, strong) SupportedSettings *supportedSettings;
 @property (nonatomic) int thirdsLv;
 
 - (id)initWithSettings:(SupportedSettings *)settings;

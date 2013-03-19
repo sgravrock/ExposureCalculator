@@ -49,6 +49,25 @@
 	[self recalculate];
 }
 
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+	[super encodeRestorableStateWithCoder:coder];
+	[coder encodeObject:self.configuration forKey:@"configuration"];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+	[super decodeRestorableStateWithCoder:coder];
+	SupportedSettings *config = [coder decodeObjectForKey:@"configuration"];
+	
+	if (config) {
+		self.configuration = self.calculator.supportedSettings = config;
+		[self applyConfigurationChange];
+	}
+}
+
+
+
 #pragma mark - Configuration UI support
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -62,27 +81,32 @@
 - (void)configViewControllerShouldClose:(ConfigViewController *)sender
 {
 	[self dismissViewControllerAnimated:YES completion:^{
-		self.meteredSettingsDataSource.components = @[self.configuration.apertures,
-												self.configuration.shutterSpeeds,
-												self.configuration.sensitivities];
-		[self.meteredSettingsPicker reloadAllComponents];
-
-		
-		// Because the range of settings may have changed, we need to re-select each setting.
-		// Additionally, the previously-selected settings may be out of the new configured range.
-		for (int i = 0; i < 3; i++) {
-			int rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
-			
-			if (rowIx == NSNotFound) {
-				rowIx = 0;
-				self.selectedMeteredSettings[i] = [self valueForRow:0 inComponent:i];
-			}
-			
-			[self.meteredSettingsPicker selectRow:rowIx inComponent:i animated:NO];
-		}		
-		
-		[self recalculate];
+		[self applyConfigurationChange];
 	}];
+}
+
+- (void)applyConfigurationChange
+{
+	self.meteredSettingsDataSource.components = @[self.configuration.apertures,
+											   self.configuration.shutterSpeeds,
+											   self.configuration.sensitivities];
+	[self.meteredSettingsPicker reloadAllComponents];
+	
+	
+	// Because the range of settings may have changed, we need to re-select each setting.
+	// Additionally, the previously-selected settings may be out of the new configured range.
+	for (int i = 0; i < 3; i++) {
+		int rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
+		
+		if (rowIx == NSNotFound) {
+			rowIx = 0;
+			self.selectedMeteredSettings[i] = [self valueForRow:0 inComponent:i];
+		}
+		
+		[self.meteredSettingsPicker selectRow:rowIx inComponent:i animated:NO];
+	}
+	
+	[self recalculate];
 }
 
 #pragma mark - UIPickerViewDelegate

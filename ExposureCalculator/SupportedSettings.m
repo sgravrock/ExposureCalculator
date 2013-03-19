@@ -118,6 +118,37 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	return self;
 }
 
+
+#pragma mark - NSCoding methods
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+	self = [self init];
+	
+	if (self) {
+		[self includeAperturesFrom:[coder decodeObjectForKey:@"minAperture"]
+								to:[coder decodeObjectForKey:@"maxAperture"]];
+		[self includeShutterSpeedsFrom:[coder decodeObjectForKey:@"minShutterSpeed"]
+									to:[coder decodeObjectForKey:@"maxShutterSpeed"]];
+		[self includeSensitivitiesFrom:[coder decodeObjectForKey:@"minSensitivity"]
+									to:[coder decodeObjectForKey:@"maxSensitivity"]];
+	}
+	
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+	[coder encodeObject:self.apertures[0] forKey:@"minAperture"];
+	[coder encodeObject:[self.apertures lastObject] forKey:@"maxAperture"];
+	[coder encodeObject:self.shutterSpeeds[0] forKey:@"minShutterSpeed"];
+	[coder encodeObject:[self.shutterSpeeds lastObject] forKey:@"maxShutterSpeed"];
+	[coder encodeObject:self.sensitivities[0] forKey:@"minSensitivity"];
+	[coder encodeObject:[self.sensitivities lastObject] forKey:@"maxSensitivity"];
+}
+
+#pragma mark -
+
 - (void)includeAperturesFrom:(NSNumber *)min to:(NSNumber *)max
 {
 	self.apertures = [SupportedSettings filterSettings:allApertures from:min to:max ascending:YES];
