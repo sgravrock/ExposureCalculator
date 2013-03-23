@@ -36,6 +36,7 @@
 		AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B516D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AAAB45B216FD62B500FE4C60 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAAB45B116FD62B500FE4C60 /* Default-568h@2x.png */; };
 		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AAE9054816C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AAE9054A16C619CE00CD025E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -112,6 +113,7 @@
 		AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChosenSettingsModelSpec.mm; sourceTree = "<group>"; };
 		AA9A79EE16F6356000FA91E9 /* ConfigViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAA6991616DA75EA003F0E0C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
+		AAAB45B116FD62B500FE4C60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AAE9054116C619CE00CD025E /* ExposureCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposureCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE9054516C619CE00CD025E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAE9054716C619CE00CD025E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -241,6 +243,7 @@
 		AAE9053616C619CE00CD025E = {
 			isa = PBXGroup;
 			children = (
+				AAAB45B116FD62B500FE4C60 /* Default-568h@2x.png */,
 				AAE9054B16C619CE00CD025E /* ExposureCalculator */,
 				AA66910B16D0618D009A4E3B /* exposure */,
 				AA3E231516D0109100297797 /* Exposure Calculator Specs */,
@@ -424,6 +427,7 @@
 				AAE9055816C619CE00CD025E /* Default.png in Resources */,
 				AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */,
 				AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */,
+				AAAB45B216FD62B500FE4C60 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

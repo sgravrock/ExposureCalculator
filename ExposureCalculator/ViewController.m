@@ -47,6 +47,38 @@
 	self.chosenSettings.delegate = self;
 	self.chosenSettingsPicker.dataSource = self.chosenSettings.dataSource;
 	[self recalculate];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deviceOrientationDidChange:) name: UIDeviceOrientationDidChangeNotification object: nil];
+}
+
+- (void)deviceOrientationDidChange:(NSNotification *)notification
+{
+	NSLog(@"Rotation changed");
+	
+	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+		NSLog(@"Landscape");
+	} else {
+		NSLog(@"Portrait");
+	}
+	
+	NSLog(@"%fx%f", self.view.bounds.size.width, self.view.bounds.size.height);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+		NSLog(@"Landscape");
+	} else {
+		NSLog(@"Portrait");
+	}
+
+	NSLog(@"%fx%f", self.view.bounds.size.width, self.view.bounds.size.height);
+//	CGFloat pickerWidth = self.view.bounds.size.width / 2;
+//	CGRect f = self.meteredSettingsPicker.frame;
+//	f.size.width = pickerWidth;
+//	self.meteredSettingsPicker.frame = f;
+//	f = self.chosenSettingsPicker.frame;
+//	f.size.width = pickerWidth;
+//	self.chosenSettingsPicker.frame = f;
 }
 
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder
@@ -159,7 +191,10 @@
 		label = [[UILabel alloc] init];
 	}
 	
-	label.font = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+	BOOL isIphone5 = [UIScreen mainScreen].bounds.size.height >= 568;
+	// Our longest text will fit at the default 20px font on the iPhone 5, but not smaller devices.
+	CGFloat size = isIphone5 ? 20 : 17;
+	label.font = [UIFont boldSystemFontOfSize:size];
 	label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     return label;
 }
