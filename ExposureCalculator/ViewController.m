@@ -30,8 +30,7 @@
 	self.configuration = [[SupportedSettings alloc] init];
 	self.calculator = [[Calculator alloc] initWithSettings:self.configuration];
 	self.meteredSettingsDataSource = [[ArrayDataSource alloc] init];
-	self.meteredSettingsDataSource.components = @[self.configuration.apertures,
-		self.configuration.shutterSpeeds, self.configuration.sensitivities];
+	self.meteredSettingsDataSource.components = self.configuration.components;
 	self.meteredSettingsPicker.dataSource = self.meteredSettingsDataSource;
 	
 	// Set some reasonable defaults
@@ -87,9 +86,7 @@
 
 - (void)applyConfigurationChange
 {
-	self.meteredSettingsDataSource.components = @[self.configuration.apertures,
-											   self.configuration.shutterSpeeds,
-											   self.configuration.sensitivities];
+	self.meteredSettingsDataSource.components = self.configuration.components;
 	[self.meteredSettingsPicker reloadAllComponents];
 	
 	
@@ -127,24 +124,7 @@
 							 atIndexedSubscript:component];
 		[self recalculate];
 	} else {
-		switch (component) {
-			case 0:
-				[self.chosenSettings selectAperture:row];
-				break;
-				
-			case 1:
-				[self.chosenSettings selectShutter:row];
-				break;
-				
-			case 2:
-				[self.chosenSettings selectSensitivity:row];
-				break;
-				
-			default:
-				@throw [NSException exceptionWithName:@"Invalid argument"
-											   reason:@"Component out of range"
-											 userInfo:nil];
-		}
+		[self.chosenSettings selectIndex:row forComponent:component];
 	}
 }
 
@@ -167,31 +147,21 @@
 
 #pragma mark -
 
-- (NSArray *)configuredValuesForComponent:(int)componentIx
-{
-	NSArray *components[] = {
-		self.configuration.apertures,
-		self.configuration.shutterSpeeds,
-		self.configuration.sensitivities
-	};
-	return components[componentIx];
-}
-
 - (NSNumber *)valueForRow:(int)rowIx inComponent:(int)componentIx
 {
-	return [self configuredValuesForComponent:componentIx][rowIx];
+	return self.configuration.components[componentIx][rowIx];
 }
 
 - (int)indexOfValue:(NSNumber *)value inComponent:(int)componentIx
 {
-	return [[self configuredValuesForComponent:componentIx] indexOfObject:value];
+	return [self.configuration.components[componentIx] indexOfObject:value];
 }
 
 - (void)recalculate
 {
-	double aperture = [self.selectedMeteredSettings[0] doubleValue];
-	double shutter = [self.selectedMeteredSettings[1] doubleValue];
-	int iso = [self.selectedMeteredSettings[2] intValue];
+	double aperture = [self.selectedMeteredSettings[kApertureComponent] doubleValue];
+	double shutter = [self.selectedMeteredSettings[kShutterComponent] doubleValue];
+	int iso = [self.selectedMeteredSettings[kSensitivityComponent] intValue];
 	self.calculator.thirdsLv = [Calculator thirdsLvForAperture:aperture
 													   shutter:shutter
 												   sensitivity:iso];
@@ -200,19 +170,11 @@
 
 #pragma mark - ChosenSettingsModelDelegate
 
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedApertureToIndex:(int)index
+- (void)chosenSettingsModel:(ChosenSettingsModel *)sender
+		   changedComponent:(int)component
+					toIndex:(int)index
 {
-	[self.chosenSettingsPicker selectRow:index inComponent:0 animated:YES];
-}
-
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedShutterToIndex:(int)index
-{
-	[self.chosenSettingsPicker selectRow:index inComponent:1 animated:YES];
-}
-
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedSensitivityToIndex:(int)index
-{
-	[self.chosenSettingsPicker selectRow:index inComponent:2 animated:YES];
+	[self.chosenSettingsPicker selectRow:index inComponent:component animated:YES];
 }
 
 @end

@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "ChosenSettingsModel.h"
 
-@interface StubChosenSettingsModelDelegate : NSObject<ChosenSettingsModelDelegate>
-
-// Each property exposes the last index received from the model for that component.
-// Intiial value for each is -1.
-@property (nonatomic, assign) int apertureIx;
-@property (nonatomic, assign) int shutterSpeedIx;
-@property (nonatomic, assign) int sensitivityIx;
+@interface StubChosenSettingsModelDelegate : NSObject<ChosenSettingsModelDelegate> {
+@public
+	// Each element exposes the last index received from the model for that component.
+	// Intiial value for each is -1.
+	int settings[3];
+}
 
 @end

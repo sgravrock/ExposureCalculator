@@ -8,6 +8,7 @@
 
 #import "ConstrainedSettingsDataSource.h"
 #import "Calculator.h"
+#import "components.h"
 
 @interface ConstrainedSettingsDataSource()
 @property (nonatomic, strong) Calculator *calculator;
@@ -29,23 +30,22 @@
 
 - (void)update
 {
-	NSMutableSet *apertures = [NSMutableSet set];
-	NSMutableSet *shutterSpeeds = [NSMutableSet set];
-	NSMutableSet *isos = [NSMutableSet set];
+	NSArray *availableSettings = @[[NSMutableSet set], [NSMutableSet set], [NSMutableSet set]];
 	
-	for (NSDictionary *setting in [self.calculator validSettings]) {
-		[apertures addObject:setting[@"aperture"]];
-		[shutterSpeeds addObject:setting[@"shutterSpeed"]];
-		[isos addObject:setting[@"sensitivity"]];
+	for (NSArray *setting in [self.calculator validSettings]) {
+		for (int i = 0; i < 3; i++) {
+			[availableSettings[i] addObject:setting[i]];
+		}
 	}
 	
-	self.components = @[[self sortedArrayFromSet:apertures ascending:YES],
-		[self sortedArrayFromSet:shutterSpeeds ascending:NO],
-		[self sortedArrayFromSet:isos ascending:YES]];
+	self.components = @[[self sortedArrayFromSet:availableSettings[0] forComponent:0],
+		[self sortedArrayFromSet:availableSettings[1] forComponent:1],
+		[self sortedArrayFromSet:availableSettings[2] forComponent:2]];
 }
 
-- (NSArray *)sortedArrayFromSet:(NSSet *)set ascending:(BOOL)ascending
+- (NSArray *)sortedArrayFromSet:(NSSet *)set forComponent:(int)component
 {
+	BOOL ascending = component != kShutterComponent;
 	NSSortDescriptor *d = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:ascending];
 	return [set sortedArrayUsingDescriptors:@[d]];
 }

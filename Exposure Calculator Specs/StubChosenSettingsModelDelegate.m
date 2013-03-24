@@ -15,27 +15,19 @@
 	self = [super init];
 	
 	if (self) {
-		self.apertureIx = self.shutterSpeedIx = self.sensitivityIx = -1;
+		for (int i = 0; i < 3; i++) {
+			settings[i] = -1;
+		}
 	}
 	
 	return self;
 }
 
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedApertureToIndex:(int)index
+- (void)chosenSettingsModel:(ChosenSettingsModel *)sender
+		   changedComponent:(int)component
+					toIndex:(int)index
 {
-	self.apertureIx = index;
+	settings[component] = index;
 }
-
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedShutterToIndex:(int)index
-{
-	self.shutterSpeedIx = index;
-}
-
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedSensitivityToIndex:(int)index
-{
-	self.sensitivityIx = index;
-}
-
-
 
 @end

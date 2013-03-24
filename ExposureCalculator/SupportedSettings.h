@@ -7,26 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "components.h"
 
 @interface SupportedSettings : NSObject<NSCoding>
 
 // Constructs a SupportedSettings object set to the full range of possible settings.
 - (id)init;
 
-// Apertures as doubles, e.g. f/2.8 is stored as 2.8
-@property (nonatomic, readonly, strong) NSArray *apertures;
+// Each component is itself an NSArray, with values as follows:
+// Apertures are doubles, e.g. f/2.8 is stored as 2.8
+// Shutter speeds are doubles, in seconds
+// ISO sensitivities are integers
+@property (nonatomic, readonly, strong) NSArray *components;
 
-// Shutter speeds as doubles, in seconds
-@property (nonatomic, readonly, strong) NSArray *shutterSpeeds;
-
-// ISO sensitivities as integers
-@property (nonatomic, readonly, strong) NSArray *sensitivities;
-
-// include* methods configure the receiver to include the possible settings that are between
+// Configures the receiver to include the possible settings that are between
 // the specified minimum and maximum.
-- (void)includeAperturesFrom:(NSNumber *)min to:(NSNumber *)max;
-- (void)includeShutterSpeedsFrom:(NSNumber *)min to:(NSNumber *)max;
-- (void)includeSensitivitiesFrom:(NSNumber *)min to:(NSNumber *)max;
-
+- (void)includeValuesFrom:(NSNumber *)min to:(NSNumber *)max inComponent:(int)component;
 
 @end

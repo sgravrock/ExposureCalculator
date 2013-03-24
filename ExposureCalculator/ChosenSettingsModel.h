@@ -19,19 +19,16 @@
 - (id)initWithCalculator:(Calculator *)calculator;
 - (void)update;
 
-// All three select* methods take the index of the selected values, within the list of
-// available values for the setting in question. 
-- (void)selectAperture:(int)index;
-- (void)selectShutter:(int)index;
-- (void)selectSensitivity:(int)index;
+// Takes the index of the selected value in the list of available values for the setting in question. 
+- (void)selectIndex:(int)index forComponent:(int)component;
 
 @end
 
 
 @protocol ChosenSettingsModelDelegate
 
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedApertureToIndex:(int)index;
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedShutterToIndex:(int)index;
-- (void)chosenSettingsModel:(ChosenSettingsModel *)sender changedSensitivityToIndex:(int)index;
+- (void)chosenSettingsModel:(ChosenSettingsModel *)sender
+		   changedComponent:(int)component
+					toIndex:(int)index;
 
 @end

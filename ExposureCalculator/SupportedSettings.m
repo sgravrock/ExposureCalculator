@@ -7,17 +7,15 @@
 //
 
 #import "SupportedSettings.h"
+#import "NSArray+Functional.h"
 
-static NSArray *allApertures;
-static NSArray *allShutterSpeeds;
-static NSArray *allSensitivities;
+static NSArray *allValues;
 
 typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 
-@interface SupportedSettings()
-@property (nonatomic, strong) NSArray *apertures;
-@property (nonatomic, strong) NSArray *shutterSpeeds;
-@property (nonatomic, strong) NSArray *sensitivities;
+@interface SupportedSettings() {
+	NSMutableArray *mutableComponents;
+}
 @end
 
 @implementation SupportedSettings
@@ -59,14 +57,14 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 
 + (void)initDefaults
 {
-	if (allApertures) {
+	if (allValues) {
 		return;
 	}
 	
-	allApertures = @[@1.4, @1.6, @1.8, @2.0, @2.2, @2.5,
+	NSArray *allApertures = @[@1.4, @1.6, @1.8, @2.0, @2.2, @2.5,
 	@2.8, @3.2, @3.5, @4.0, @4.5, @5.0, @5.6, @6.3, @7.1, @8.0,
 	@9.0, @10.0, @11.0, @13.0, @14.0, @16.0, @18.0, @20.0, @22.0];
-	allSensitivities = @[@50, @64, @100, @125, @160, @200, @250, @320, @400, @500, @640,
+	NSArray *allSensitivities = @[@50, @64, @100, @125, @160, @200, @250, @320, @400, @500, @640,
 	@800, @1000, @1250, @1600, @2000, @2500, @3200, @4000, @5000, @6400];
 	
 	NSMutableArray *speeds = [NSMutableArray arrayWithCapacity:63];
@@ -100,7 +98,7 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 		[speeds addObject:[NSNumber numberWithDouble:1.0/[n doubleValue]]];
 	}
 	
-	allShutterSpeeds = speeds;
+	allValues = @[allApertures, speeds, allSensitivities];
 }
 
 
@@ -110,14 +108,16 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	
 	if (self) {
 		[SupportedSettings initDefaults];
-		self.apertures = allApertures;
-		self.shutterSpeeds = allShutterSpeeds;
-		self.sensitivities = allSensitivities;
+		mutableComponents = [NSMutableArray arrayWithArray:allValues];
 	}
 	
 	return self;
 }
 
+- (NSArray *)components
+{
+	return mutableComponents;
+}
 
 #pragma mark - NSCoding methods
 
@@ -126,12 +126,11 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	self = [self init];
 	
 	if (self) {
-		[self includeAperturesFrom:[coder decodeObjectForKey:@"minAperture"]
-								to:[coder decodeObjectForKey:@"maxAperture"]];
-		[self includeShutterSpeedsFrom:[coder decodeObjectForKey:@"minShutterSpeed"]
-									to:[coder decodeObjectForKey:@"maxShutterSpeed"]];
-		[self includeSensitivitiesFrom:[coder decodeObjectForKey:@"minSensitivity"]
-									to:[coder decodeObjectForKey:@"maxSensitivity"]];
+		NSArray *limits = [coder decodeObjectForKey:@"limits"];
+		
+		for (int i = 0; i < 3; i++) {
+			[self includeValuesFrom:limits[i][0] to:limits[i][1] inComponent:i];
+		}
 	}
 	
 	return self;
@@ -139,30 +138,21 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-	[coder encodeObject:self.apertures[0] forKey:@"minAperture"];
-	[coder encodeObject:[self.apertures lastObject] forKey:@"maxAperture"];
-	[coder encodeObject:self.shutterSpeeds[0] forKey:@"minShutterSpeed"];
-	[coder encodeObject:[self.shutterSpeeds lastObject] forKey:@"maxShutterSpeed"];
-	[coder encodeObject:self.sensitivities[0] forKey:@"minSensitivity"];
-	[coder encodeObject:[self.sensitivities lastObject] forKey:@"maxSensitivity"];
+	NSArray *limits = [self.components map:^id(id it) {
+		return @[it[0], [it lastObject]];
+	}];
+	[coder encodeObject:limits forKey:@"limits"];
 }
 
 #pragma mark -
 
-- (void)includeAperturesFrom:(NSNumber *)min to:(NSNumber *)max
+- (void)includeValuesFrom:(NSNumber *)min to:(NSNumber *)max inComponent:(int)component
 {
-	self.apertures = [SupportedSettings filterSettings:allApertures from:min to:max ascending:YES];
+	NSArray *filtered = [SupportedSettings filterSettings:allValues[component]
+													 from:min
+													   to:max
+												ascending:component != kShutterComponent];
+	[mutableComponents replaceObjectAtIndex:component withObject:filtered];
 }
-
-- (void)includeShutterSpeedsFrom:(NSNumber *)min to:(NSNumber *)max
-{
-	self.shutterSpeeds = [SupportedSettings filterSettings:allShutterSpeeds from:min to:max ascending:NO];
-}
-
-- (void)includeSensitivitiesFrom:(NSNumber *)min to:(NSNumber *)max
-{
-	self.sensitivities = [SupportedSettings filterSettings:allSensitivities from:min to:max ascending:YES];
-}
-
 
 @end

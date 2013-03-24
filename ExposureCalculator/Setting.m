@@ -7,6 +7,7 @@
 //
 
 #import "Setting.h"
+#import "components.h"
 
 @interface Setting()
 @property (nonatomic, assign) int component;
@@ -35,11 +36,11 @@
 + (NSString *)formatSettingWithComponent:(int)component value:(NSNumber *)value
 {
 	switch (component) {
-		case 0:
+		case kApertureComponent:
 			return [self formatAperture:value];
-		case 1:
+		case kShutterComponent:
 			return [self formatShutterSpeed:value];
-		case 2:
+		case kSensitivityComponent:
 			return [self formatSensitivity:value];
 		default:
 			@throw [NSException exceptionWithName:@"Invalid argument"

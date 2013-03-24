@@ -47,13 +47,13 @@ describe(@"Calculator", ^{
 		it(@"should return the set of settings that give the specified Lv", ^{
 			// Use a fairly narrow range of settings, so the result isn't huge
 			SupportedSettings *config = [[SupportedSettings alloc] init];
-			[config includeAperturesFrom:@4 to:@4.5];
-			[config includeShutterSpeedsFrom:@(1.0/60.0) to:@(1.0/100.0)];
-			[config includeSensitivitiesFrom:@100 to:@125];
+			[config includeValuesFrom:@4 to:@4.5 inComponent:kApertureComponent];
+			[config includeValuesFrom:@(1.0/60.0) to:@(1.0/100.0) inComponent:kShutterComponent];
+			[config includeValuesFrom:@100 to:@125 inComponent:kSensitivityComponent];
 			NSArray *expected = @[
-				@{@"aperture": @4.0, @"shutterSpeed":@(1.0/100.0), @"sensitivity": @100},
-				@{@"aperture": @4.5, @"shutterSpeed":@(1.0/80.0), @"sensitivity": @100},
-				@{@"aperture": @4.5, @"shutterSpeed":@(1.0/100.0), @"sensitivity": @125},
+				@[@4.0, @(1.0/100.0),@100],
+				@[@4.5, @(1.0/80.0), @100],
+				@[@4.5, @(1.0/100.0), @125],
 			];
 			
 			Calculator *target = [[Calculator alloc] initWithSettings:config];
