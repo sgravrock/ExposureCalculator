@@ -34,7 +34,6 @@
 	self.meteredSettingsPicker.dataSource = self.meteredSettingsDataSource;
 	
 	// Set some reasonable defaults
-	// TODO: Once we start saving & restoring configuration, filter these to within the allowed settings.
 	self.selectedMeteredSettings = [NSMutableArray arrayWithArray:@[@4, @(1.0/30.0), @1600]];
 	
 	for (int i = 0; i < 3; i++) {

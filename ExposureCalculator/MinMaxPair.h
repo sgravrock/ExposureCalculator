@@ -10,7 +10,7 @@
 
 @interface MinMaxPair : NSObject
 
-- (id)initWithLimit:(int)theLimit;
+- (id)initWithMin:(int)min max:(int)max;
 
 @property (nonatomic, assign) int min;
 @property (nonatomic, assign) int max;

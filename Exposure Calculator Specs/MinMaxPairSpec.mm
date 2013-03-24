@@ -10,7 +10,7 @@ describe(@"MinMaxPair", ^{
     __block MinMaxPair *target;
 
     beforeEach(^{
-		target = [[MinMaxPair alloc] initWithLimit:3];
+		target = [[MinMaxPair alloc] initWithMin:0 max:3];
     });
 	
 	it(@"should default to the entire range of possible settings", ^{

@@ -18,7 +18,7 @@
 	int selectedSetting;
 }
 @property (nonatomic, strong) NSArray *possibleSettings; // of ArrayDataSouce;
-@property (nonatomic, strong) NSArray *selections; // of MinMaxPair;
+@property (nonatomic, strong) NSMutableArray *selections; // of MinMaxPair;
 @property (nonatomic, strong) NSArray *labels;
 @end
 
@@ -36,11 +36,15 @@
 		return ds;
 	}];
 	
-	self.selections = [components map:^id(id it) {
-		int max = [it count] - 1;
-		return [[MinMaxPair alloc] initWithLimit:max];
-	}];
-
+	self.selections = [NSMutableArray arrayWithCapacity:3];
+	
+	for (int i = 0; i < 3; i++) {
+		NSArray *currentRange = self.delegate.configuration.components[i];
+		int min = [s.components[i] indexOfObject:currentRange[0]];
+		int max = [s.components[i] indexOfObject:[currentRange lastObject]];
+		self.selections[i] = [[MinMaxPair alloc] initWithMin:min max:max];
+	}
+	
 	NSIndexPath *initialSelection = [NSIndexPath indexPathForRow:0 inSection:0];
 	[self.tableView selectRowAtIndexPath:initialSelection
 								animated:NO
