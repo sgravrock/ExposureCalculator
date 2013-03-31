@@ -1,26 +1,26 @@
 //
-//  ViewController.m
+//  MainViewController.,
 //  ExposureCalculator
 //
 //  Created by Steve Gravrock on 2/8/13.
 //  Copyright (c) 2013 Steve Gravrock. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "Calculator.h"
 #import "ArrayDataSource.h"
 #import "ConstrainedSettingsDataSource.h"
 #import "SupportedSettings.h"
 #import "Setting.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 @property (nonatomic, strong) Calculator *calculator;
 @property (nonatomic, strong) ArrayDataSource *meteredSettingsDataSource;
 @property (nonatomic, strong) NSMutableArray *selectedMeteredSettings; // of NSNumber
 @property (nonatomic, strong) ChosenSettingsModel *chosenSettings;
 @end
 
-@implementation ViewController
+@implementation MainViewController
 @synthesize configuration;
 
 - (void)viewDidLoad

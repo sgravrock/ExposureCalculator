@@ -46,11 +46,11 @@
 		AAE9055816C619CE00CD025E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055716C619CE00CD025E /* Default.png */; };
 		AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055916C619CE00CD025E /* Default@2x.png */; };
 		AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */; };
-		AAE9056216C619CE00CD025E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* ViewController.m */; };
+		AAE9056216C619CE00CD025E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* MainViewController.m */; };
 		AAE9058916C61AFD00CD025E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
 		AAEC21AE16F4FABB000BA5EE /* SupportedSettingsSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAEC21AD16F4FABB000BA5EE /* SupportedSettingsSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AAEC21C216F52FC3000BA5EE /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEC21C116F52FC3000BA5EE /* ConfigViewController.m */; };
-		AAFDF95216D013FB00A4DCDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* ViewController.m */; };
+		AAFDF95216D013FB00A4DCDC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* MainViewController.m */; };
 		AAFDF95416D0142200A4DCDC /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
 		AAFDF95516D0142200A4DCDC /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
 		AAFDF95616D0142200A4DCDC /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2916C8851B00C13E14 /* ArrayDataSource.m */; };
@@ -128,8 +128,8 @@
 		AAE9055916C619CE00CD025E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AAE9055B16C619CE00CD025E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AAE9055E16C619CE00CD025E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		AAE9056016C619CE00CD025E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AAE9056116C619CE00CD025E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AAE9056016C619CE00CD025E /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		AAE9056116C619CE00CD025E /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		AAE9056916C619CE00CD025E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		AAE9058716C61AFD00CD025E /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		AAE9058816C61AFD00CD025E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
@@ -280,8 +280,8 @@
 				AAE9055416C619CE00CD025E /* AppDelegate.h */,
 				AAE9055516C619CE00CD025E /* AppDelegate.m */,
 				AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */,
-				AAE9056016C619CE00CD025E /* ViewController.h */,
-				AAE9056116C619CE00CD025E /* ViewController.m */,
+				AAE9056016C619CE00CD025E /* MainViewController.h */,
+				AAE9056116C619CE00CD025E /* MainViewController.m */,
 				AAE9054C16C619CE00CD025E /* Supporting Files */,
 				AAE9058716C61AFD00CD025E /* Calculator.h */,
 				AAE9058816C61AFD00CD025E /* Calculator.m */,
@@ -443,7 +443,7 @@
 				AAFDF95616D0142200A4DCDC /* ArrayDataSource.m in Sources */,
 				AAFDF95716D0142200A4DCDC /* ConstrainedSettingsDataSource.m in Sources */,
 				AA3E231C16D0109100297797 /* main.m in Sources */,
-				AAFDF95216D013FB00A4DCDC /* ViewController.m in Sources */,
+				AAFDF95216D013FB00A4DCDC /* MainViewController.m in Sources */,
 				AAFDF96416D01B4600A4DCDC /* FakeProperties.mm in Sources */,
 				AAFDF96616D02F6C00A4DCDC /* FakePropertiesSpec.mm in Sources */,
 				AAFDF96916D0412C00A4DCDC /* CalculatorSpec.mm in Sources */,
@@ -481,7 +481,7 @@
 			files = (
 				AAE9055216C619CE00CD025E /* main.m in Sources */,
 				AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */,
-				AAE9056216C619CE00CD025E /* ViewController.m in Sources */,
+				AAE9056216C619CE00CD025E /* MainViewController.m in Sources */,
 				AAE9058916C61AFD00CD025E /* Calculator.m in Sources */,
 				AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */,
 				AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */,
