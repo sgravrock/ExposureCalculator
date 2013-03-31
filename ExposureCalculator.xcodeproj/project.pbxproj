@@ -36,7 +36,7 @@
 		AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B516D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AAA10DA41707DBCD001B8B85 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA10DA31707DBCD001B8B85 /* MainView.m */; };
+		AAA10DA41707DBCD001B8B85 /* CenteringView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA10DA31707DBCD001B8B85 /* CenteringView.m */; };
 		AAA10DA61707DD46001B8B85 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA10DA51707DD46001B8B85 /* background.png */; };
 		AAAB45B216FD62B500FE4C60 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAAB45B116FD62B500FE4C60 /* Default-568h@2x.png */; };
 		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
@@ -114,8 +114,8 @@
 		AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChosenSettingsModel.m; sourceTree = "<group>"; };
 		AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChosenSettingsModelSpec.mm; sourceTree = "<group>"; };
 		AA9A79EE16F6356000FA91E9 /* ConfigViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewControllerDelegate.h; sourceTree = "<group>"; };
-		AAA10DA21707DBCD001B8B85 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
-		AAA10DA31707DBCD001B8B85 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		AAA10DA21707DBCD001B8B85 /* CenteringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteringView.h; sourceTree = "<group>"; };
+		AAA10DA31707DBCD001B8B85 /* CenteringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteringView.m; sourceTree = "<group>"; };
 		AAA10DA51707DD46001B8B85 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		AAA6991616DA75EA003F0E0C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
 		AAAB45B116FD62B500FE4C60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 				AA68814C16EC21D800B4897F /* Setting.m */,
 				AA33396616F5917C003C2454 /* NSArray+Functional.h */,
 				AA33396716F5917C003C2454 /* NSArray+Functional.m */,
-				AAA10DA21707DBCD001B8B85 /* MainView.h */,
-				AAA10DA31707DBCD001B8B85 /* MainView.m */,
+				AAA10DA21707DBCD001B8B85 /* CenteringView.h */,
+				AAA10DA31707DBCD001B8B85 /* CenteringView.m */,
 			);
 			path = ExposureCalculator;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 				AAEC21C216F52FC3000BA5EE /* ConfigViewController.m in Sources */,
 				AA33396216F56A17003C2454 /* MinMaxPair.m in Sources */,
 				AA33396816F5917D003C2454 /* NSArray+Functional.m in Sources */,
-				AAA10DA41707DBCD001B8B85 /* MainView.m in Sources */,
+				AAA10DA41707DBCD001B8B85 /* CenteringView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

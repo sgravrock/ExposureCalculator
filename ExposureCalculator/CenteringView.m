@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Steve Gravrock. All rights reserved.
 //
 
-#import "MainView.h"
+#import "CenteringView.h"
 
-@implementation MainView
+@implementation CenteringView
 
 - (void)layoutSubviews {
-	CGRect childFrame = self.pickerContainer.frame;
+	CGRect childFrame = self.subviewToCenter.frame;
 	childFrame.origin.x = (self.bounds.size.width - childFrame.size.width) / 2;
-	self.pickerContainer.frame = childFrame;
+	self.subviewToCenter.frame = childFrame;
 }
 
 @end

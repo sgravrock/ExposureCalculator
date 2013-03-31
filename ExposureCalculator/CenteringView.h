@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainView : UIView
-@property (nonatomic, weak) IBOutlet UIView *pickerContainer;
+@interface CenteringView : UIView
+@property (nonatomic, weak) IBOutlet UIView *subviewToCenter;
 @end
