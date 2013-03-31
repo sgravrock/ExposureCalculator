@@ -1,4 +1,4 @@
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "cedar.h"
 #import "JRSwizzle.h"
 #import "SupportedSettings.h"
@@ -6,11 +6,11 @@
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
 
-@interface ViewController(ViewControllerSpecSupport)
+@interface MainViewController(ViewControllerSpecSupport)
 - (void)fakeDismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion;
 @end
 
-@implementation ViewController(ViewControllerSpecSupport)
+@implementation MainViewController(ViewControllerSpecSupport)
 - (void)fakeDismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
 	completion();
@@ -20,15 +20,15 @@ using namespace Cedar::Doubles;
 SPEC_BEGIN(ViewControllerSpec)
 
 describe(@"ViewController", ^{
-	__block ViewController *target;
+	__block MainViewController *target;
 	__block UIPickerView<CedarDouble> *meteredSettingsPicker;
 	__block BOOL swapped = NO;
 
 	beforeEach(^{
 		NSError *error;
-		swapped = [ViewController jr_swizzleMethod:@selector(dismissViewControllerAnimated:completion:)
-										withMethod:@selector(fakeDismissViewControllerAnimated:completion:)
-											 error:&error];
+		swapped = [MainViewController jr_swizzleMethod:@selector(dismissViewControllerAnimated:completion:)
+											withMethod:@selector(fakeDismissViewControllerAnimated:completion:)
+												 error:&error];
 		
 		if (!swapped) {
 			@throw [NSException exceptionWithName:@"Swizzle failed"
@@ -36,7 +36,7 @@ describe(@"ViewController", ^{
 										 userInfo:nil];
 		}
 		
-		target = [[ViewController alloc] init];
+		target = [[MainViewController alloc] init];
 		target.meteredSettingsPicker = meteredSettingsPicker = nice_fake_for([UIPickerView class]);
 		[target viewDidLoad];
 		
@@ -53,9 +53,9 @@ describe(@"ViewController", ^{
 		meteredSettingsPicker = nil;
 		
 		if (swapped) {
-			[ViewController jr_swizzleMethod:@selector(dismissViewControllerAnimated:completion:)
-								  withMethod:@selector(fakeDismissViewControllerAnimated:completion:)
-									   error:nil];
+			[MainViewController jr_swizzleMethod:@selector(dismissViewControllerAnimated:completion:)
+									  withMethod:@selector(fakeDismissViewControllerAnimated:completion:)
+										   error:nil];
 		}
 	});
 	
@@ -134,7 +134,7 @@ describe(@"ViewController", ^{
 		NSKeyedArchiver *encoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
 		[target encodeRestorableStateWithCoder:encoder];
 		[encoder finishEncoding];
-		target = [[ViewController alloc] init];
+		target = [[MainViewController alloc] init];
 		target.meteredSettingsPicker = meteredSettingsPicker = nice_fake_for([UIPickerView class]);
 		[target viewDidLoad];
 		[meteredSettingsPicker reset_sent_messages];
