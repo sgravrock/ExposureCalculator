@@ -141,6 +141,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <connections>
                             <outlet property="subviewToCenter" destination="gMN-py-R0X" id="LpE-EU-niM"/>
+                            <outlet property="subviewToFillWidth" destination="6hU-Ld-F2M" id="huG-Yq-4g8"/>
                         </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -162,6 +163,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CenteringView.h"/>
             <relationships>
                 <relationship kind="outlet" name="subviewToCenter" candidateClass="UIView"/>
+                <relationship kind="outlet" name="subviewToFillWidth" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="ConfigViewController" superclassName="UIViewController">

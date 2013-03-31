@@ -10,4 +10,5 @@
 
 @interface CenteringView : UIView
 @property (nonatomic, weak) IBOutlet UIView *subviewToCenter;
+@property (nonatomic, weak) IBOutlet UIView *subviewToFillWidth;
 @end
