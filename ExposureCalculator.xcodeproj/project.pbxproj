@@ -20,12 +20,9 @@
 		AA3E231A16D0109100297797 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA3E231816D0109100297797 /* InfoPlist.strings */; };
 		AA3E231C16D0109100297797 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E231B16D0109100297797 /* main.m */; };
 		AA3E231F16D0109200297797 /* Cedar-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3E231E16D0109200297797 /* Cedar-iOS.framework */; };
-		AA436C4A1707FF7100446250 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436C481707FF7100446250 /* icon.png */; };
 		AA436C4B1707FF7100446250 /* icon-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436C491707FF7100446250 /* icon-retina.png */; };
-		AA436C4D1707FF8300446250 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436C4C1707FF8300446250 /* icon.png */; };
 		AA436C4F1707FF8E00446250 /* icon-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436C4E1707FF8E00446250 /* icon-retina.png */; };
 		AA436C511708027A00446250 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436C501708027A00446250 /* Default-568h@2x.png */; };
-		AA436C53170802B200446250 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA436C52170802B200446250 /* Default.png */; };
 		AA436C541708034C00446250 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055B16C619CE00CD025E /* Default-568h@2x.png */; };
 		AA59804616C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */; };
 		AA648B6D16D1784D00441DBE /* CliUtilsSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA648B6C16D1784D00441DBE /* CliUtilsSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -50,7 +47,6 @@
 		AAE9055016C619CE00CD025E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAE9054E16C619CE00CD025E /* InfoPlist.strings */; };
 		AAE9055216C619CE00CD025E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9055116C619CE00CD025E /* main.m */; };
 		AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9055516C619CE00CD025E /* AppDelegate.m */; };
-		AAE9055816C619CE00CD025E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055716C619CE00CD025E /* Default.png */; };
 		AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055916C619CE00CD025E /* Default@2x.png */; };
 		AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */; };
 		AAE9056216C619CE00CD025E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* MainViewController.m */; };
@@ -98,12 +94,9 @@
 		AA3E231B16D0109100297797 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA3E231D16D0109100297797 /* Exposure Calculator Specs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Exposure Calculator Specs-Prefix.pch"; sourceTree = "<group>"; };
 		AA3E231E16D0109200297797 /* Cedar-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Cedar-iOS.framework"; path = "Frameworks/Cedar-iOS.framework"; sourceTree = "<group>"; };
-		AA436C481707FF7100446250 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AA436C491707FF7100446250 /* icon-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-retina.png"; sourceTree = "<group>"; };
-		AA436C4C1707FF8300446250 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AA436C4E1707FF8E00446250 /* icon-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-retina.png"; sourceTree = "<group>"; };
 		AA436C501708027A00446250 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		AA436C52170802B200446250 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AA59804416C8CC5800EE71A4 /* ConstrainedSettingsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstrainedSettingsDataSource.h; sourceTree = "<group>"; };
 		AA59804516C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstrainedSettingsDataSource.m; sourceTree = "<group>"; };
 		AA648B6C16D1784D00441DBE /* CliUtilsSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CliUtilsSpec.mm; sourceTree = "<group>"; };
@@ -138,7 +131,6 @@
 		AAE9055316C619CE00CD025E /* ExposureCalculator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExposureCalculator-Prefix.pch"; sourceTree = "<group>"; };
 		AAE9055416C619CE00CD025E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AAE9055516C619CE00CD025E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AAE9055716C619CE00CD025E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AAE9055916C619CE00CD025E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AAE9055B16C619CE00CD025E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AAE9055E16C619CE00CD025E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -257,10 +249,8 @@
 		AAE9053616C619CE00CD025E = {
 			isa = PBXGroup;
 			children = (
-				AA436C52170802B200446250 /* Default.png */,
 				AA436C501708027A00446250 /* Default-568h@2x.png */,
 				AA436C4E1707FF8E00446250 /* icon-retina.png */,
-				AA436C4C1707FF8300446250 /* icon.png */,
 				AAE9054B16C619CE00CD025E /* ExposureCalculator */,
 				AA66910B16D0618D009A4E3B /* exposure */,
 				AA3E231516D0109100297797 /* Exposure Calculator Specs */,
@@ -321,13 +311,11 @@
 		AAE9054C16C619CE00CD025E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA436C481707FF7100446250 /* icon.png */,
 				AA436C491707FF7100446250 /* icon-retina.png */,
 				AAE9054D16C619CE00CD025E /* ExposureCalculator-Info.plist */,
 				AAE9054E16C619CE00CD025E /* InfoPlist.strings */,
 				AAE9055116C619CE00CD025E /* main.m */,
 				AAE9055316C619CE00CD025E /* ExposureCalculator-Prefix.pch */,
-				AAE9055716C619CE00CD025E /* Default.png */,
 				AAE9055916C619CE00CD025E /* Default@2x.png */,
 				AAE9055B16C619CE00CD025E /* Default-568h@2x.png */,
 			);
@@ -450,15 +438,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE9055016C619CE00CD025E /* InfoPlist.strings in Resources */,
-				AAE9055816C619CE00CD025E /* Default.png in Resources */,
 				AAE9055A16C619CE00CD025E /* Default@2x.png in Resources */,
 				AAE9055F16C619CE00CD025E /* MainStoryboard.storyboard in Resources */,
-				AA436C4A1707FF7100446250 /* icon.png in Resources */,
 				AA436C4B1707FF7100446250 /* icon-retina.png in Resources */,
-				AA436C4D1707FF8300446250 /* icon.png in Resources */,
 				AA436C4F1707FF8E00446250 /* icon-retina.png in Resources */,
 				AA436C511708027A00446250 /* Default-568h@2x.png in Resources */,
-				AA436C53170802B200446250 /* Default.png in Resources */,
 				AA436C541708034C00446250 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
