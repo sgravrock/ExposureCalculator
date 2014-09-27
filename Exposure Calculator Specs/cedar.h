@@ -1,4 +1,4 @@
-#import <Cedar-iOS/SpecHelper.h>
+#import <Cedar-iOS/Cedar-iOS.h>
 
 // Cedar matchers don't work correctly with ARC.
 #if __has_feature(objc_arc)

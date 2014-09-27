@@ -9,7 +9,7 @@
 #import "FakeProperties.h"
 #import <string.h>
 #import <ctype.h>
-#import <Cedar-iOS/SpecHelper.h>
+#import <Cedar-iOS/Cedar-iOS.h>
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
