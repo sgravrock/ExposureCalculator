@@ -44,22 +44,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 	[self.calculator removeObserver:self forKeyPath:@"thirdsLv" context:kvo_context];
 }
 
-- (void)selectAperture:(int)index
-{
-	[self addChoice:index forComponent:0];
-}
-
-- (void)selectShutter:(int)index
-{
-	[self addChoice:index forComponent:1];
-}
-
-- (void)selectSensitivity:(int)index
-{
-	[self addChoice:index forComponent:2];
-}
-
-- (void)addChoice:(int)index forComponent:(int)component
+- (void)selectIndex:(int)index forComponent:(int)component
 {
 	NSNumber *value = self.dataSource.components[component][index];
 	Setting *setting = [Setting settingWithComponent:component value:value];
@@ -84,17 +69,13 @@ static void * const kvo_context = (void * const)&kvo_context;
 - (void)update
 {
 	[self.dataSource update];
-	NSDictionary *settings = [self.calculator.validSettings objectAtIndex:[self findSettings]];
+	NSArray *settings = [self.calculator.validSettings objectAtIndex:[self findSettings]];
 	
-	int apertureIx = [self.dataSource.components[0] indexOfObject:settings[@"aperture"]];
-	int shutterIx = [self.dataSource.components[1] indexOfObject:settings[@"shutterSpeed"]];
-	int isoIx = [self.dataSource.components[2] indexOfObject:settings[@"sensitivity"]];
-	NSAssert(apertureIx != NSNotFound, @"Aperture index not found");
-	NSAssert(shutterIx != NSNotFound, @"Shutter index not found");
-	NSAssert(isoIx != NSNotFound, @"ISO index not found");
-	[self.delegate chosenSettingsModel:self changedApertureToIndex:apertureIx];
-	[self.delegate chosenSettingsModel:self changedShutterToIndex:shutterIx];
-	[self.delegate chosenSettingsModel:self changedSensitivityToIndex:isoIx];
+	for (int i = 0; i < 3; i++) {
+		int settingIx = [self.dataSource.components[i] indexOfObject:settings[i]];
+		NSAssert(settingIx != NSNotFound, @"Setting index not found");
+		[self.delegate chosenSettingsModel:self changedComponent:i toIndex:settingIx];
+	}
 }
 
 - (int)findSettings
@@ -129,15 +110,9 @@ static void * const kvo_context = (void * const)&kvo_context;
 			 }];
 }
 
-- (BOOL)settings:(NSDictionary *)settings matchUserChoice:(Setting *)choice
+- (BOOL)settings:(NSArray *)settings matchUserChoice:(Setting *)choice
 {
-	static NSArray *componentKeys = nil;
-	
-	if (!componentKeys) {
-		componentKeys = @[@"aperture", @"shutterSpeed", @"sensitivity"];
-	}
-	
-	BOOL result = !choice || [settings[componentKeys[choice.component]] isEqual:choice.value];
+	BOOL result = !choice || [settings[choice.component] isEqual:choice.value];
 	return result;
 }
 

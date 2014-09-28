@@ -18,7 +18,7 @@
 	int selectedSetting;
 }
 @property (nonatomic, strong) NSArray *possibleSettings; // of ArrayDataSouce;
-@property (nonatomic, strong) NSArray *selections; // of MinMaxPair;
+@property (nonatomic, strong) NSMutableArray *selections; // of MinMaxPair;
 @property (nonatomic, strong) NSArray *labels;
 @end
 
@@ -28,7 +28,7 @@
 {
 	self.labels = @[@"Aperture range", @"Shutter range", @"ISO range"];
 	SupportedSettings *s = [[SupportedSettings alloc] init];
-	NSArray *components = @[s.apertures, s.shutterSpeeds, s.sensitivities];
+	NSArray *components = s.components;
 	
 	self.possibleSettings = [components map:^id(id it) {
 		ArrayDataSource *ds = [[ArrayDataSource alloc] init];
@@ -36,11 +36,15 @@
 		return ds;
 	}];
 	
-	self.selections = [components map:^id(id it) {
-		int max = [it count] - 1;
-		return [[MinMaxPair alloc] initWithLimit:max];
-	}];
-
+	self.selections = [NSMutableArray arrayWithCapacity:3];
+	
+	for (int i = 0; i < 3; i++) {
+		NSArray *currentRange = self.delegate.configuration.components[i];
+		int min = [s.components[i] indexOfObject:currentRange[0]];
+		int max = [s.components[i] indexOfObject:[currentRange lastObject]];
+		self.selections[i] = [[MinMaxPair alloc] initWithMin:min max:max];
+	}
+	
 	NSIndexPath *initialSelection = [NSIndexPath indexPathForRow:0 inSection:0];
 	[self.tableView selectRowAtIndexPath:initialSelection
 								animated:NO
@@ -51,10 +55,6 @@
 - (IBAction)close:(id)sender
 {
 	// Update the configuration with the user's selections. Then tell the delegate that we're done.
-	SEL selectors[] = { @selector(includeAperturesFrom:to:),
-		@selector(includeShutterSpeedsFrom:to:),
-		@selector(includeSensitivitiesFrom:to:)
-	};
 	SupportedSettings *config = self.delegate.configuration;
 	
 	for (int i = 0; i < 3; i++) {
@@ -63,10 +63,7 @@
 		MinMaxPair *selected = self.selections[i];
 		NSNumber *min = values[selected.min];
 		NSNumber *max = values[selected.max];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-		[config performSelector:selectors[i] withObject:min withObject:max];
-#pragma clang diagnostic pop
+		[config includeValuesFrom:min to:max inComponent:i];
 	}
 	
 	[self.delegate configViewControllerShouldClose:self];

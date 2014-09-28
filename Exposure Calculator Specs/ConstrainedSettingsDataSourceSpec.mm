@@ -11,9 +11,9 @@ SPEC_BEGIN(ConstrainedSettingsDataSourceSpec)
 describe(@"ConstrainedSettingsDataSource", ^{
 	it(@"should only offer settings that are possible with the given constraints", ^{
 		SupportedSettings *config = [[SupportedSettings alloc] init];
-		[config includeAperturesFrom:@4 to:@5.6];
-		[config includeShutterSpeedsFrom:@(1.0/60.0) to:@(1.0/100.0)];
-		[config includeSensitivitiesFrom:@100 to:@160];
+		[config includeValuesFrom:@4 to:@5.6 inComponent:kApertureComponent];
+		[config includeValuesFrom:@(1.0/60.0) to:@(1.0/100.0) inComponent:kShutterComponent];
+		[config includeValuesFrom:@100 to:@160 inComponent:kSensitivityComponent];
 		
 		Calculator *calculator = [[Calculator alloc] initWithSettings:config];
 		ConstrainedSettingsDataSource *target = [[ConstrainedSettingsDataSource alloc]

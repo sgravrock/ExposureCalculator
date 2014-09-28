@@ -76,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA140B1416FEA71B008B2D45 /* components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = components.h; sourceTree = "<group>"; };
 		AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSScanner+Throwing.h"; path = "../ExposureCalculatorTests/NSScanner+Throwing.h"; sourceTree = "<group>"; };
 		AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Throwing.m"; path = "../ExposureCalculatorTests/NSScanner+Throwing.m"; sourceTree = "<group>"; };
 		AA271BCB16D0620300DBF4BE /* CliUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CliUtils.h; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 				AA9A79ED16F6353800FA91E9 /* Configuration */,
 				AAE9055416C619CE00CD025E /* AppDelegate.h */,
 				AAE9055516C619CE00CD025E /* AppDelegate.m */,
+				AA140B1416FEA71B008B2D45 /* components.h */,
 				AAE9055D16C619CE00CD025E /* MainStoryboard.storyboard */,
 				AAE9056016C619CE00CD025E /* MainViewController.h */,
 				AAE9056116C619CE00CD025E /* MainViewController.m */,
@@ -662,7 +664,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "ExposureCalculator/ExposureCalculator-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -677,7 +679,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "ExposureCalculator/ExposureCalculator-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

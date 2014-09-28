@@ -15,43 +15,36 @@ describe(@"ChosenSettingsModel", ^{
 	__block Calculator *calculator;
 	__block StubChosenSettingsModelDelegate *delegate;
 		
-	void (^verifyAperture)(double) = ^(double expected) {
-		NSNumber *actual = target.dataSource.components[0][delegate.apertureIx];
-		expect([actual doubleValue]).to(equal(expected));
+	void (^verifyComponent)(int, NSNumber *) = ^(int component, NSNumber *expected) {
+		NSNumber *actual = target.dataSource.components[component][delegate->settings[component]];
+		expect(actual).to(equal(expected));
 	};
 
-	void (^verifyShutterSpeed)(double) = ^(double expected) {
-		NSNumber *actual = target.dataSource.components[1][delegate.shutterSpeedIx];
-		expect([actual doubleValue]).to(equal(expected));
-	};
-
-	void (^verifySensitivity)(int) = ^(int expected) {
-		NSNumber *actual = target.dataSource.components[2][delegate.sensitivityIx];
-		expect([actual doubleValue]).to(equal(expected));
-	};
-	
 	void (^verifySettings)(double, double, int) = ^(double aperture, double shutter, int sensitivity) {
-		verifyAperture(aperture);
-		verifyShutterSpeed(shutter);
-		verifySensitivity(sensitivity);
+		verifyComponent(kApertureComponent, [NSNumber numberWithDouble:aperture]);
+		verifyComponent(kShutterComponent, [NSNumber numberWithDouble:shutter]);
+		verifyComponent(kSensitivityComponent, [NSNumber numberWithInt:sensitivity]);
 	};
 
 	void (^selectAperture)(double) = ^(double aperture) {
-		int i = [target.dataSource.components[0] indexOfObject:[NSNumber numberWithDouble:aperture]];
+		int i = [target.dataSource.components[kApertureComponent]
+				 indexOfObject:[NSNumber numberWithDouble:aperture]];
 		NSAssert(i != NSNotFound, @"Couldn't find aperture");
-		[target selectAperture:i];
+		[target selectIndex:i forComponent:kApertureComponent];
 	};
 	
 	void (^selectShutterSpeed)(double) = ^(double shutter) {
-		int i = [target.dataSource.components[1] indexOfObject:[NSNumber numberWithDouble:shutter]];
+		int i = [target.dataSource.components[kShutterComponent]
+				 indexOfObject:[NSNumber numberWithDouble:shutter]];
 		NSAssert(i != NSNotFound, @"Couldn't find shutter speed");
-		[target selectShutter:i];
+		[target selectIndex:i forComponent:kShutterComponent];
 	};
 	
 	void (^selectSensitivity)(int) = ^(int iso) {
-		int i = [target.dataSource.components[2] indexOfObject:[NSNumber numberWithInt:iso]];
+		int i = [target.dataSource.components[kSensitivityComponent]
+				 indexOfObject:[NSNumber numberWithInt:iso]];
 		NSAssert(i != NSNotFound, @"Couldn't find sensitivity");
-		[target selectSensitivity:i];
+		[target selectIndex:i forComponent:kSensitivityComponent];
 	};
 	
 	beforeEach(^{
@@ -102,7 +95,7 @@ describe(@"ChosenSettingsModel", ^{
 			
 			it(@"should keep the most recent setting if it's compatible", ^{
 				// This test depends on the configured max ISO
-				expect([[[SupportedSettings alloc] init].sensitivities lastObject]).to(equal(@6400));
+				expect([[[SupportedSettings alloc] init].components[kSensitivityComponent] lastObject]).to(equal(@6400));
 				selectAperture(2.8);
 				selectShutterSpeed(6);
 				calculator.thirdsLv = 3 * -6.7;
@@ -114,7 +107,7 @@ describe(@"ChosenSettingsModel", ^{
 			it(@"should keep a compatible older selection if the most recent is incompatible", ^{
 				// This test depends on our configured longest shutter speed.
 				NSNumber *minShutter = @1920;
-				expect([[SupportedSettings alloc] init].shutterSpeeds[0]).to(equal(minShutter));
+				expect([[SupportedSettings alloc] init].components[kShutterComponent][0]).to(equal(minShutter));
 				selectAperture(2.8);
 				selectShutterSpeed(6);
 				calculator.thirdsLv = 3 * -8;

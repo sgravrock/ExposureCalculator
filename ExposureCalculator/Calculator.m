@@ -38,15 +38,15 @@
 - (NSArray *)validSettings
 {
 	NSMutableArray *settings = [NSMutableArray array];
+	NSArray *components = self.supportedSettings.components;
 
-	for (NSNumber *aperture in self.supportedSettings.apertures) {
-		for (NSNumber *shutter in self.supportedSettings.shutterSpeeds) {
-			for (NSNumber *iso in self.supportedSettings.sensitivities) {
+	for (NSNumber *aperture in components[kApertureComponent]) {
+		for (NSNumber *shutter in components[kShutterComponent]) {
+			for (NSNumber *iso in components[kSensitivityComponent]) {
 				if (self.thirdsLv == [Calculator thirdsLvForAperture:[aperture doubleValue]
 															 shutter:[shutter doubleValue]
 														 sensitivity:[iso intValue]]) {
-					[settings addObject:@{@"aperture": aperture,
-					 @"shutterSpeed": shutter, @"sensitivity": iso}];
+					[settings addObject:@[aperture, shutter, iso]];
 				}
 			}
 		}

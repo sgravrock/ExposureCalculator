@@ -8,20 +8,15 @@
 
 #import "MinMaxPair.h"
 
-@interface MinMaxPair() {
-	int limit;
-}
-@end
-
 @implementation MinMaxPair
 
-- (id)initWithLimit:(int)theLimit
+- (id)initWithMin:(int)min max:(int)max
 {
 	self = [super init];
 	
 	if (self) {
-		_min = 0;
-		_max = limit = theLimit;
+		_min = min;
+		_max = max;
 	}
 	
 	return self;
