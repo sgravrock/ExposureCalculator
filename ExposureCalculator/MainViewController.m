@@ -177,6 +177,7 @@
 	CGFloat size = isIphone5 ? 20 : 17;
 	label.font = [UIFont boldSystemFontOfSize:size];
 	label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+	label.textColor = [UIColor whiteColor];
     return label;
 }
 

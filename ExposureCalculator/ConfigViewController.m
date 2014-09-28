@@ -13,6 +13,7 @@
 #import "Setting.h"
 #import "NSArray+Functional.h"
 #import "ArrayDataSource.h"
+#import "ConfigTableViewCell.h"
 
 @interface ConfigViewController () {
 	NSInteger selectedSetting;
@@ -85,10 +86,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-												   reuseIdentifier:@"cell"];
+	ConfigTableViewCell *cell = [[ConfigTableViewCell alloc]
+								 initWithStyle:UITableViewCellStyleDefault
+								 reuseIdentifier:@"cell"];
 	cell.textLabel.text = self.labels[indexPath.row];
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -117,6 +118,23 @@
 	NSNumber *value = src.components[0][row];
 	return [Setting formatSettingWithComponent:selectedSetting value:value];
 }
+
+- (UIView *)pickerView:(UIPickerView *)pickerView
+			viewForRow:(NSInteger)row
+		  forComponent:(NSInteger)component
+		   reusingView:(UIView *)view
+{
+	UILabel* label = (UILabel*)view;
+	
+	if (!label) {
+		label = [[UILabel alloc] init];
+	}
+	
+	label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+	label.textColor = [UIColor whiteColor];
+	return label;
+}
+
 
 - (void)pickerView:(UIPickerView *)pickerView
 	  didSelectRow:(NSInteger)row

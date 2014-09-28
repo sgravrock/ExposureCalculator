@@ -39,6 +39,7 @@
 		AA9915B516D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AAA10DA41707DBCD001B8B85 /* CenteringView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA10DA31707DBCD001B8B85 /* CenteringView.m */; };
+		AAB6C81119D79A5300843F3A /* ConfigTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */; };
 		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AAE9054816C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AAE9054A16C619CE00CD025E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -118,6 +119,8 @@
 		AAA10DA21707DBCD001B8B85 /* CenteringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteringView.h; sourceTree = "<group>"; };
 		AAA10DA31707DBCD001B8B85 /* CenteringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteringView.m; sourceTree = "<group>"; };
 		AAA6991616DA75EA003F0E0C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
+		AAB6C80F19D79A5300843F3A /* ConfigTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTableViewCell.h; sourceTree = "<group>"; };
+		AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewCell.m; sourceTree = "<group>"; };
 		AAE9054116C619CE00CD025E /* ExposureCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposureCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE9054516C619CE00CD025E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAE9054716C619CE00CD025E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -239,6 +242,8 @@
 				AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */,
 				AA98CA2016C8792E00C13E14 /* SupportedSettings.m */,
 				AA9A79EE16F6356000FA91E9 /* ConfigViewControllerDelegate.h */,
+				AAB6C80F19D79A5300843F3A /* ConfigTableViewCell.h */,
+				AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				AAE9055216C619CE00CD025E /* main.m in Sources */,
 				AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */,
 				AAE9056216C619CE00CD025E /* MainViewController.m in Sources */,
+				AAB6C81119D79A5300843F3A /* ConfigTableViewCell.m in Sources */,
 				AAE9058916C61AFD00CD025E /* Calculator.m in Sources */,
 				AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */,
 				AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */,
