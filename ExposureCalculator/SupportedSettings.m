@@ -38,7 +38,7 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	array_filter_predicate notGreaterThanMax = ^BOOL(id obj, NSUInteger idx, BOOL *stop) {
 		return [max compare:obj] != NSOrderedAscending;
 	};
-	int firstIndex, lastIndex;
+	NSUInteger firstIndex, lastIndex;
 	
 	if (ascending) {
 		firstIndex = [src indexOfObjectPassingTest:notLessThanMin];
@@ -87,7 +87,7 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	@1.6, @1.3, @1];
 	[speeds addObjectsFromArray:overlappingRange];
 	
-	for (int i = overlappingRange.count - 2; i >= 0; i--) {
+	for (NSInteger i = overlappingRange.count - 2; i >= 0; i--) {
 		[speeds addObject:[NSNumber numberWithDouble:1.0/[overlappingRange[i] doubleValue]]];
 	}
 	

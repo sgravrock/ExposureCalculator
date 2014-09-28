@@ -19,7 +19,7 @@ using namespace Cedar::Doubles;
 + (void)stubProperty:(const char *)propName onObject:(id<CedarDouble>)target
 {
 	__block id propertyValue = nil;
-	int len = strlen(propName) + 5; // "set"/"get", ":", terminator
+	size_t len = strlen(propName) + 5; // "set"/"get", ":", terminator
 	char setter[len];
 	snprintf(setter, len, "set%c%s:", toupper(propName[0]), propName + 1);
 	

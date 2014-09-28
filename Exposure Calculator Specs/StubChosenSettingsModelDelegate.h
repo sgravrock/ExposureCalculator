@@ -13,7 +13,7 @@
 @public
 	// Each element exposes the last index received from the model for that component.
 	// Intiial value for each is -1.
-	int settings[3];
+	NSInteger settings[3];
 }
 
 @end

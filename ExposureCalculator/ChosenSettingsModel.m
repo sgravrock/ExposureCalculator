@@ -44,7 +44,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 	[self.calculator removeObserver:self forKeyPath:@"thirdsLv" context:kvo_context];
 }
 
-- (void)selectIndex:(int)index forComponent:(int)component
+- (void)selectIndex:(NSUInteger)index forComponent:(NSUInteger)component
 {
 	NSNumber *value = self.dataSource.components[component][index];
 	Setting *setting = [Setting settingWithComponent:component value:value];
@@ -72,13 +72,13 @@ static void * const kvo_context = (void * const)&kvo_context;
 	NSArray *settings = [self.calculator.validSettings objectAtIndex:[self findSettings]];
 	
 	for (int i = 0; i < 3; i++) {
-		int settingIx = [self.dataSource.components[i] indexOfObject:settings[i]];
+		NSUInteger settingIx = [self.dataSource.components[i] indexOfObject:settings[i]];
 		NSAssert(settingIx != NSNotFound, @"Setting index not found");
 		[self.delegate chosenSettingsModel:self changedComponent:i toIndex:settingIx];
 	}
 }
 
-- (int)findSettings
+- (NSUInteger)findSettings
 {
 	// Try to find valid settings, preferring the user's more recent choice if any.
 	int scenarios[][2] = {{0, 1}, {0, -1}, {1, -1}, {-1, -1}};
@@ -87,7 +87,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 		int *s = scenarios[i];
 		Setting *a = s[0] == 0 ? self.firstChoice : (s[0] == 1 ? self.secondChoice : nil);
 		Setting *b = s[1] == 0 ? self.firstChoice : (s[1] == 1 ? self.secondChoice : nil);
-		int result = [self indexOfFirstSettingsMatchingChoice:a andChoice:b];
+		NSUInteger result = [self indexOfFirstSettingsMatchingChoice:a andChoice:b];
 		
 		if (result != NSNotFound) {
 			return result;
@@ -100,7 +100,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 }
 
 // Either argument may be nil.
-- (int)indexOfFirstSettingsMatchingChoice:(Setting *)choice1
+- (NSUInteger)indexOfFirstSettingsMatchingChoice:(Setting *)choice1
 								andChoice:(Setting *)choice2
 {
 	return [self.calculator.validSettings indexOfObjectPassingTest:

@@ -15,7 +15,7 @@
 #import "ArrayDataSource.h"
 
 @interface ConfigViewController () {
-	int selectedSetting;
+	NSInteger selectedSetting;
 }
 @property (nonatomic, strong) NSArray *possibleSettings; // of ArrayDataSouce;
 @property (nonatomic, strong) NSMutableArray *selections; // of MinMaxPair;
@@ -40,8 +40,8 @@
 	
 	for (int i = 0; i < 3; i++) {
 		NSArray *currentRange = self.delegate.configuration.components[i];
-		int min = [s.components[i] indexOfObject:currentRange[0]];
-		int max = [s.components[i] indexOfObject:[currentRange lastObject]];
+		NSUInteger min = [s.components[i] indexOfObject:currentRange[0]];
+		NSUInteger max = [s.components[i] indexOfObject:[currentRange lastObject]];
 		self.selections[i] = [[MinMaxPair alloc] initWithMin:min max:max];
 	}
 	

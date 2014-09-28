@@ -10,13 +10,13 @@
 #import "components.h"
 
 @interface Setting()
-@property (nonatomic, assign) int component;
+@property (nonatomic, assign) NSUInteger component;
 @property (nonatomic, strong) NSNumber *value;
 @end
 
 @implementation Setting
 
-+ (Setting *)settingWithComponent:(int)component value:(NSNumber *)value
++ (Setting *)settingWithComponent:(NSUInteger)component value:(NSNumber *)value
 {
 	Setting *s = [[Setting alloc] init];
 	s.component = component;
@@ -33,7 +33,7 @@
 
 // This display logic might more properly belong in the view controller, but having it here
 // means that it can be used for debugger display as well (see the description method above).
-+ (NSString *)formatSettingWithComponent:(int)component value:(NSNumber *)value
++ (NSString *)formatSettingWithComponent:(NSUInteger)component value:(NSNumber *)value
 {
 	switch (component) {
 		case kApertureComponent:
@@ -62,12 +62,12 @@
 		return @"1m";
 	} else if (speed > 60) {
 		int minutes = (int)speed / 60;
-		int seconds = lround(speed - 60 * minutes);
+		long seconds = lround(speed - 60 * minutes);
 		
 		if (seconds == 0) {
 			return [NSString stringWithFormat:@"%dm", minutes];
 		} else {
-			return [NSString stringWithFormat:@"%dm%ds", minutes, seconds];
+			return [NSString stringWithFormat:@"%dm%lds", minutes, seconds];
 		}
 	} else if (speed >= 10) {
 		return [NSString stringWithFormat:@"%ld", lround(speed)];

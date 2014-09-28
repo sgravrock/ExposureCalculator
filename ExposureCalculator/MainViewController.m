@@ -38,7 +38,7 @@
 	self.selectedMeteredSettings = [NSMutableArray arrayWithArray:@[@4, @(1.0/30.0), @1600]];
 	
 	for (int i = 0; i < 3; i++) {
-		int rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
+		NSUInteger rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
 		[self.meteredSettingsPicker selectRow:rowIx inComponent:i animated:NO];
 	}
 	
@@ -126,7 +126,7 @@
 	// Because the range of settings may have changed, we need to re-select each setting.
 	// Additionally, the previously-selected settings may be out of the new configured range.
 	for (int i = 0; i < 3; i++) {
-		int rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
+		NSUInteger rowIx = [self indexOfValue:self.selectedMeteredSettings[i] inComponent:i];
 		
 		if (rowIx == NSNotFound) {
 			rowIx = 0;
@@ -183,12 +183,12 @@
 
 #pragma mark -
 
-- (NSNumber *)valueForRow:(int)rowIx inComponent:(int)componentIx
+- (NSNumber *)valueForRow:(NSUInteger)rowIx inComponent:(NSUInteger)componentIx
 {
 	return self.configuration.components[componentIx][rowIx];
 }
 
-- (int)indexOfValue:(NSNumber *)value inComponent:(int)componentIx
+- (NSUInteger)indexOfValue:(NSNumber *)value inComponent:(NSUInteger)componentIx
 {
 	return [self.configuration.components[componentIx] indexOfObject:value];
 }
@@ -207,8 +207,8 @@
 #pragma mark - ChosenSettingsModelDelegate
 
 - (void)chosenSettingsModel:(ChosenSettingsModel *)sender
-		   changedComponent:(int)component
-					toIndex:(int)index
+		   changedComponent:(NSUInteger)component
+					toIndex:(NSUInteger)index
 {
 	[self.chosenSettingsPicker selectRow:index inComponent:component animated:YES];
 }

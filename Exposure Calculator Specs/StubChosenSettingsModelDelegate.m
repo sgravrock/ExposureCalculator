@@ -24,8 +24,8 @@
 }
 
 - (void)chosenSettingsModel:(ChosenSettingsModel *)sender
-		   changedComponent:(int)component
-					toIndex:(int)index
+		   changedComponent:(NSUInteger)component
+					toIndex:(NSUInteger)index
 {
 	settings[component] = index;
 }

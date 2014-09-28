@@ -10,7 +10,7 @@
 
 @implementation MinMaxPair
 
-- (id)initWithMin:(int)min max:(int)max
+- (id)initWithMin:(NSUInteger)min max:(NSUInteger)max
 {
 	self = [super init];
 	
@@ -22,7 +22,7 @@
 	return self;
 }
 
-- (void)setMin:(int)value
+- (void)setMin:(NSUInteger)value
 {
 	_min = value;
 	
@@ -31,7 +31,7 @@
 	}
 }
 
-- (void)setMax:(int)value
+- (void)setMax:(NSUInteger)value
 {
 	_max = value;
 	

@@ -27,21 +27,21 @@ describe(@"ChosenSettingsModel", ^{
 	};
 
 	void (^selectAperture)(double) = ^(double aperture) {
-		int i = [target.dataSource.components[kApertureComponent]
-				 indexOfObject:[NSNumber numberWithDouble:aperture]];
+		NSUInteger i = [target.dataSource.components[kApertureComponent]
+						indexOfObject:[NSNumber numberWithDouble:aperture]];
 		NSAssert(i != NSNotFound, @"Couldn't find aperture");
 		[target selectIndex:i forComponent:kApertureComponent];
 	};
 	
 	void (^selectShutterSpeed)(double) = ^(double shutter) {
-		int i = [target.dataSource.components[kShutterComponent]
-				 indexOfObject:[NSNumber numberWithDouble:shutter]];
+		NSUInteger i = [target.dataSource.components[kShutterComponent]
+						indexOfObject:[NSNumber numberWithDouble:shutter]];
 		NSAssert(i != NSNotFound, @"Couldn't find shutter speed");
 		[target selectIndex:i forComponent:kShutterComponent];
 	};
 	
 	void (^selectSensitivity)(int) = ^(int iso) {
-		int i = [target.dataSource.components[kSensitivityComponent]
+		NSUInteger i = [target.dataSource.components[kSensitivityComponent]
 				 indexOfObject:[NSNumber numberWithInt:iso]];
 		NSAssert(i != NSNotFound, @"Couldn't find sensitivity");
 		[target selectIndex:i forComponent:kSensitivityComponent];

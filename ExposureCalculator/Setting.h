@@ -10,10 +10,10 @@
 
 @interface Setting : NSObject
 
-@property (nonatomic, readonly, assign) int component;
+@property (nonatomic, readonly, assign) NSUInteger component;
 @property (nonatomic, readonly, strong) NSNumber *value;
 
-+ (Setting *)settingWithComponent:(int)component value:(NSNumber *)value;
-+ (NSString *)formatSettingWithComponent:(int)component value:(NSNumber *)value;
++ (Setting *)settingWithComponent:(NSUInteger)component value:(NSNumber *)value;
++ (NSString *)formatSettingWithComponent:(NSUInteger)component value:(NSNumber *)value;
 
 @end

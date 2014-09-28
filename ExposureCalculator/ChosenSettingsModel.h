@@ -20,7 +20,7 @@
 - (void)update;
 
 // Takes the index of the selected value in the list of available values for the setting in question. 
-- (void)selectIndex:(int)index forComponent:(int)component;
+- (void)selectIndex:(NSUInteger)index forComponent:(NSUInteger)component;
 
 @end
 
@@ -28,7 +28,7 @@
 @protocol ChosenSettingsModelDelegate
 
 - (void)chosenSettingsModel:(ChosenSettingsModel *)sender
-		   changedComponent:(int)component
-					toIndex:(int)index;
+		   changedComponent:(NSUInteger)component
+					toIndex:(NSUInteger)index;
 
 @end
