@@ -40,7 +40,6 @@
 	return self.components.count;
 }
 
-// returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
 	NSArray *c = self.components[component];

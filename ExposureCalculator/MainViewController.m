@@ -46,38 +46,6 @@
 	self.chosenSettings.delegate = self;
 	self.chosenSettingsPicker.dataSource = self.chosenSettings.dataSource;
 	[self recalculate];
-	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deviceOrientationDidChange:) name: UIDeviceOrientationDidChangeNotification object: nil];
-}
-
-- (void)deviceOrientationDidChange:(NSNotification *)notification
-{
-	NSLog(@"Rotation changed");
-	
-	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-		NSLog(@"Landscape");
-	} else {
-		NSLog(@"Portrait");
-	}
-	
-	NSLog(@"%fx%f", self.view.bounds.size.width, self.view.bounds.size.height);
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-		NSLog(@"Landscape");
-	} else {
-		NSLog(@"Portrait");
-	}
-
-	NSLog(@"%fx%f", self.view.bounds.size.width, self.view.bounds.size.height);
-//	CGFloat pickerWidth = self.view.bounds.size.width / 2;
-//	CGRect f = self.meteredSettingsPicker.frame;
-//	f.size.width = pickerWidth;
-//	self.meteredSettingsPicker.frame = f;
-//	f = self.chosenSettingsPicker.frame;
-//	f.size.width = pickerWidth;
-//	self.chosenSettingsPicker.frame = f;
 }
 
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder
