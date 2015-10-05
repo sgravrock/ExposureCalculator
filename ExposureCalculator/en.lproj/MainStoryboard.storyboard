@@ -3,6 +3,7 @@
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -109,12 +110,15 @@
                         <viewControllerLayoutGuide type="top" id="X9a-20-ibW"/>
                         <viewControllerLayoutGuide type="bottom" id="iWf-qS-xFy"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="haJ-uu-3bY" customClass="CenteringView">
+                    <view key="view" contentMode="scaleToFill" id="haJ-uu-3bY">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="6hU-Ld-F2M">
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="6hU-Ld-F2M">
                                 <rect key="frame" x="0.0" y="276" width="568" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="J5O-1b-8ch"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Settings" id="cIq-V4-5sd">
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="L12-v6-Ufy">
@@ -125,45 +129,74 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMN-py-R0X">
-                                <rect key="frame" x="44" y="0.0" width="480" height="256"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMN-py-R0X" userLabel="Old wrapper View">
+                                <rect key="frame" x="450" y="0.0" width="480" height="256"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qy7-cV-yc1" userLabel="Centering wrapper">
+                                <rect key="frame" x="44" y="20" width="480" height="256"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urv-W7-ehz">
-                                        <rect key="frame" x="240" y="40" width="240" height="216"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="Ugc-28-lV6" id="fGi-aT-sqD"/>
-                                        </connections>
-                                    </pickerView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="t68-oq-YE3">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="t68-oq-YE3">
                                         <rect key="frame" x="0.0" y="40" width="240" height="216"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="216" id="3tQ-mW-Fa2"/>
+                                            <constraint firstAttribute="width" constant="240" id="4z3-8C-pQv"/>
+                                        </constraints>
                                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Ugc-28-lV6" id="p83-MD-gKg"/>
                                             <outlet property="delegate" destination="Ugc-28-lV6" id="XxS-bq-KAi"/>
                                         </connections>
                                     </tableView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eK-IB-xYn">
-                                        <rect key="frame" x="240" y="11" width="120" height="21"/>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urv-W7-ehz">
+                                        <rect key="frame" x="240" y="40" width="240" height="216"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="216" id="65d-Oq-ElD"/>
+                                            <constraint firstAttribute="width" constant="240" id="FK1-tu-dmF"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="delegate" destination="Ugc-28-lV6" id="fGi-aT-sqD"/>
+                                        </connections>
+                                    </pickerView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eK-IB-xYn">
+                                        <rect key="frame" x="241" y="10" width="120" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="To" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr2-bp-9Br">
-                                        <rect key="frame" x="360" y="11" width="120" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="To" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr2-bp-9Br">
+                                        <rect key="frame" x="349" y="11" width="120" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2eK-IB-xYn" firstAttribute="leading" secondItem="urv-W7-ehz" secondAttribute="leading" constant="1" id="121-55-X61"/>
+                                    <constraint firstItem="2eK-IB-xYn" firstAttribute="width" secondItem="urv-W7-ehz" secondAttribute="width" multiplier="0.5" id="APN-Hm-Otc"/>
+                                    <constraint firstItem="urv-W7-ehz" firstAttribute="leading" secondItem="t68-oq-YE3" secondAttribute="trailing" id="AzJ-zk-HjM"/>
+                                    <constraint firstItem="2eK-IB-xYn" firstAttribute="bottom" secondItem="Tr2-bp-9Br" secondAttribute="bottom" constant="-1" id="B4M-eH-uTk"/>
+                                    <constraint firstItem="2eK-IB-xYn" firstAttribute="top" secondItem="qy7-cV-yc1" secondAttribute="top" constant="10" id="BmA-gY-o0H"/>
+                                    <constraint firstItem="urv-W7-ehz" firstAttribute="trailing" secondItem="Tr2-bp-9Br" secondAttribute="trailing" constant="11" id="Hrk-7U-ZbF"/>
+                                    <constraint firstItem="t68-oq-YE3" firstAttribute="leading" secondItem="qy7-cV-yc1" secondAttribute="leading" id="exc-RE-Fjj"/>
+                                    <constraint firstAttribute="bottom" secondItem="t68-oq-YE3" secondAttribute="bottom" id="nYE-6O-emi"/>
+                                    <constraint firstItem="Tr2-bp-9Br" firstAttribute="width" secondItem="urv-W7-ehz" secondAttribute="width" multiplier="0.5" id="puS-PU-Kt4"/>
+                                    <constraint firstAttribute="bottom" secondItem="urv-W7-ehz" secondAttribute="bottom" id="qCz-ot-Qxk"/>
+                                    <constraint firstAttribute="trailing" secondItem="urv-W7-ehz" secondAttribute="trailing" id="tXW-mg-mCe"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="subviewToCenter" destination="gMN-py-R0X" id="LpE-EU-niM"/>
-                            <outlet property="subviewToFillWidth" destination="6hU-Ld-F2M" id="huG-Yq-4g8"/>
-                        </connections>
+                        <constraints>
+                            <constraint firstItem="6hU-Ld-F2M" firstAttribute="top" secondItem="qy7-cV-yc1" secondAttribute="bottom" id="7Gu-cF-DgZ"/>
+                            <constraint firstAttribute="centerX" secondItem="qy7-cV-yc1" secondAttribute="centerX" id="D6h-i4-ZK5"/>
+                            <constraint firstItem="iWf-qS-xFy" firstAttribute="top" secondItem="6hU-Ld-F2M" secondAttribute="bottom" id="E48-ma-PU7"/>
+                            <constraint firstAttribute="trailing" secondItem="6hU-Ld-F2M" secondAttribute="trailing" id="G05-K3-83R"/>
+                            <constraint firstItem="6hU-Ld-F2M" firstAttribute="leading" secondItem="haJ-uu-3bY" secondAttribute="leading" id="jSp-Sn-nmQ"/>
+                            <constraint firstItem="qy7-cV-yc1" firstAttribute="top" secondItem="X9a-20-ibW" secondAttribute="bottom" id="mHZ-DC-IW4"/>
+                        </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
@@ -173,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nco-Hk-aKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-29" y="385"/>
+            <point key="canvasLocation" x="-29" y="366"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
