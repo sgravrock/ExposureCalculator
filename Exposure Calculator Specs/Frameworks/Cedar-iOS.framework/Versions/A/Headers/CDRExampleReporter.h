@@ -1,4 +1,7 @@
 #import <Foundation/Foundation.h>
+#import "CDRNullabilityCompat.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class CDRExample, CDRExampleGroup, CDRSpec;
 
@@ -9,7 +12,7 @@
 - (int)result;
 
 // new methods to use instead of KVO
-@optional
+@required
 - (void)runWillStartExample:(CDRExample *)example;
 - (void)runDidFinishExample:(CDRExample *)example;
 
@@ -20,3 +23,5 @@
 - (void)runDidFinishSpec:(CDRSpec *)spec;
 
 @end
+
+NS_ASSUME_NONNULL_END

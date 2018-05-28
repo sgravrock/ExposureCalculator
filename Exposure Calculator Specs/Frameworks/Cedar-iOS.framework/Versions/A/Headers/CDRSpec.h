@@ -1,45 +1,48 @@
 #import <Foundation/Foundation.h>
 #import "CDRExampleBase.h"
+#import "CDRNullabilityCompat.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol CDRExampleReporter;
 @class CDRExampleGroup, CDRExample, CDRSpecHelper, CDRSymbolicator;
+@class CDRReportDispatcher;
 
 @protocol CDRSpec
 @end
 
-extern const CDRSpecBlock PENDING;
+extern const __nullable CDRSpecBlock PENDING;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-void beforeEach(CDRSpecBlock);
+
+    void beforeEach(CDRSpecBlock);
 void afterEach(CDRSpecBlock);
-
-CDRExampleGroup * describe(NSString *, CDRSpecBlock);
-extern CDRExampleGroup* (*context)(NSString *, CDRSpecBlock);
-
-CDRExample * it(NSString *, CDRSpecBlock);
-
-CDRExampleGroup * xdescribe(NSString *, CDRSpecBlock);
-extern CDRExampleGroup* (*xcontext)(NSString *, CDRSpecBlock);
 void subjectAction(CDRSpecBlock);
-CDRExample * xit(NSString *, CDRSpecBlock);
 
-CDRExampleGroup * fdescribe(NSString *, CDRSpecBlock);
-extern CDRExampleGroup* (*fcontext)(NSString *, CDRSpecBlock);
-CDRExample * fit(NSString *, CDRSpecBlock);
+CDRExampleGroup * describe(NSString *, __nullable CDRSpecBlock);
+CDRExampleGroup * context(NSString *, __nullable CDRSpecBlock);
+CDRExample * it(NSString *, __nullable CDRSpecBlock);
+
+
+CDRExampleGroup * xdescribe(NSString *, __nullable CDRSpecBlock);
+CDRExampleGroup* xcontext(NSString *, __nullable CDRSpecBlock);
+CDRExample * xit(NSString *, __nullable CDRSpecBlock);
+
+
+CDRExampleGroup * fdescribe(NSString *, __nullable CDRSpecBlock);
+CDRExampleGroup * fcontext(NSString *, __nullable CDRSpecBlock);
+CDRExample * fit(NSString *, __nullable CDRSpecBlock);
 
 void fail(NSString *);
+
+void CDREnableSpecValidation(void);
+void CDRDisableSpecValidation(void);
+
 #ifdef __cplusplus
 }
-
-#import "ActualValue.h"
-#import "ShouldSyntax.h"
-#import "CedarComparators.h"
-#import "CedarMatchers.h"
-#import "CedarDoubles.h"
-
-#endif // __cplusplus
+#endif
 
 @interface CDRSpec : NSObject <CDRSpec> {
     CDRExampleGroup *rootGroup_;
@@ -49,12 +52,16 @@ void fail(NSString *);
 }
 
 @property (nonatomic, retain) CDRExampleGroup *currentGroup, *rootGroup;
-@property (nonatomic, retain) NSString *fileName;
+@property (nonatomic, retain, nullable) NSString *fileName;
 @property (nonatomic, retain) CDRSymbolicator *symbolicator;
 
 - (void)defineBehaviors;
 - (void)markAsFocusedClosestToLineNumber:(NSUInteger)lineNumber;
 - (NSArray *)allChildren;
+@end
+
+@interface CDRSpec (XCTestSupport)
+- (id)testSuiteWithRandomSeed:(unsigned int)seed dispatcher:(CDRReportDispatcher *)dispatcher;
 @end
 
 @interface CDRSpec (SpecDeclaration)
@@ -71,3 +78,5 @@ void fail(NSString *);
 #define SPEC_END                     \
 }                                    \
 @end
+
+NS_ASSUME_NONNULL_END

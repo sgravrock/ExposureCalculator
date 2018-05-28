@@ -1,10 +1,24 @@
 #import <Foundation/Foundation.h>
+#import "CDRNullabilityCompat.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 NSArray *CDRReportersFromEnv(const char*defaultReporterClassName);
 
-int CDRRunSpecs();
+int CDRRunSpecs(void);
+OBJC_EXPORT void CDRInjectIntoXCTestRunner(void);
 int CDRRunSpecsWithCustomExampleReporters(NSArray *reporters);
+NSArray *CDRShuffleItemsInArrayWithSeed(NSArray *sortedItems, unsigned int seed);
+NSArray *CDRReportersToRun(void);
+NSString *CDRGetTestBundleExtension(void);
+void CDRSuppressStandardPipesWhileLoadingClasses(void);
 
-int runSpecs() __attribute__((deprecated("Please use CDRRunSpecs()")));
-int runAllSpecs() __attribute__((deprecated("Please use CDRRunSpecs()")));
-int runSpecsWithCustomExampleReporters(NSArray *reporters) __attribute__((deprecated("Please use CDRRunSpecsWithCustomExampleReporters()")));
+NS_ASSUME_NONNULL_END
+
+#ifdef __cplusplus
+}
+#endif

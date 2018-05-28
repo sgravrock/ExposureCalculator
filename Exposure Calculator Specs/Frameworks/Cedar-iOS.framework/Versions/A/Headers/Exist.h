@@ -1,7 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "Base.h"
 
-namespace Cedar { namespace Matchers {
+#ifdef __cplusplus
+
+#pragma mark - private interface
+namespace Cedar { namespace Matchers { namespace Private {
     class Exist : public Base<> {
     public:
         virtual NSString * failure_message_end() const {
@@ -19,6 +22,12 @@ namespace Cedar { namespace Matchers {
             return matches([URL path]);
         }
     };
+}}}
 
-    static const Exist exist = Exist();
+#pragma mark - public interface
+namespace Cedar { namespace Matchers {
+    using CedarExist = Cedar::Matchers::Private::Exist;
+    static const CedarExist exist = CedarExist();
 }}
+
+#endif // __cplusplus

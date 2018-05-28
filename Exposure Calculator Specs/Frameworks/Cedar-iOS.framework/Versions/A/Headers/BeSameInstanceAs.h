@@ -1,7 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "Base.h"
 
-namespace Cedar { namespace Matchers {
+#ifdef __cplusplus
+
+#pragma mark - private interface
+namespace Cedar { namespace Matchers { namespace Private {
     struct BeSameInstanceAsMessageBuilder {
         template<typename U>
         static NSString * string_for_actual_value(const U & value) {
@@ -46,11 +49,6 @@ namespace Cedar { namespace Matchers {
     };
 
     template<typename T>
-    BeSameInstanceAs<T> be_same_instance_as(T * const expectedValue) {
-        return BeSameInstanceAs<T>(expectedValue);
-    }
-
-    template<typename T>
     BeSameInstanceAs<T>::BeSameInstanceAs(T * const expectedValue)
     : Base<BeSameInstanceAsMessageBuilder>(), expectedValue_(expectedValue) {
     }
@@ -83,10 +81,28 @@ namespace Cedar { namespace Matchers {
 
     template<typename T> template<typename U>
     bool BeSameInstanceAs<T>::matches(U * const & actualValue) const {
+        if (actualValue == nil && expectedValue_ == nil) {
+            [[CDRSpecFailure specFailureWithReason:@"Unexpected use of be_same_instance_as matcher to check for nil. Both the actual and given values are nil. This is probably not what you intended to verify."] raise];
+            return NO;
+        }
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wcompare-distinct-pointer-types"
         return actualValue == expectedValue_;
 #pragma clang diagnostic pop
     }
 
+}}}
+
+#pragma mark - public interface
+namespace Cedar { namespace Matchers {
+    template<typename T>
+    using CedarBeSameInstanceAs = Cedar::Matchers::Private::BeSameInstanceAs<T>;
+
+    template<typename T>
+    CedarBeSameInstanceAs<T> be_same_instance_as(T * const expectedValue) {
+        return CedarBeSameInstanceAs<T>(expectedValue);
+    }
 }}
+
+#endif // __cplusplus

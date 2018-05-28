@@ -1,7 +1,11 @@
 #import "Base.h"
+
+#ifdef __cplusplus
+
 #import <memory>
 
-namespace Cedar { namespace Matchers {
+#pragma mark - private interface
+namespace Cedar { namespace Matchers { namespace Private {
 
     typedef void (^empty_block_t)();
 
@@ -50,10 +54,12 @@ namespace Cedar { namespace Matchers {
         NSString *expectedReason_;
         NSString *expectedName_;
     };
+}}}
 
-    RaiseException raise() __attribute__((deprecated("Please use raise_exception")));
-    RaiseException raise();
-
-    static const RaiseException raise_exception;
-
+#pragma mark - public interface
+namespace Cedar { namespace Matchers {
+    using CedarRaiseException = Cedar::Matchers::Private::RaiseException;
+    static const CedarRaiseException raise_exception;
 }}
+
+#endif // __cplusplus

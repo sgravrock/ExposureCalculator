@@ -1,6 +1,9 @@
 #import "Base.h"
 
-namespace Cedar { namespace Matchers {
+#ifdef __cplusplus
+
+#pragma mark - private interface
+namespace Cedar { namespace Matchers { namespace Private {
     struct BeInstanceOfMessageBuilder {
         template<typename U>
         static NSString * string_for_actual_value(const U & value) {
@@ -23,6 +26,9 @@ namespace Cedar { namespace Matchers {
 
         BeInstanceOf & or_any_subclass();
 
+        template<typename U>
+        NSString * failure_message_for(const U &) const;
+
     protected:
         virtual NSString * failure_message_end() const;
 
@@ -30,10 +36,6 @@ namespace Cedar { namespace Matchers {
         const Class expectedClass_;
         bool includeSubclasses_;
     };
-
-    inline BeInstanceOf be_instance_of(const Class expectedValue) {
-        return BeInstanceOf(expectedValue);
-    }
 
     inline BeInstanceOf::BeInstanceOf(const Class expectedClass)
     : Base<BeInstanceOfMessageBuilder>(), expectedClass_(expectedClass), includeSubclasses_(false) {}
@@ -43,6 +45,17 @@ namespace Cedar { namespace Matchers {
     inline BeInstanceOf & BeInstanceOf::or_any_subclass() {
         includeSubclasses_ = true;
         return *this;
+    }
+
+    template<typename U>
+    NSString * BeInstanceOf::failure_message_for(const U & value) const {
+        NSString *failureMessage = Base<BeInstanceOfMessageBuilder>::failure_message_for(value);
+
+        if ([NSStringFromClass(expectedClass_) isEqualToString:NSStringFromClass([value class])]) {
+            failureMessage = [failureMessage stringByAppendingFormat:@". %@", @"Did you accidentally add the class to your specs target also?"];
+        }
+
+        return failureMessage;
     }
 
     inline /*virtual*/ NSString * BeInstanceOf::failure_message_end() const {
@@ -62,4 +75,15 @@ namespace Cedar { namespace Matchers {
             return [actualValue isMemberOfClass:expectedClass_];
         }
     }
+}}}
+
+#pragma mark - public interface
+namespace Cedar { namespace Matchers {
+    using CedarBeInstanceOf = Cedar::Matchers::Private::BeInstanceOf;
+
+    inline CedarBeInstanceOf be_instance_of(const Class expectedValue) {
+        return CedarBeInstanceOf(expectedValue);
+    }
 }}
+
+#endif // __cplusplus

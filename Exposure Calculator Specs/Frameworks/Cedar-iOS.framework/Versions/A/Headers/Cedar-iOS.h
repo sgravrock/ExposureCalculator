@@ -1,3 +1,3 @@
+// This header still exists only for backwards-compatibility
+
 #import "Cedar.h"
-#import "CedarApplicationDelegate.h"
-#import "CDRExampleReporterViewController.h"

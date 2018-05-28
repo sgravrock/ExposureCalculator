@@ -1,7 +1,9 @@
 #import <Foundation/Foundation.h>
 #import "Base.h"
 
-namespace Cedar { namespace Matchers {
+#ifdef __cplusplus
+
+namespace Cedar { namespace Matchers { namespace Private  {
 
     template<typename T>
     class BeGreaterThan : public Base<> {
@@ -21,16 +23,11 @@ namespace Cedar { namespace Matchers {
 
     private:
         const T & expectedValue_;
+        void validate_not_nil() const;
     };
 
     template<typename T>
-    BeGreaterThan<T> be_greater_than(const T & expectedValue) {
-        return BeGreaterThan<T>(expectedValue);
-    }
-
-    template<typename T>
-    BeGreaterThan<T>::BeGreaterThan(const T & expectedValue)
-    : Base<>(), expectedValue_(expectedValue) {
+    BeGreaterThan<T>::BeGreaterThan(const T & expectedValue) : Base<>(), expectedValue_(expectedValue) {
     }
 
     template<typename T>
@@ -45,7 +42,30 @@ namespace Cedar { namespace Matchers {
 
     template<typename T> template<typename U>
     bool BeGreaterThan<T>::matches(const U & actualValue) const {
+
+        this->validate_not_nil();
         return Comparators::compare_greater_than(actualValue, expectedValue_);
+    }
+
+    template<typename T>
+    void BeGreaterThan<T>::validate_not_nil() const {
+        if (0 == strncmp(@encode(T), "@", 1) && [[NSValue value:&expectedValue_ withObjCType:@encode(T)] nonretainedObjectValue] == nil) {
+            [[CDRSpecFailure specFailureWithReason:@"Unexpected use of be_greater_than matcher to check for nil; use the be_nil matcher to match nil values"] raise];
+        }
+    }
+
+
+
+}}}
+
+#pragma mark - public interface
+namespace Cedar { namespace Matchers {
+    template<typename T>
+    using CedarBeGreaterThan = Cedar::Matchers::Private::BeGreaterThan<T>;
+
+    template<typename T>
+    CedarBeGreaterThan<T> be_greater_than(const T & expectedValue) {
+        return CedarBeGreaterThan<T>(expectedValue);
     }
 
 #pragma mark operators
@@ -60,3 +80,5 @@ namespace Cedar { namespace Matchers {
         return true;
     }
 }}
+
+#endif // __cplusplus

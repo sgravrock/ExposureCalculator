@@ -1,3 +1,5 @@
+#ifdef __cplusplus
+
 #import <vector>
 #import <map>
 #import <set>
@@ -8,6 +10,11 @@ namespace Cedar { namespace Matchers { namespace Comparators {
 #pragma mark - compare_empty
     template<typename T>
     bool compare_empty(const T & container) {
+        if (container == nil) {
+            [[CDRSpecFailure specFailureWithReason:@"Unexpected use of be_empty matcher to check for nil. The actual value was nil. This is probably not what you intended to verify."] raise];
+            return false;
+        }
+
         if ([container respondsToSelector:@selector(count)]) {
             return 0 == [container performSelector:@selector(count)];
         } else {
@@ -204,3 +211,5 @@ namespace Cedar { namespace Matchers { namespace Comparators {
         return compare_contains((char *)actualValue, expectedContains, (NSString *)nil, options);
     }
 }}}
+
+#endif // __cplusplus

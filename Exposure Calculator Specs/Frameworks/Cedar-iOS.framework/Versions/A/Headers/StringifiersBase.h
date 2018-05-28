@@ -1,4 +1,7 @@
 #import <Foundation/Foundation.h>
+
+#ifdef __cplusplus
+
 #include <sstream>
 
 namespace Cedar { namespace Matchers { namespace Stringifiers {
@@ -35,6 +38,7 @@ namespace Cedar { namespace Matchers { namespace Stringifiers {
         if (!value) {
             return [NSString stringWithFormat:@"%@", value];
         }
+
         return string_for([value floatValue]);
     }
 
@@ -56,4 +60,10 @@ namespace Cedar { namespace Matchers { namespace Stringifiers {
     inline NSString * string_for(NSRange value) {
         return NSStringFromRange(value);
     }
+
+    inline NSString * string_for(NSDate *date) {
+        return [NSString stringWithFormat:@"%@ (%f)", date, [date timeIntervalSince1970]];
+    }
 }}}
+
+#endif // __cplusplus

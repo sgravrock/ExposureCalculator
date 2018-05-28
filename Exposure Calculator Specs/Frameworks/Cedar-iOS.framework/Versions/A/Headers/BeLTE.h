@@ -1,8 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "Base.h"
 
-namespace Cedar { namespace Matchers {
+#ifdef __cplusplus
 
+#pragma mark - private interface
+namespace Cedar { namespace Matchers { namespace Private {
     template<typename T>
     class BeLTE : public Base<> {
     private:
@@ -21,21 +23,11 @@ namespace Cedar { namespace Matchers {
 
     private:
         const T & expectedValue_;
+        void validate_not_nil() const;
     };
 
     template<typename T>
-    BeLTE<T> be_lte(const T & expectedValue) {
-        return BeLTE<T>(expectedValue);
-    }
-
-    template<typename T>
-    BeLTE<T> be_less_than_or_equal_to(const T & expectedValue) {
-        return be_lte(expectedValue);
-    }
-
-    template<typename T>
-    BeLTE<T>::BeLTE(const T & expectedValue)
-    : Base<>(), expectedValue_(expectedValue) {
+    BeLTE<T>::BeLTE(const T & expectedValue) : Base<>(), expectedValue_(expectedValue) {
     }
 
     template<typename T>
@@ -50,7 +42,33 @@ namespace Cedar { namespace Matchers {
 
     template<typename T> template<typename U>
     bool BeLTE<T>::matches(const U & actualValue) const {
+        this->validate_not_nil();
         return !Comparators::compare_greater_than(actualValue, expectedValue_);
+    }
+
+    template<typename T>
+    void BeLTE<T>::validate_not_nil() const {
+        if (0 == strncmp(@encode(T), "@", 1) && [[NSValue value:&expectedValue_ withObjCType:@encode(T)] nonretainedObjectValue] == nil) {
+            [[CDRSpecFailure specFailureWithReason:@"Unexpected use of be_less_than_or_equal_to matcher to check for nil; use the be_nil matcher to match nil values"] raise];
+        }
+    }
+
+
+}}}
+
+#pragma mark - public interface
+namespace Cedar { namespace Matchers {
+    template<typename T>
+    using CedarBeLTE = Cedar::Matchers::Private::BeLTE<T>;
+
+    template<typename T>
+    CedarBeLTE<T> be_lte(const T & expectedValue) {
+        return CedarBeLTE<T>(expectedValue);
+    }
+
+    template<typename T>
+    CedarBeLTE<T> be_less_than_or_equal_to(const T & expectedValue) {
+        return be_lte(expectedValue);
     }
 
 #pragma mark operators
@@ -65,3 +83,5 @@ namespace Cedar { namespace Matchers {
         return true;
     }
 }}
+
+#endif // __cplusplus

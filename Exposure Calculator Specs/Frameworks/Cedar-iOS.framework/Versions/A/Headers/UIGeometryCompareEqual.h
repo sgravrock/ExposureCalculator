@@ -1,7 +1,10 @@
 #import <UIKit/UIGeometry.h>
+#import <UIKit/UIKit.h>
 
 #import "ComparatorsBase.h"
 #import "UIGeometryStringifiers.h"
+
+#ifdef __cplusplus
 
 namespace Cedar { namespace Matchers { namespace Comparators {
     template<typename U>
@@ -28,4 +31,11 @@ namespace Cedar { namespace Matchers { namespace Comparators {
     bool compare_equal(CGAffineTransform const actualValue, const U & expectedValue) {
         return CGAffineTransformEqualToTransform(actualValue, expectedValue);
     }
+
+    template<typename U>
+    bool compare_equal(UIImage *actualImage, const U & expectedImage) {
+        return [expectedImage isEqual:actualImage] || [UIImagePNGRepresentation(expectedImage) isEqual:UIImagePNGRepresentation(actualImage)];
+    }
 }}}
+
+#endif // __cplusplus

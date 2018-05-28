@@ -2,7 +2,20 @@
 #import "CedarStringifiers.h"
 #import "CedarComparators.h"
 
+#ifdef __cplusplus
+
 namespace Cedar { namespace Doubles {
+
+    inline const char *strip_encoding_qualifiers(const char *);
+
+    const char *strip_encoding_qualifiers(const char *encoding) {
+        static const char *encoding_qualifiers = "rnNoORV";
+        const char *stripped = encoding;
+        while (strchr(encoding_qualifiers, stripped[0])) {
+            ++ stripped;
+        }
+        return stripped;
+    }
 
     template<typename T>
     class ValueArgument : public Argument {
@@ -23,6 +36,7 @@ namespace Cedar { namespace Doubles {
         virtual unsigned int specificity_ranking() const;
 
     protected:
+        bool matches_encoding_excluding_qualifiers(const char *) const;
         bool both_are_objects(const char *) const;
         bool both_are_not_objects(const char *) const;
         bool both_are_not_pointers(const char *) const;
@@ -58,7 +72,7 @@ namespace Cedar { namespace Doubles {
 
     template<typename T>
     /* virtual */ bool ValueArgument<T>::matches_encoding(const char * actual_argument_encoding) const {
-        return this->both_are_objects(actual_argument_encoding) ||
+        return this->matches_encoding_excluding_qualifiers(actual_argument_encoding) ||
         this->both_are_not_objects_pointers_nor_cstrings(actual_argument_encoding) ||
         this->nil_argument(actual_argument_encoding);
     }
@@ -77,6 +91,16 @@ namespace Cedar { namespace Doubles {
     /* virtual */ unsigned int ValueArgument<T>::specificity_ranking() const { return 1000; }
 
 #pragma mark - Protected interface
+    template<typename T>
+    bool ValueArgument<T>::matches_encoding_excluding_qualifiers(const char * actual_argument_encoding) const {
+        const char *encoding_excluding_qualifiers = strip_encoding_qualifiers(@encode(T));
+        const char *actual_argument_encoding_excluding_qualifiers = strip_encoding_qualifiers(actual_argument_encoding);
+        if (strlen(encoding_excluding_qualifiers) == strlen(actual_argument_encoding_excluding_qualifiers)) {
+            return 0 == strcmp(encoding_excluding_qualifiers, actual_argument_encoding_excluding_qualifiers);
+        }
+        return false;
+    }
+
     template<typename T>
     bool ValueArgument<T>::both_are_objects(const char * actual_argument_encoding) const {
         return 0 == strncmp(@encode(T), "@", 1) && 0 == strncmp(actual_argument_encoding, "@", 1);
@@ -135,3 +159,5 @@ namespace Cedar { namespace Doubles {
     };
 
 }}
+
+#endif // __cplusplus
