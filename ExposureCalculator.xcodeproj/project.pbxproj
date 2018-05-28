@@ -397,7 +397,7 @@
 				ORGANIZATIONNAME = "Steve Gravrock";
 				TargetAttributes = {
 					AAE9054016C619CE00CD025E = {
-						DevelopmentTeam = 9D22LLE3F8;
+						DevelopmentTeam = FYS52FL8VF;
 					};
 				};
 			};
@@ -662,6 +662,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FYS52FL8VF;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -677,6 +678,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FYS52FL8VF;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExposureCalculator/ExposureCalculator-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
