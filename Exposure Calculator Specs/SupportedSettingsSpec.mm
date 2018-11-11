@@ -29,7 +29,7 @@ describe(@"SupportedSettings", ^{
 	});
 	
 	it(@"should default to the full range of settings", ^{
-		verifyApertures(@1.4, @22);
+		verifyApertures(@1.0, @22);
 		verifyShutterSpeeds(@(32 * 60), @(1.0 / 800.0));
 		verifyIsos(@50, @6400);
 	});
@@ -41,12 +41,12 @@ describe(@"SupportedSettings", ^{
 		verifyApertures(@4, @16);
 	});
 	
-	it(@"should limit shutter speeds to the spedified range", ^{
+	it(@"should limit shutter speeds to the specified range", ^{
 		[target includeValuesFrom:@30 to:@(1.0 / 30.0) inComponent:kShutterComponent];
 		verifyShutterSpeeds(@30, @(1.0 / 30.0));
 	});
 
-	it(@"should limit sensitivity to the spedified range", ^{
+	it(@"should limit sensitivity to the specified range", ^{
 		[target includeValuesFrom:@100 to:@800 inComponent:kSensitivityComponent];
 		verifyIsos(@100, @800);
 	});

@@ -79,7 +79,9 @@ describe(@"ChosenSettingsModel", ^{
 	describe(@"Responding to Lv changes", ^{
 		describe(@"When there are no existing selections", ^{
 			it(@"should select the first compatible settings", ^{
-                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithDefaults];
+                SupportedSettings *settings = [[SupportedSettings alloc] init];
+                [settings includeValuesFrom:@1.4 to:@22 inComponent:kApertureComponent];
+                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithSettings:settings];
 				ctx.calculator.thirdsLv = -9;
                 [ctx verifyAperture:1.4 shutter:30 sensitivity:50];
 			});
@@ -87,7 +89,9 @@ describe(@"ChosenSettingsModel", ^{
 		
 		describe(@"When there are existing, compatible selections", ^{
 			it(@"should keep a single selection", ^{
-                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithDefaults];
+                SupportedSettings *settings = [[SupportedSettings alloc] init];
+                [settings includeValuesFrom:@1.4 to:@22 inComponent:kApertureComponent];
+                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithSettings:settings];
                 [ctx selectShutterSpeed:8];
                 ctx.calculator.thirdsLv = -9;
                 [ctx verifyAperture:1.4 shutter:8 sensitivity:200];
@@ -104,14 +108,18 @@ describe(@"ChosenSettingsModel", ^{
 		
 		describe(@"When some existing selections are incompatible", ^{
 			it(@"should discard a single incompatible selection", ^{
-                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithDefaults];
+                SupportedSettings *settings = [[SupportedSettings alloc] init];
+                [settings includeValuesFrom:@1.4 to:@22 inComponent:kApertureComponent];
+                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithSettings:settings];
                 [ctx selectShutterSpeed:6];
 				ctx.calculator.thirdsLv = -24;
                 [ctx verifyAperture:1.4 shutter:960 sensitivity:50];
 			});
 			
 			it(@"should keep the most recent setting if it's compatible", ^{
-                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithDefaults];
+                SupportedSettings *settings = [[SupportedSettings alloc] init];
+                [settings includeValuesFrom:@1.4 to:@22 inComponent:kApertureComponent];
+                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithSettings:settings];
 				// This test depends on the configured max ISO
 				expect([[[SupportedSettings alloc] init].components[kSensitivityComponent] lastObject]).to(equal(@6400));
                 [ctx selectAperture:2.8];
@@ -123,7 +131,9 @@ describe(@"ChosenSettingsModel", ^{
 			});
 			
 			it(@"should keep a compatible older selection if the most recent is incompatible", ^{
-                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithDefaults];
+                SupportedSettings *settings = [[SupportedSettings alloc] init];
+                [settings includeValuesFrom:@1.4 to:@22 inComponent:kApertureComponent];
+                CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithSettings:settings];
 				// This test depends on our configured longest shutter speed.
 				NSNumber *minShutter = @1920;
 				expect([[SupportedSettings alloc] init].components[kShutterComponent][0]).to(equal(minShutter));
