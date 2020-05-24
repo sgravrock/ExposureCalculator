@@ -18,6 +18,6 @@
 @property (nonatomic) int thirdsLv;
 
 - (id)initWithSettings:(SupportedSettings *)settings;
-- (NSArray *)validSettings;
+- (NSArray<NSArray<NSNumber *> *> *)validSettings;
 
 @end

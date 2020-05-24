@@ -29,9 +29,8 @@
 {
 	self.labels = @[@"Aperture range", @"Shutter range", @"ISO range"];
 	SupportedSettings *s = [[SupportedSettings alloc] init];
-	NSArray *components = s.components;
 	
-	self.possibleSettings = [components map:^id(id it) {
+	self.possibleSettings = [s.components map:^id(id it) {
 		ArrayDataSource *ds = [[ArrayDataSource alloc] init];
 		ds.components = @[it, it];
 		return ds;

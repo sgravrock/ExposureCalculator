@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (Functional)
+@interface NSArray<T> (Functional)
 
-- (NSArray *)map:(id(^)(id it))mapper;
+- (NSArray<T> *)map:(T(^)(T it))mapper;
 
 @end

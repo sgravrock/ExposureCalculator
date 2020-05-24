@@ -35,9 +35,9 @@
 	return self;
 }
 
-- (NSArray *)validSettings
+- (NSArray<NSArray<NSNumber *> *> *)validSettings
 {
-	NSMutableArray *settings = [NSMutableArray array];
+	NSMutableArray<NSArray<NSNumber *> *> *settings = [NSMutableArray array];
 	NSArray *components = self.supportedSettings.components;
 
 	for (NSNumber *aperture in components[kApertureComponent]) {

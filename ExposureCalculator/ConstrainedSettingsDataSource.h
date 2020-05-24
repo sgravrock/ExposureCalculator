@@ -10,7 +10,7 @@
 #import "ArrayDataSource.h"
 @class Calculator;
 
-@interface ConstrainedSettingsDataSource : ArrayDataSource
+@interface ConstrainedSettingsDataSource : ArrayDataSource<NSArray<NSNumber *> *>
 
 - (id)initWithCalculator:(Calculator *)calculator;
 - (void)update;

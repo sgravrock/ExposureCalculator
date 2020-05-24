@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ArrayDataSource : NSObject<UIPickerViewDataSource>
+@interface ArrayDataSource<T> : NSObject<UIPickerViewDataSource>
 
 // components is an NSArray of one or more NSArray instances, each of which will provide
 // data for one of the picker view's wheels.
-@property (nonatomic, strong) NSArray *components;
+@property (nonatomic, strong) NSArray<T> *components;
 
 @end

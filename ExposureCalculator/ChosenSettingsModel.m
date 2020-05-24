@@ -69,7 +69,7 @@ static void * const kvo_context = (void * const)&kvo_context;
 - (void)update
 {
 	[self.dataSource update];
-	NSArray *settings = [self.calculator.validSettings objectAtIndex:[self findSettings]];
+	NSArray<NSNumber *> *settings = [self.calculator.validSettings objectAtIndex:[self findSettings]];
 	
 	for (int i = 0; i < 3; i++) {
 		NSUInteger settingIx = [self.dataSource.components[i] indexOfObject:settings[i]];

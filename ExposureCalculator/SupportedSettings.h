@@ -18,7 +18,7 @@
 // Apertures are doubles, e.g. f/2.8 is stored as 2.8
 // Shutter speeds are doubles, in seconds
 // ISO sensitivities are integers
-@property (nonatomic, readonly, strong) NSArray *components;
+@property (nonatomic, readonly, strong) NSArray<NSArray<NSNumber *> *> *components;
 
 // Configures the receiver to include the possible settings that are between
 // the specified minimum and maximum.
