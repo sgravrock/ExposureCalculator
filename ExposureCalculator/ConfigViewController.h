@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol ConfigViewControllerDelegate;
+@class SupportedSettings;
 
 @interface ConfigViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,
 	UIPickerViewDelegate>
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIPickerView *pickerView;
 
-- (IBAction)close:(id)sender;
+// Should be set by the caller.
+@property (nonatomic, strong) SupportedSettings *configuration;
 
 @end

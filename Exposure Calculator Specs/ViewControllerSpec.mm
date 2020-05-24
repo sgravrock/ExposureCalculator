@@ -72,8 +72,7 @@ describe(@"ViewController", ^{
 													 to:[target.configuration.components[kShutterComponent] lastObject] 
 											inComponent:kSensitivityComponent];
 				
-				[target configViewControllerShouldClose:nil];
-				
+				[target viewWillAppear:NO];
 				expect(target.meteredSettingsPicker).to(have_received(@selector(selectRow:inComponent:animated:))
 														.with(0).and_with(0).and_with(NO));
 				expect(target.meteredSettingsPicker).to(have_received(@selector(selectRow:inComponent:animated:))
@@ -95,8 +94,7 @@ describe(@"ViewController", ^{
 													 to:target.configuration.components[kSensitivityComponent][3]
 											inComponent:kSensitivityComponent];
 				
-				[target configViewControllerShouldClose:nil];
-				
+				[target viewWillAppear:NO];
 				expect(target.meteredSettingsPicker).to(have_received(@selector(selectRow:inComponent:animated:))
 														.with(0).and_with(kApertureComponent).and_with(NO));
 				expect(target.meteredSettingsPicker).to(have_received(@selector(selectRow:inComponent:animated:))
@@ -118,8 +116,8 @@ describe(@"ViewController", ^{
 													 to:[target.configuration.components[kSensitivityComponent] lastObject]
 											inComponent:kSensitivityComponent];
 
-				[target configViewControllerShouldClose:nil];
-				
+				[target viewWillAppear:NO];
+
 				// The same settings should be selected. But the set of valid settings changed, so
 				// the selected settings will be at different indices.
 				expect(target.meteredSettingsPicker).to(have_received(@selector(selectRow:inComponent:animated:))
@@ -137,7 +135,7 @@ describe(@"ViewController", ^{
 		NSNumber *minAperture = apertures[apertures.count - 3];
 		NSNumber *maxAperture = [apertures lastObject];
 		[target.configuration includeValuesFrom:minAperture to:maxAperture inComponent:kApertureComponent];
-		[target configViewControllerShouldClose:nil];
+		[target viewWillAppear:NO];
 		NSMutableData *data = [NSMutableData data];
 		NSKeyedArchiver *encoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
 		[target encodeRestorableStateWithCoder:encoder];

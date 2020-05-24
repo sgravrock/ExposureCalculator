@@ -22,7 +22,6 @@
 @end
 
 @implementation MainViewController
-@synthesize configuration;
 
 - (void)viewDidLoad
 {
@@ -69,20 +68,18 @@
 
 #pragma mark - Configuration UI support
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self applyConfigurationChange]; // in case we're coming back from settings
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	// The only segue we use is to the settings view. Before it's performed, we need to let
 	// the settings view know about us so it can get the current settings and let us know
 	// when it's done.
 	ConfigViewController *dest = segue.destinationViewController;
-	[dest setDelegate:self];
-}
-
-- (void)configViewControllerShouldClose:(ConfigViewController *)sender
-{
-	[self dismissViewControllerAnimated:YES completion:^{
-		[self applyConfigurationChange];
-	}];
+	dest.configuration = self.configuration;
 }
 
 - (void)applyConfigurationChange

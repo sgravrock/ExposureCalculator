@@ -1,5 +1,5 @@
-enum {
+typedef enum {
 	kApertureComponent = 0,
 	kShutterComponent = 1,
 	kSensitivityComponent = 2
-};
+} ExposureComponent;

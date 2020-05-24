@@ -114,7 +114,6 @@
 		AA9915B216D9CC3100346457 /* ChosenSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChosenSettingsModel.h; sourceTree = "<group>"; };
 		AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChosenSettingsModel.m; sourceTree = "<group>"; };
 		AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChosenSettingsModelSpec.mm; sourceTree = "<group>"; };
-		AA9A79EE16F6356000FA91E9 /* ConfigViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewControllerDelegate.h; sourceTree = "<group>"; };
 		AAA6991616DA75EA003F0E0C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
 		AAB6C80F19D79A5300843F3A /* ConfigTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTableViewCell.h; sourceTree = "<group>"; };
 		AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewCell.m; sourceTree = "<group>"; };
@@ -238,7 +237,6 @@
 				AA33396116F56A17003C2454 /* MinMaxPair.m */,
 				AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */,
 				AA98CA2016C8792E00C13E14 /* SupportedSettings.m */,
-				AA9A79EE16F6356000FA91E9 /* ConfigViewControllerDelegate.h */,
 				AAB6C80F19D79A5300843F3A /* ConfigTableViewCell.h */,
 				AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */,
 			);

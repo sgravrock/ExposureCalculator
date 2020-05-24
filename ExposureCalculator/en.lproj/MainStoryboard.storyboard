@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F1096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="k9f-02-n9l">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -15,27 +16,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Rkc-Pc-T4t"/>
                     </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="iaX-Gx-PMW">
-                                <rect key="frame" x="0.0" y="276" width="568" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="2rH-4k-5eY"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Settings" id="ROp-vs-pKd">
-                                        <connections>
-                                            <segue destination="Ugc-28-lV6" kind="modal" id="3xI-oF-Zal"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeo-LJ-qiV" userLabel="Centering wrapper">
-                                <rect key="frame" x="44" y="20" width="480" height="256"/>
+                                <rect key="frame" x="208" y="44" width="480" height="349"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqb-X2-2gv" userLabel="Left Picker View">
-                                        <rect key="frame" x="240" y="40" width="240" height="216"/>
+                                        <rect key="frame" x="240" y="133" width="240" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="Guj-wJ-Bvt"/>
                                             <constraint firstAttribute="height" constant="216" id="sMq-ww-SIL"/>
@@ -45,7 +33,7 @@
                                         </connections>
                                     </pickerView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FC-4h-UcU" userLabel="Right Picker View">
-                                        <rect key="frame" x="0.0" y="40" width="240" height="216"/>
+                                        <rect key="frame" x="0.0" y="133" width="240" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="9dm-PX-nbv"/>
                                             <constraint firstAttribute="height" constant="216" id="OIY-04-BAm"/>
@@ -55,19 +43,19 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metered settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83n-uD-luF">
-                                        <rect key="frame" x="56" y="10" width="129" height="21"/>
+                                        <rect key="frame" x="55" y="10" width="130" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your choices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hm-IM-F1X">
-                                        <rect key="frame" x="311" y="10" width="99" height="21"/>
+                                        <rect key="frame" x="310.5" y="10" width="99" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="83n-uD-luF" firstAttribute="top" secondItem="xeo-LJ-qiV" secondAttribute="top" constant="10" id="0A5-s3-OjC"/>
                                     <constraint firstAttribute="bottom" secondItem="0FC-4h-UcU" secondAttribute="bottom" id="4VG-dn-zMy"/>
@@ -82,17 +70,20 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Rkc-Pc-T4t" firstAttribute="top" secondItem="iaX-Gx-PMW" secondAttribute="bottom" id="15x-Sd-wUe"/>
-                            <constraint firstItem="iaX-Gx-PMW" firstAttribute="top" secondItem="xeo-LJ-qiV" secondAttribute="bottom" id="7nC-kj-ls4"/>
                             <constraint firstItem="xeo-LJ-qiV" firstAttribute="top" secondItem="F8S-14-BVZ" secondAttribute="bottom" id="KmR-zr-44n"/>
-                            <constraint firstAttribute="trailing" secondItem="iaX-Gx-PMW" secondAttribute="trailing" id="Qy6-HP-Xyt"/>
+                            <constraint firstItem="Rkc-Pc-T4t" firstAttribute="top" secondItem="xeo-LJ-qiV" secondAttribute="bottom" id="o6P-I4-ejz"/>
                             <constraint firstAttribute="centerX" secondItem="xeo-LJ-qiV" secondAttribute="centerX" id="qKh-Xm-aYK"/>
-                            <constraint firstItem="iaX-Gx-PMW" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="xag-lm-lIq"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationItem key="navigationItem" id="zWT-xm-f1d">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="J38-lJ-scg">
+                            <connections>
+                                <segue destination="Ugc-28-lV6" kind="push" id="1FD-ge-Zdl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="chosenSettingsPicker" destination="dqb-X2-2gv" id="VIE-xz-k78"/>
                         <outlet property="meteredSettingsPicker" destination="0FC-4h-UcU" id="wME-IG-OEY"/>
@@ -100,7 +91,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="-17"/>
+            <point key="canvasLocation" x="-567" y="58"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="S3e-Kt-SSL">
+            <objects>
+                <navigationController restorationIdentifier="mainNavigationController" id="k9f-02-n9l" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iv4-Ri-MeI">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="oMP-N5-qvF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4g-YH-EAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-567" y="-799"/>
         </scene>
         <!--Config View Controller-->
         <scene sceneID="Dqg-Kb-Jgk">
@@ -111,46 +119,32 @@
                         <viewControllerLayoutGuide type="bottom" id="iWf-qS-xFy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="haJ-uu-3bY">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="6hU-Ld-F2M">
-                                <rect key="frame" x="0.0" y="276" width="568" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="J5O-1b-8ch"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Settings" id="cIq-V4-5sd">
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="L12-v6-Ufy">
-                                            <connections>
-                                                <action selector="close:" destination="Ugc-28-lV6" id="qfP-bU-Rzg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMN-py-R0X" userLabel="Old wrapper View">
                                 <rect key="frame" x="450" y="0.0" width="480" height="256"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qy7-cV-yc1" userLabel="Centering wrapper">
-                                <rect key="frame" x="44" y="20" width="480" height="256"/>
+                                <rect key="frame" x="208" y="44" width="480" height="349"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="t68-oq-YE3">
-                                        <rect key="frame" x="0.0" y="40" width="240" height="216"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="133" width="240" height="216"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="3tQ-mW-Fa2"/>
                                             <constraint firstAttribute="width" constant="240" id="4z3-8C-pQv"/>
                                         </constraints>
-                                        <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Ugc-28-lV6" id="p83-MD-gKg"/>
                                             <outlet property="delegate" destination="Ugc-28-lV6" id="XxS-bq-KAi"/>
                                         </connections>
                                     </tableView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urv-W7-ehz">
-                                        <rect key="frame" x="240" y="40" width="240" height="216"/>
+                                        <rect key="frame" x="240" y="133" width="240" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="65d-Oq-ElD"/>
                                             <constraint firstAttribute="width" constant="240" id="FK1-tu-dmF"/>
@@ -162,17 +156,17 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eK-IB-xYn">
                                         <rect key="frame" x="241" y="10" width="120" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="To" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr2-bp-9Br">
                                         <rect key="frame" x="349" y="11" width="120" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="2eK-IB-xYn" firstAttribute="leading" secondItem="urv-W7-ehz" secondAttribute="leading" constant="1" id="121-55-X61"/>
                                     <constraint firstItem="2eK-IB-xYn" firstAttribute="width" secondItem="urv-W7-ehz" secondAttribute="width" multiplier="0.5" id="APN-Hm-Otc"/>
@@ -188,17 +182,14 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6hU-Ld-F2M" firstAttribute="top" secondItem="qy7-cV-yc1" secondAttribute="bottom" id="7Gu-cF-DgZ"/>
                             <constraint firstAttribute="centerX" secondItem="qy7-cV-yc1" secondAttribute="centerX" id="D6h-i4-ZK5"/>
-                            <constraint firstItem="iWf-qS-xFy" firstAttribute="top" secondItem="6hU-Ld-F2M" secondAttribute="bottom" id="E48-ma-PU7"/>
-                            <constraint firstAttribute="trailing" secondItem="6hU-Ld-F2M" secondAttribute="trailing" id="G05-K3-83R"/>
-                            <constraint firstItem="6hU-Ld-F2M" firstAttribute="leading" secondItem="haJ-uu-3bY" secondAttribute="leading" id="jSp-Sn-nmQ"/>
+                            <constraint firstItem="iWf-qS-xFy" firstAttribute="top" secondItem="qy7-cV-yc1" secondAttribute="bottom" id="idm-UP-s2a"/>
                             <constraint firstItem="qy7-cV-yc1" firstAttribute="top" secondItem="X9a-20-ibW" secondAttribute="bottom" id="mHZ-DC-IW4"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationItem key="navigationItem" id="aHS-1N-c1s"/>
                     <connections>
                         <outlet property="pickerView" destination="urv-W7-ehz" id="jrg-Oh-C8y"/>
                         <outlet property="tableView" destination="t68-oq-YE3" id="bVg-oy-dlH"/>
@@ -206,12 +197,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nco-Hk-aKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-29" y="366"/>
+            <point key="canvasLocation" x="185" y="58"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
+    <resources>
+        <image name="gear" catalog="system" width="64" height="58"/>
+    </resources>
 </document>

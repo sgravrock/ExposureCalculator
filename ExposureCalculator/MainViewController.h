@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ChosenSettingsModel.h"
-#import "ConfigViewControllerDelegate.h"
+@class SupportedSettings;
 
-@interface MainViewController : UIViewController<UIPickerViewDelegate, ChosenSettingsModelDelegate,
-	ConfigViewControllerDelegate>
+@interface MainViewController : UIViewController<UIPickerViewDelegate, ChosenSettingsModelDelegate>
 
+@property (nonatomic, strong) SupportedSettings *configuration;
 @property (nonatomic, strong) IBOutlet UIPickerView *meteredSettingsPicker;
 @property (nonatomic, strong) IBOutlet UIPickerView *chosenSettingsPicker;
 

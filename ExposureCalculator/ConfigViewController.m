@@ -7,7 +7,6 @@
 //
 
 #import "ConfigViewController.h"
-#import "ConfigViewControllerDelegate.h"
 #import "MinMaxPair.h"
 #import "SupportedSettings.h"
 #import "Setting.h"
@@ -16,7 +15,7 @@
 #import "ConfigTableViewCell.h"
 
 @interface ConfigViewController () {
-	NSInteger selectedSetting;
+	ExposureComponent selectedSetting;
 }
 @property (nonatomic, strong) NSArray *possibleSettings; // of ArrayDataSouce;
 @property (nonatomic, strong) NSMutableArray *selections; // of MinMaxPair;
@@ -39,7 +38,7 @@
 	self.selections = [NSMutableArray arrayWithCapacity:3];
 	
 	for (int i = 0; i < 3; i++) {
-		NSArray *currentRange = self.delegate.configuration.components[i];
+		NSArray *currentRange = self.configuration.components[i];
 		NSUInteger min = [s.components[i] indexOfObject:currentRange[0]];
 		NSUInteger max = [s.components[i] indexOfObject:[currentRange lastObject]];
 		self.selections[i] = [[MinMaxPair alloc] initWithMin:min max:max];
@@ -50,23 +49,6 @@
 								animated:NO
 						  scrollPosition:UITableViewScrollPositionNone];
 	[self tableView:self.tableView didSelectRowAtIndexPath:initialSelection];
-}
-
-- (IBAction)close:(id)sender
-{
-	// Update the configuration with the user's selections. Then tell the delegate that we're done.
-	SupportedSettings *config = self.delegate.configuration;
-	
-	for (int i = 0; i < 3; i++) {
-		ArrayDataSource *ds = self.possibleSettings[i];
-		NSArray *values = ds.components[0];
-		MinMaxPair *selected = self.selections[i];
-		NSNumber *min = values[selected.min];
-		NSNumber *max = values[selected.max];
-		[config includeValuesFrom:min to:max inComponent:i];
-	}
-	
-	[self.delegate configViewControllerShouldClose:self];
 }
 
 #pragma mark - Table view data source
@@ -99,7 +81,7 @@
 {
 	// Initialize the picker view based on whatever was just selected in the table view
 	// (aperture, shutter or ISO)
-	selectedSetting = indexPath.row;
+	selectedSetting = (ExposureComponent)indexPath.row;
 	self.pickerView.dataSource = self.possibleSettings[selectedSetting];
 	[self.pickerView reloadAllComponents];
 	[self.pickerView selectRow:[self.selections[selectedSetting] min] inComponent:0 animated:NO];
@@ -148,6 +130,17 @@
 		currentSettingSelections.max = row;
 		[pickerView selectRow:currentSettingSelections.min inComponent:0 animated:YES];
 	}
+	
+	[self updateConfigurationForComponent:selectedSetting];
+}
+
+- (void)updateConfigurationForComponent:(ExposureComponent)component {
+	ArrayDataSource *ds = self.possibleSettings[component];
+	NSArray *values = ds.components[0];
+	MinMaxPair *selected = self.selections[component];
+	NSNumber *min = values[selected.min];
+	NSNumber *max = values[selected.max];
+	[self.configuration includeValuesFrom:min to:max inComponent:component];
 }
 
 @end
