@@ -45,7 +45,7 @@
 
 - (NSArray *)sortedArrayFromSet:(NSSet *)set forComponent:(int)component
 {
-	BOOL ascending = component != kShutterComponent;
+	BOOL ascending = component == kApertureComponent;
 	NSSortDescriptor *d = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:ascending];
 	return [set sortedArrayUsingDescriptors:@[d]];
 }

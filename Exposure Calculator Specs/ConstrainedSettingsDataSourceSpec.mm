@@ -24,7 +24,7 @@ describe(@"ConstrainedSettingsDataSource", ^{
 		[target update];
 		NSArray *expectedApertures = @[@4.0, @4.5];
 		NSArray *expectedShutterSpeeds = @[[NSNumber numberWithDouble:1.0/60], [NSNumber numberWithDouble:1.0/80]];
-		NSArray *expectedIsos = @[@125, @160];
+		NSArray *expectedIsos = @[@160, @125];
 		expect(target.components[0]).to(equal(expectedApertures));
 		expect(target.components[1]).to(equal(expectedShutterSpeeds));
 		expect(target.components[2]).to(equal(expectedIsos));		

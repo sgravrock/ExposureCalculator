@@ -120,10 +120,10 @@ describe(@"ChosenSettingsModel", ^{
                 SupportedSettings *settings = [[SupportedSettings alloc] init];
                 [settings includeValuesFrom:@1.4 to:@22 inComponent:kApertureComponent];
                 CSMSpecContext *ctx = [[CSMSpecContext alloc] initWithSettings:settings];
-				// This test depends on the configured max ISO
-				expect([[[SupportedSettings alloc] init].components[kSensitivityComponent] lastObject]).to(equal(@6400));
+                [ctx selectSensitivity:6400];
                 [ctx selectAperture:2.8];
                 [ctx selectShutterSpeed:6];
+                
 				ctx.calculator.thirdsLv = 3 * -6.7;
 				// We can reach -6.7 with either f/2.8 or 6s, but not both.
 				// Since the shutter speed was selected most recently, we drop the aperture.

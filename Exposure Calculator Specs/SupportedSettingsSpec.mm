@@ -31,7 +31,7 @@ describe(@"SupportedSettings", ^{
 	it(@"should default to the full range of settings", ^{
 		verifyApertures(@1.0, @22);
 		verifyShutterSpeeds(@(32 * 60), @(1.0 / 800.0));
-		verifyIsos(@50, @6400);
+		verifyIsos(@6400, @50);
 	});
 	
 	it(@"should limit apertures to the specified range", ^{
@@ -48,7 +48,7 @@ describe(@"SupportedSettings", ^{
 
 	it(@"should limit sensitivity to the specified range", ^{
 		[target includeValuesFrom:@100 to:@800 inComponent:kSensitivityComponent];
-		verifyIsos(@100, @800);
+		verifyIsos(@800, @100);
 	});
 });
 

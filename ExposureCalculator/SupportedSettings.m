@@ -64,8 +64,8 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	NSArray *allApertures = @[@1.0, @1.1, @1.2, @1.4, @1.6, @1.8, @2.0, @2.2, @2.5,
 	@2.8, @3.2, @3.5, @4.0, @4.5, @5.0, @5.6, @6.3, @7.1, @8.0,
 	@9.0, @10.0, @11.0, @13.0, @14.0, @16.0, @18.0, @20.0, @22.0];
-	NSArray *allSensitivities = @[@50, @64, @100, @125, @160, @200, @250, @320, @400, @500, @640,
-	@800, @1000, @1250, @1600, @2000, @2500, @3200, @4000, @5000, @6400];
+	NSArray *allSensitivities = @[@6400, @5000, @4000, @3200, @2500, @2000, @1600, @1250, @1000,
+    @800, @640, @500, @400, @320, @250, @200, @160, @125, @100, @64, @50];
 	
 	NSMutableArray *speeds = [NSMutableArray arrayWithCapacity:63];
 	
@@ -151,7 +151,7 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	NSArray *filtered = [SupportedSettings filterSettings:allValues[component]
 													 from:min
 													   to:max
-												ascending:component != kShutterComponent];
+												ascending:component == kApertureComponent];
 	[mutableComponents replaceObjectAtIndex:component withObject:filtered];
 }
 
