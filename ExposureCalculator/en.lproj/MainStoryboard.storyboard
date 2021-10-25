@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="k9f-02-n9l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="k9f-02-n9l">
     <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,13 +43,13 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metered settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83n-uD-luF">
-                                        <rect key="frame" x="55" y="10" width="130" height="21"/>
+                                        <rect key="frame" x="55.5" y="10" width="129" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your choices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hm-IM-F1X">
-                                        <rect key="frame" x="310.5" y="10" width="99" height="21"/>
+                                        <rect key="frame" x="311" y="10" width="98" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -78,11 +78,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zWT-xm-f1d">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="J38-lJ-scg">
-                            <connections>
-                                <segue destination="Ugc-28-lV6" kind="push" id="1FD-ge-Zdl"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Settings" image="gear" catalog="system" id="J38-lJ-scg">
+                                <connections>
+                                    <segue destination="Ugc-28-lV6" kind="push" id="1FD-ge-Zdl"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="uxJ-hn-K8A">
+                                <connections>
+                                    <segue destination="dQa-ZM-ftG" kind="push" destinationCreationSelector="showSwiftUiSettings:" id="cku-5y-RM9"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="chosenSettingsPicker" destination="dqb-X2-2gv" id="VIE-xz-k78"/>
@@ -100,7 +107,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iv4-Ri-MeI">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="barTintColor" systemColor="darkTextColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="oMP-N5-qvF"/>
@@ -109,6 +116,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4g-YH-EAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-567" y="-799"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="8ad-47-cqc">
+            <objects>
+                <hostingController id="dQa-ZM-ftG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Jqv-Fa-OZf"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BM9-5h-Qs1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143" y="-692"/>
         </scene>
         <!--Config View Controller-->
         <scene sceneID="Dqg-Kb-Jgk">
@@ -201,6 +218,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -13,6 +13,7 @@
 #import "SupportedSettings.h"
 #import "Setting.h"
 #import "ConfigViewController.h"
+#import "ExposureCalculator-Swift.h"
 
 @interface MainViewController ()
 @property (nonatomic, strong) Calculator *calculator;
@@ -47,6 +48,10 @@
 	[self recalculate];
 }
 
+- (IBSegueAction UIViewController *)showSwiftUiSettings:(NSCoder *)coder {
+    return [ConfigViewHostingWrapperFactory makeWithCoder:coder];
+}
+
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {
 	[super encodeRestorableStateWithCoder:coder];
@@ -75,11 +80,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    // TODO: Fix this so it works with the SwiftUI view
+    
 	// The only segue we use is to the settings view. Before it's performed, we need to let
 	// the settings view know about us so it can get the current settings and let us know
 	// when it's done.
-	ConfigViewController *dest = segue.destinationViewController;
-	dest.configuration = self.configuration;
+//	ConfigViewController *dest = segue.destinationViewController;
+//	dest.configuration = self.configuration;
 }
 
 - (void)applyConfigurationChange

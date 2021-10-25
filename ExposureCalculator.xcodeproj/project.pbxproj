@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C64D40B27222AFB0057A1F0 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64D40A27222AFB0057A1F0 /* ConfigView.swift */; };
+		7CC0FB53272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */; };
 		AA271BCD16D0620300DBF4BE /* CliUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA271BCC16D0620300DBF4BE /* CliUtils.m */; };
 		AA33396216F56A17003C2454 /* MinMaxPair.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33396116F56A17003C2454 /* MinMaxPair.m */; };
 		AA33396416F5851C003C2454 /* MinMaxPairSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA33396316F5851C003C2454 /* MinMaxPairSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -79,6 +80,7 @@
 /* Begin PBXFileReference section */
 		7C64D40927222AFB0057A1F0 /* ExposureCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExposureCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		7C64D40A27222AFB0057A1F0 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewHostingWrapperFactory.swift; sourceTree = "<group>"; };
 		AA140B1416FEA71B008B2D45 /* components.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = components.h; sourceTree = "<group>"; };
 		AA1662AE16C6C55400CD606F /* NSScanner+Throwing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSScanner+Throwing.h"; path = "../ExposureCalculatorTests/NSScanner+Throwing.h"; sourceTree = "<group>"; };
 		AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Throwing.m"; path = "../ExposureCalculatorTests/NSScanner+Throwing.m"; sourceTree = "<group>"; };
@@ -243,7 +245,7 @@
 				AAB6C80F19D79A5300843F3A /* ConfigTableViewCell.h */,
 				AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */,
 				7C64D40A27222AFB0057A1F0 /* ConfigView.swift */,
-				7C64D40927222AFB0057A1F0 /* ExposureCalculator-Bridging-Header.h */,
+				7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -283,6 +285,7 @@
 		AAE9054B16C619CE00CD025E /* ExposureCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				7C64D40927222AFB0057A1F0 /* ExposureCalculator-Bridging-Header.h */,
 				AA9A79ED16F6353800FA91E9 /* Configuration */,
 				AAE9055416C619CE00CD025E /* AppDelegate.h */,
 				AAE9055516C619CE00CD025E /* AppDelegate.m */,
@@ -498,6 +501,7 @@
 				AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */,
 				AAE9056216C619CE00CD025E /* MainViewController.m in Sources */,
 				AAB6C81119D79A5300843F3A /* ConfigTableViewCell.m in Sources */,
+				7CC0FB53272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift in Sources */,
 				AAE9058916C61AFD00CD025E /* Calculator.m in Sources */,
 				AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */,
 				AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */,
