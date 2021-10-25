@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "components.h"
 
-@interface SupportedSettings : NSObject<NSCoding>
+@interface SupportedSettings : NSObject<NSSecureCoding>
 
 // Constructs a SupportedSettings object set to the full range of possible settings.
 - (id)init;

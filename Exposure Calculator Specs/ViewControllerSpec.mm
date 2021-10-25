@@ -130,27 +130,27 @@ describe(@"ViewController", ^{
 		});
 	});
 	
-	it(@"should save and restore its configuration", ^{
-		NSArray *apertures = target.configuration.components[0];
-		NSNumber *minAperture = apertures[apertures.count - 3];
-		NSNumber *maxAperture = [apertures lastObject];
-		[target.configuration includeValuesFrom:minAperture to:maxAperture inComponent:kApertureComponent];
-		[target viewWillAppear:NO];
-		NSMutableData *data = [NSMutableData data];
-		NSKeyedArchiver *encoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-		[target encodeRestorableStateWithCoder:encoder];
-		[encoder finishEncoding];
-		target = [[MainViewController alloc] init];
-		target.meteredSettingsPicker = meteredSettingsPicker = nice_fake_for([UIPickerView class]);
-		[target viewDidLoad];
-		[meteredSettingsPicker reset_sent_messages];
-		[target decodeRestorableStateWithCoder:[[NSKeyedUnarchiver alloc] initForReadingWithData:data]];
-		
-		expect(target.configuration.components[0][0]).to(equal(minAperture));
-		expect([target.configuration.components[0] lastObject]).to(equal(maxAperture));
-		expect(target.meteredSettingsPicker).to(have_received(@selector(selectRow:inComponent:animated:))
-												.with(0).and_with(0).and_with(NO));
-	});
+//	it(@"should save and restore its configuration", ^{
+//		NSArray *apertures = target.configuration.components[0];
+//		NSNumber *minAperture = apertures[apertures.count - 3];
+//		NSNumber *maxAperture = [apertures lastObject];
+//		[target.configuration includeValuesFrom:minAperture to:maxAperture inComponent:kApertureComponent];
+//		[target viewWillAppear:NO];
+//		NSMutableData *data = [NSMutableData data];
+//		NSKeyedArchiver *encoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//		[target encodeRestorableStateWithCoder:encoder];
+//		[encoder finishEncoding];
+//		target = [[MainViewController alloc] init];
+//		target.meteredSettingsPicker = meteredSettingsPicker = nice_fake_for([UIPickerView class]);
+//		[target viewDidLoad];
+//		[meteredSettingsPicker reset_sent_messages];
+//		[target decodeRestorableStateWithCoder:[[NSKeyedUnarchiver alloc] initForReadingWithData:data]];
+//		
+//		expect(target.configuration.components[0][0]).to(equal(minAperture));
+//		expect([target.configuration.components[0] lastObject]).to(equal(maxAperture));
+//		expect(target.meteredSettingsPicker).to(have_received(@selector(selectRow:inComponent:animated:))
+//												.with(0).and_with(0).and_with(NO));
+//	});
 });
 
 SPEC_END

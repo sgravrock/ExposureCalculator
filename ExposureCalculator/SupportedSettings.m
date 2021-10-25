@@ -20,6 +20,11 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 
 @implementation SupportedSettings
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
+
 + (NSArray *)filterSettings:(NSArray *)src
 					   from:(NSNumber *)min to:(NSNumber *)max
 				  ascending:(BOOL)ascending
@@ -100,7 +105,6 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	
 	allValues = @[allApertures, speeds, allSensitivities];
 }
-
 
 - (id)init
 {

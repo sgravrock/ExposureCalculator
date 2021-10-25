@@ -10,14 +10,16 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
+- (BOOL)application:(UIApplication *)application shouldSaveSecureApplicationState:(NSCoder *)coder
 {
-	return YES;
+//	return YES;
+    return NO;
 }
 
-- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
+- (BOOL)application:(UIApplication *)application shouldRestoreSecureApplicationState:(NSCoder *)coder
 {
-	return YES;
+//	return YES;
+    return NO;
 }
 
 @end
