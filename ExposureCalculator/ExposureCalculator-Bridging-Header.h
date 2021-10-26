@@ -3,3 +3,4 @@
 //
 
 #import "SupportedSettings.h"
+#import "Setting.h"

@@ -7,14 +7,14 @@ struct ConfigView: View {
         HStack {
             List {
                 ForEach(0..<model.pickerModels.count, id: \.self) { i in
-                    SettingListItem(settingName: model.pickerModels[i].settingName, isSelected: model.selectedSettingIx == i) {
-                        model.selectedSettingIx = i
+                    SettingListItem(settingName: model.pickerModels[i].settingName, isSelected: model.selectedComponentIx == i) {
+                        model.selectedComponentIx = i
                     }
                 }
             }
             .frame(maxWidth: .infinity)
             
-            ValuesPicker(model: $model.selectedModel)
+            ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx)
                 .frame(maxWidth: .infinity)
         }
     }
@@ -22,11 +22,13 @@ struct ConfigView: View {
 
 struct ValuesPicker: View {
     @Binding var model: PickerModel
+    @Binding var componentIx: Int
     
     var body: some View {
         Picker("Label?", selection: .constant("")) {
             ForEach(model.possibleValues, id: \.self) { (option: NSNumber) in
-                Text(option.stringValue)
+                Text(Setting.formatSetting(withComponent: UInt(componentIx), value: option))
+
             }
         }
         .pickerStyle(.wheel)
@@ -48,10 +50,9 @@ class ConfigModel: ObservableObject {
     
     @Published var selectedModel: PickerModel
     
-    @Published var selectedSettingIx = 0 {
+    @Published var selectedComponentIx = 0 {
         didSet {
-            print("changing selected model based on \(selectedSettingIx)")
-            selectedModel = pickerModels[selectedSettingIx]
+            selectedModel = pickerModels[selectedComponentIx]
         }
     }
     
@@ -63,7 +64,7 @@ class ConfigModel: ObservableObject {
             PickerModel(settingName: "Shutter range", possibleValues: supportedSettings.components[1]),
             PickerModel(settingName: "ISO range", possibleValues: supportedSettings.components[2]),
         ]
-        selectedSettingIx = 0
+        selectedComponentIx = 0
         selectedModel = apertureModel
     }
 }
