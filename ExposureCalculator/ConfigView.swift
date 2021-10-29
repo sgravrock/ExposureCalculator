@@ -15,9 +15,9 @@ struct ConfigView: View {
             .frame(maxWidth: .infinity)
             
             HStack {
-                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx)
+                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: { vals in vals })
                     .frame(maxWidth: .infinity)
-                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx)
+                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: {vals in vals.reversed() })
                     .frame(maxWidth: .infinity)
             }
             .frame(maxWidth: .infinity)
@@ -29,10 +29,11 @@ struct ConfigView: View {
 struct ValuesPicker: View {
     @Binding var model: PickerModel
     @Binding var componentIx: Int
+    var order: ([NSNumber]) -> [NSNumber]
     
     var body: some View {
         Picker("Label?", selection: .constant("")) {
-            ForEach(model.possibleValues, id: \.self) { (option: NSNumber) in
+            ForEach(order(model.possibleValues), id: \.self) { (option: NSNumber) in
                 Text(Setting.formatSetting(withComponent: UInt(componentIx), value: option))
 
             }
