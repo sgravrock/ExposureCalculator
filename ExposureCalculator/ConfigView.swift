@@ -14,8 +14,14 @@ struct ConfigView: View {
             }
             .frame(maxWidth: .infinity)
             
-            ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx)
-                .frame(maxWidth: .infinity)
+            HStack {
+                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx)
+                    .frame(maxWidth: .infinity)
+                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx)
+                    .frame(maxWidth: .infinity)
+            }
+            .frame(maxWidth: .infinity)
+
         }
     }
 }
@@ -32,6 +38,11 @@ struct ValuesPicker: View {
             }
         }
         .pickerStyle(.wheel)
+        // TODO: Is there a way to prevent pickers from expanding to 320px without setting a fixed width? The usual .frame(maxWidth: .infinity) tricks don't work.
+        // n.b. we can only get away with using the screen size here because we only run in one orientation, don't support side by side on iPads, etc. Don't try this turrible hack at home.
+        .frame(maxWidth: UIScreen.main.bounds.size.width / 4 - 20)
+        .compositingGroup() // (╯°□°)╯︵ ┻━┻
+        .clipped()
     }
 }
 
