@@ -1,7 +1,18 @@
 import SwiftUI
 
+let bgColor = Color(red: 0.33, green: 0.33, blue: 0.33)
+let settingItemBgColor = Color.clear
+let selectedSettingItemBgColor = Color(red: 0.82, green: 0.82, blue: 0.84)
+
+
 struct ConfigView: View {
     @ObservedObject private var model = ConfigModel(supportedSettings: SupportedSettings())
+    
+    init() {
+        // Wheee
+        UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().separatorStyle = .none
+    }
     
     var body: some View {
         HStack {
@@ -15,16 +26,26 @@ struct ConfigView: View {
             .frame(maxWidth: .infinity)
             
             HStack {
-                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: { vals in vals })
-                    .frame(maxWidth: .infinity)
-                ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: {vals in vals.reversed() })
-                    .frame(maxWidth: .infinity)
+                VStack {
+                    Text("From")
+                        .foregroundColor(.white)
+                    ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: { vals in vals })
+                        .frame(maxWidth: .infinity)
+                }
+                VStack {
+                    Text("To")
+                        .foregroundColor(.white)
+                    ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: {vals in vals.reversed() })
+                        .frame(maxWidth: .infinity)
+                }
             }
             .frame(maxWidth: .infinity)
 
         }
+        .background(bgColor)
     }
 }
+
 
 struct ValuesPicker: View {
     @Binding var model: PickerModel
@@ -35,7 +56,7 @@ struct ValuesPicker: View {
         Picker("Label?", selection: .constant("")) {
             ForEach(order(model.possibleValues), id: \.self) { (option: NSNumber) in
                 Text(Setting.formatSetting(withComponent: UInt(componentIx), value: option))
-
+                    .foregroundColor(.white)
             }
         }
         .pickerStyle(.wheel)
@@ -81,7 +102,6 @@ class ConfigModel: ObservableObject {
     }
 }
 
-
 struct SettingListItem: View {
     var settingName: String
     var isSelected: Bool
@@ -92,13 +112,21 @@ struct SettingListItem: View {
             VStack {
                 Button(action: action) {
                     Text(settingName)
-                        .foregroundColor(isSelected ? .white : .black)
+                        .foregroundColor(isSelected ? .black : .white)
                 }
                 Spacer()
             }
             Spacer()
         }
-        .listRowBackground(isSelected ? Color.blue : Color.clear)
+        .listRowBackground(bgColor())
+    }
+    
+    private func bgColor() -> Color {
+        if isSelected {
+            return selectedSettingItemBgColor
+        } else {
+            return settingItemBgColor
+        }
     }
 }
 
