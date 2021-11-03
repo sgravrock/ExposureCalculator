@@ -50,12 +50,12 @@ struct ConfigView: View {
 struct ValuesPicker: View {
     @Binding var model: PickerModel
     @Binding var componentIx: Int
-    @Binding var selectedValue: NSNumber
+    @Binding var selectedValue: Double
     
     var body: some View {
         Picker("Label?", selection: $selectedValue) {
-            ForEach(model.possibleValues, id: \.self) { (option: NSNumber) in
-                Text(Setting.formatSetting(withComponent: UInt(componentIx), value: option))
+            ForEach(model.possibleValues, id: \.self) { (option: Double) in
+                Text(Setting.formatSetting(withComponent: UInt(componentIx), value: NSNumber(value: option)))
                     .foregroundColor(.white)
             }
         }
@@ -70,15 +70,27 @@ struct ValuesPicker: View {
 
 class PickerModel: ObservableObject {
     @Published var settingName: String
-    @Published var possibleValues: [NSNumber]
-    @Published var currentMin: NSNumber
-    @Published var currentMax: NSNumber
+    @Published var possibleValues: [Double]
+    @Published var currentMin: Double {
+        didSet {
+            if currentMax < currentMin {
+                currentMax = currentMin
+            }
+        }
+    }
+    @Published var currentMax: Double {
+        didSet {
+            if currentMin > currentMax {
+                currentMin = currentMax
+            }
+        }
+    }
 
     init(settingName: String, possibleValues: [NSNumber], currentMin: NSNumber, currentMax: NSNumber) {
         self.settingName = settingName
-        self.possibleValues = possibleValues
-        self.currentMin = currentMin
-        self.currentMax = currentMax
+        self.possibleValues = possibleValues.map { $0.doubleValue }
+        self.currentMin = currentMin.doubleValue
+        self.currentMax = currentMax.doubleValue
     }
 }
 
