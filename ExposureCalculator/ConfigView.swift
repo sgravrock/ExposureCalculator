@@ -29,13 +29,13 @@ struct ConfigView: View {
                 VStack {
                     Text("From")
                         .foregroundColor(.white)
-                    ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: { vals in vals })
+                    ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, selectedValue: $model.selectedModel.currentMin)
                         .frame(maxWidth: .infinity)
                 }
                 VStack {
                     Text("To")
                         .foregroundColor(.white)
-                    ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, order: {vals in vals.reversed() })
+                    ValuesPicker(model: $model.selectedModel, componentIx: $model.selectedComponentIx, selectedValue: $model.selectedModel.currentMax)
                         .frame(maxWidth: .infinity)
                 }
             }
@@ -50,11 +50,11 @@ struct ConfigView: View {
 struct ValuesPicker: View {
     @Binding var model: PickerModel
     @Binding var componentIx: Int
-    var order: ([NSNumber]) -> [NSNumber]
+    @Binding var selectedValue: NSNumber
     
     var body: some View {
-        Picker("Label?", selection: .constant("")) {
-            ForEach(order(model.possibleValues), id: \.self) { (option: NSNumber) in
+        Picker("Label?", selection: $selectedValue) {
+            ForEach(model.possibleValues, id: \.self) { (option: NSNumber) in
                 Text(Setting.formatSetting(withComponent: UInt(componentIx), value: option))
                     .foregroundColor(.white)
             }
@@ -71,10 +71,14 @@ struct ValuesPicker: View {
 class PickerModel: ObservableObject {
     @Published var settingName: String
     @Published var possibleValues: [NSNumber]
-    
-    init(settingName: String, possibleValues: [NSNumber]) {
+    @Published var currentMin: NSNumber
+    @Published var currentMax: NSNumber
+
+    init(settingName: String, possibleValues: [NSNumber], currentMin: NSNumber, currentMax: NSNumber) {
         self.settingName = settingName
         self.possibleValues = possibleValues
+        self.currentMin = currentMin
+        self.currentMax = currentMax
     }
 }
 
@@ -90,13 +94,14 @@ class ConfigModel: ObservableObject {
     }
     
     init(supportedSettings: SupportedSettings) {
-        let apertureModel = PickerModel(settingName: "Aperture range", possibleValues: supportedSettings.components[0])
-        
-        pickerModels = [
-            apertureModel,
-            PickerModel(settingName: "Shutter range", possibleValues: supportedSettings.components[1]),
-            PickerModel(settingName: "ISO range", possibleValues: supportedSettings.components[2]),
-        ]
+        let apertures = supportedSettings.components[0]
+        let shutterSpeeds = supportedSettings.components[1]
+        let isos = supportedSettings.components[2]
+        let apertureModel = PickerModel(settingName: "Aperture range", possibleValues: apertures, currentMin: apertures[0], currentMax: apertures.last!)
+        let shutterModel = PickerModel(settingName: "Shutter range", possibleValues: shutterSpeeds, currentMin: shutterSpeeds[0], currentMax: shutterSpeeds.last!)
+        let isoModel = PickerModel(settingName: "ISO range", possibleValues: isos, currentMin: isos[0], currentMax: isos.last!)
+
+        pickerModels = [apertureModel, shutterModel, isoModel]
         selectedComponentIx = 0
         selectedModel = apertureModel
     }
