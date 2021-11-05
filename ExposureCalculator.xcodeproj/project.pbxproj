@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C22909E2735F77A00CE3618 /* ConfigViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22909D2735F77A00CE3618 /* ConfigViewModels.swift */; };
 		7C64D40B27222AFB0057A1F0 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64D40A27222AFB0057A1F0 /* ConfigView.swift */; };
 		7CC0FB53272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */; };
 		AA271BCD16D0620300DBF4BE /* CliUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA271BCC16D0620300DBF4BE /* CliUtils.m */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7C22909D2735F77A00CE3618 /* ConfigViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewModels.swift; sourceTree = "<group>"; };
 		7C64D40927222AFB0057A1F0 /* ExposureCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExposureCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		7C64D40A27222AFB0057A1F0 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewHostingWrapperFactory.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */,
 				7C64D40A27222AFB0057A1F0 /* ConfigView.swift */,
 				7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */,
+				7C22909D2735F77A00CE3618 /* ConfigViewModels.swift */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				AAB6C81119D79A5300843F3A /* ConfigTableViewCell.m in Sources */,
 				7CC0FB53272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift in Sources */,
 				AAE9058916C61AFD00CD025E /* Calculator.m in Sources */,
+				7C22909E2735F77A00CE3618 /* ConfigViewModels.swift in Sources */,
 				AA98CA2116C8792F00C13E14 /* SupportedSettings.m in Sources */,
 				AA98CA2A16C8851B00C13E14 /* ArrayDataSource.m in Sources */,
 				AA59804616C8CC5800EE71A4 /* ConstrainedSettingsDataSource.m in Sources */,
