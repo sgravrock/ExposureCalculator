@@ -71,24 +71,26 @@ struct ValuesPicker: View {
 class PickerModel: ObservableObject {
     @Published var settingName: String
     @Published var possibleValues: [Double]
+    private let ascending: Bool
     @Published var currentMin: Double {
         didSet {
-            if currentMax < currentMin {
+            if (ascending && currentMax < currentMin) || (!ascending && currentMax > currentMin) {
                 currentMax = currentMin
             }
         }
     }
     @Published var currentMax: Double {
         didSet {
-            if currentMin > currentMax {
+            if (ascending && currentMax < currentMin) || (!ascending && currentMax > currentMin) {
                 currentMin = currentMax
             }
         }
     }
 
-    init(settingName: String, possibleValues: [NSNumber], currentMin: NSNumber, currentMax: NSNumber) {
+    init(settingName: String, possibleValues: [NSNumber], ascending: Bool, currentMin: NSNumber, currentMax: NSNumber) {
         self.settingName = settingName
         self.possibleValues = possibleValues.map { $0.doubleValue }
+        self.ascending = ascending
         self.currentMin = currentMin.doubleValue
         self.currentMax = currentMax.doubleValue
     }
@@ -109,9 +111,9 @@ class ConfigModel: ObservableObject {
         let apertures = supportedSettings.components[0]
         let shutterSpeeds = supportedSettings.components[1]
         let isos = supportedSettings.components[2]
-        let apertureModel = PickerModel(settingName: "Aperture range", possibleValues: apertures, currentMin: apertures[0], currentMax: apertures.last!)
-        let shutterModel = PickerModel(settingName: "Shutter range", possibleValues: shutterSpeeds, currentMin: shutterSpeeds[0], currentMax: shutterSpeeds.last!)
-        let isoModel = PickerModel(settingName: "ISO range", possibleValues: isos, currentMin: isos[0], currentMax: isos.last!)
+        let apertureModel = PickerModel(settingName: "Aperture range", possibleValues: apertures, ascending: true, currentMin: apertures[0], currentMax: apertures.last!)
+        let shutterModel = PickerModel(settingName: "Shutter range", possibleValues: shutterSpeeds, ascending: false, currentMin: shutterSpeeds[0], currentMax: shutterSpeeds.last!)
+        let isoModel = PickerModel(settingName: "ISO range", possibleValues: isos, ascending: false, currentMin: isos[0], currentMax: isos.last!)
 
         pickerModels = [apertureModel, shutterModel, isoModel]
         selectedComponentIx = 0
