@@ -24,4 +24,14 @@
 // the specified minimum and maximum.
 - (void)includeValuesFrom:(NSNumber *)min to:(NSNumber *)max inComponent:(int)component;
 
-@end
+// Convenience methods for accessing values by component name instead of index
+- (NSArray<NSNumber *> *)apertures;
+- (NSArray<NSNumber *> *)shutterSpeeds;
+- (NSArray<NSNumber *> *)isos;
+- (NSNumber *)minAperture;
+- (NSNumber *)maxAperture;
+- (NSNumber *)minShutterSpeed;
+- (NSNumber *)maxShutterSpeed;
+- (NSNumber *)minIso;
+- (NSNumber *)maxIso;
+ @end

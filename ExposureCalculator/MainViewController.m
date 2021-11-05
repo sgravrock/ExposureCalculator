@@ -49,7 +49,7 @@
 }
 
 - (IBSegueAction UIViewController *)showSwiftUiSettings:(NSCoder *)coder {
-    return [ConfigViewHostingWrapperFactory makeWithCoder:coder];
+    return [ConfigViewHostingWrapperFactory makeWithCoder:coder supportedSettings: self.configuration];
 }
 
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder

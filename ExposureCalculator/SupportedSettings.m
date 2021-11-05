@@ -123,6 +123,17 @@ typedef BOOL (^array_filter_predicate)(id obj, NSUInteger idx, BOOL *stop);
 	return mutableComponents;
 }
 
+- (NSArray<NSNumber *> *)apertures { return self.components[0]; }
+- (NSArray<NSNumber *> *)shutterSpeeds { return self.components[1]; }
+- (NSArray<NSNumber *> *)isos { return self.components[2]; }
+- (NSNumber *)minAperture { return self.components[0][0]; }
+- (NSNumber *)maxAperture { return self.components[0].lastObject; }
+- (NSNumber *)minShutterSpeed { return self.components[1][0]; }
+- (NSNumber *)maxShutterSpeed { return self.components[1].lastObject; }
+- (NSNumber *)minIso { return self.components[2][0]; }
+- (NSNumber *)maxIso { return self.components[2].lastObject; }
+
+
 #pragma mark - NSCoding methods
 
 - (id)initWithCoder:(NSCoder *)coder
