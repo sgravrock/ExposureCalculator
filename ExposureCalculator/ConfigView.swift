@@ -71,39 +71,63 @@ struct ValuesPicker: View {
 }
 
 class PickerViewModel: ObservableObject {
-    @Published var settingName: String
+    private let configuration: SupportedSettings
+    private let componentIx: Int
+    private var updating = false
+
+    let settingName: String
     @Published var possibleValues: [Double]
-    private let ascending: Bool
     @Published var currentMin: Double {
         didSet {
-            // TODO rework this to use the model's logic
-            if (ascending && currentMax < currentMin) || (!ascending && currentMax > currentMin) {
+            if minAndMaxReversed() {
+                updating = true
                 currentMax = currentMin
+                updating = false
+            }
+            
+            if !updating {
+                configuration.includeValues(from: NSNumber(value: currentMin), to: NSNumber(value: currentMax), inComponent: Int32(componentIx))
             }
         }
     }
     @Published var currentMax: Double {
         didSet {
-            // TODO rework this to use the model's logic
-            if (ascending && currentMax < currentMin) || (!ascending && currentMax > currentMin) {
-                print("clamping currentMin to \(currentMax)")
+            if minAndMaxReversed() {
+                updating = true
                 currentMin = currentMax
+                updating = false
+            }
+            
+            if !updating {
+                configuration.includeValues(from: NSNumber(value: currentMin), to: NSNumber(value: currentMax), inComponent: Int32(componentIx))
             }
         }
     }
 
-    init(settingName: String, possibleValues: [NSNumber], ascending: Bool, currentMin: NSNumber, currentMax: NSNumber) {
+    init(configuration: SupportedSettings, componentIx: Int, settingName: String) {
+        self.configuration = configuration
+        self.componentIx = componentIx
         self.settingName = settingName
-        self.possibleValues = possibleValues.map { $0.doubleValue }
-        self.ascending = ascending
-        self.currentMin = currentMin.doubleValue
-        self.currentMax = currentMax.doubleValue
+        self.possibleValues = allPossibleSettings.components[componentIx].map { $0.doubleValue }
+        self.currentMin = configuration.components[componentIx][0].doubleValue
+        self.currentMax = configuration.components[componentIx].last!.doubleValue
+    }
+    
+    private func minAndMaxReversed() -> Bool {
+        let ascending = componentIx == 0
+        
+        if ascending {
+            return currentMax < currentMin
+        } else {
+            return currentMax > currentMin
+        }
     }
 }
 
+let allPossibleSettings = SupportedSettings()!
+
 class ConfigViewModel: ObservableObject {
     let pickerModels: [PickerViewModel]
-    private var retainObservers: [AnyCancellable] = []
     
     @Published var selectedModel: PickerViewModel
     
@@ -114,47 +138,13 @@ class ConfigViewModel: ObservableObject {
     }
     
     init(configuration: SupportedSettings) {
-        let allPossibleSettings = SupportedSettings()!
-        let apertureModel = PickerViewModel(settingName: "Aperture range", possibleValues: allPossibleSettings.apertures(), ascending: true, currentMin: configuration.minAperture(), currentMax: configuration.maxAperture())
-        let shutterModel = PickerViewModel(settingName: "Shutter range", possibleValues: allPossibleSettings.shutterSpeeds(), ascending: false, currentMin: configuration.minShutterSpeed(), currentMax: configuration.maxShutterSpeed())
-        let isoModel = PickerViewModel(settingName: "ISO range", possibleValues: allPossibleSettings.isos(), ascending: false, currentMin: configuration.minIso(), currentMax: configuration.maxIso())
+        let apertureModel = PickerViewModel(configuration: configuration, componentIx: 0, settingName: "Aperture range")
+        let shutterModel = PickerViewModel(configuration: configuration, componentIx: 1, settingName: "Shutter range")
+        let isoModel = PickerViewModel(configuration: configuration, componentIx: 2, settingName: "ISO range")
 
         pickerModels = [apertureModel, shutterModel, isoModel]
         selectedComponentIx = 0
         selectedModel = apertureModel
-        
-        retainObservers.append(apertureModel.$currentMin.sink { [weak self] newValue in
-            print("min aperture observer called with \(newValue)")
-            if newValue != configuration.minAperture().doubleValue {
-                configuration.includeValues(from: NSNumber(value: newValue), to: configuration.maxAperture(), inComponent: 0)
-            }
-        })
-        retainObservers.append(apertureModel.$currentMax.sink { [weak self] newValue in
-            print("max aperture observer called with \(newValue)")
-            if newValue != configuration.maxAperture().doubleValue {
-                configuration.includeValues(from: configuration.minAperture(), to: NSNumber(value: newValue), inComponent: 0)
-            }
-        })
-        retainObservers.append(shutterModel.$currentMin.sink { [weak self] newValue in
-            if newValue != configuration.minShutterSpeed().doubleValue {
-                configuration.includeValues(from: NSNumber(value: newValue), to: configuration.maxShutterSpeed(), inComponent: 1)
-            }
-        })
-        retainObservers.append(shutterModel.$currentMax.sink { [weak self] newValue in
-            if newValue != configuration.maxShutterSpeed().doubleValue {
-                configuration.includeValues(from: configuration.minShutterSpeed(), to: NSNumber(value: newValue), inComponent: 1)
-            }
-        })
-        retainObservers.append(isoModel.$currentMin.sink { [weak self] newValue in
-            if newValue != configuration.minIso().doubleValue {
-                configuration.includeValues(from: NSNumber(value: newValue), to: configuration.maxIso(), inComponent: 2)
-            }
-        })
-        retainObservers.append(isoModel.$currentMax.sink { [weak self] newValue in
-            if newValue != configuration.maxIso().doubleValue {
-                configuration.includeValues(from: configuration.minIso(), to: NSNumber(value: newValue), inComponent: 2)
-            }
-        })
     }
 }
 
