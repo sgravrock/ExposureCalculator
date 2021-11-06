@@ -78,18 +78,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zWT-xm-f1d">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Settings" image="gear" catalog="system" id="J38-lJ-scg">
-                                <connections>
-                                    <segue destination="Ugc-28-lV6" kind="push" id="1FD-ge-Zdl"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="uxJ-hn-K8A">
-                                <connections>
-                                    <segue destination="dQa-ZM-ftG" kind="push" destinationCreationSelector="showSwiftUiSettings:" id="cku-5y-RM9"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="uxJ-hn-K8A">
+                            <connections>
+                                <segue destination="dQa-ZM-ftG" kind="push" destinationCreationSelector="showSwiftUiSettings:" id="cku-5y-RM9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="chosenSettingsPicker" destination="dqb-X2-2gv" id="VIE-xz-k78"/>
@@ -126,95 +119,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BM9-5h-Qs1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="143" y="-692"/>
-        </scene>
-        <!--Config View Controller-->
-        <scene sceneID="Dqg-Kb-Jgk">
-            <objects>
-                <viewController id="Ugc-28-lV6" customClass="ConfigViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="X9a-20-ibW"/>
-                        <viewControllerLayoutGuide type="bottom" id="iWf-qS-xFy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="haJ-uu-3bY">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMN-py-R0X" userLabel="Old wrapper View">
-                                <rect key="frame" x="450" y="0.0" width="480" height="256"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qy7-cV-yc1" userLabel="Centering wrapper">
-                                <rect key="frame" x="84.5" y="69.5" width="498" height="236.5"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="t68-oq-YE3">
-                                        <rect key="frame" x="0.0" y="20.5" width="240" height="216"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="216" id="3tQ-mW-Fa2"/>
-                                            <constraint firstAttribute="width" constant="240" id="4z3-8C-pQv"/>
-                                        </constraints>
-                                        <color key="separatorColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="Ugc-28-lV6" id="p83-MD-gKg"/>
-                                            <outlet property="delegate" destination="Ugc-28-lV6" id="XxS-bq-KAi"/>
-                                        </connections>
-                                    </tableView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urv-W7-ehz">
-                                        <rect key="frame" x="258" y="20.5" width="240" height="216"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="216" id="65d-Oq-ElD"/>
-                                            <constraint firstAttribute="width" constant="240" id="FK1-tu-dmF"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="delegate" destination="Ugc-28-lV6" id="fGi-aT-sqD"/>
-                                        </connections>
-                                    </pickerView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="From" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eK-IB-xYn">
-                                        <rect key="frame" x="259" y="0.0" width="120" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr2-bp-9Br">
-                                        <rect key="frame" x="367" y="-0.5" width="120" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="2eK-IB-xYn" firstAttribute="leading" secondItem="urv-W7-ehz" secondAttribute="leading" constant="1" id="121-55-X61"/>
-                                    <constraint firstItem="Tr2-bp-9Br" firstAttribute="bottom" secondItem="urv-W7-ehz" secondAttribute="top" id="7ee-Cx-LQg"/>
-                                    <constraint firstItem="2eK-IB-xYn" firstAttribute="width" secondItem="urv-W7-ehz" secondAttribute="width" multiplier="0.5" id="APN-Hm-Otc"/>
-                                    <constraint firstItem="2eK-IB-xYn" firstAttribute="top" secondItem="qy7-cV-yc1" secondAttribute="top" id="DXr-bm-fHQ"/>
-                                    <constraint firstItem="urv-W7-ehz" firstAttribute="trailing" secondItem="Tr2-bp-9Br" secondAttribute="trailing" constant="11" id="Hrk-7U-ZbF"/>
-                                    <constraint firstItem="urv-W7-ehz" firstAttribute="top" secondItem="2eK-IB-xYn" secondAttribute="bottom" id="Yqf-QJ-cFv"/>
-                                    <constraint firstItem="urv-W7-ehz" firstAttribute="leading" secondItem="t68-oq-YE3" secondAttribute="trailing" constant="18" id="dCQ-iu-5dX"/>
-                                    <constraint firstItem="t68-oq-YE3" firstAttribute="leading" secondItem="qy7-cV-yc1" secondAttribute="leading" id="exc-RE-Fjj"/>
-                                    <constraint firstAttribute="bottom" secondItem="t68-oq-YE3" secondAttribute="bottom" id="nYE-6O-emi"/>
-                                    <constraint firstItem="Tr2-bp-9Br" firstAttribute="width" secondItem="urv-W7-ehz" secondAttribute="width" multiplier="0.5" id="puS-PU-Kt4"/>
-                                    <constraint firstAttribute="bottom" secondItem="urv-W7-ehz" secondAttribute="bottom" id="qCz-ot-Qxk"/>
-                                    <constraint firstAttribute="trailing" secondItem="urv-W7-ehz" secondAttribute="trailing" id="tXW-mg-mCe"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="qy7-cV-yc1" secondAttribute="centerX" id="D6h-i4-ZK5"/>
-                            <constraint firstItem="qy7-cV-yc1" firstAttribute="centerY" secondItem="haJ-uu-3bY" secondAttribute="centerY" id="PMw-Kn-u7m"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="aHS-1N-c1s"/>
-                    <connections>
-                        <outlet property="pickerView" destination="urv-W7-ehz" id="jrg-Oh-C8y"/>
-                        <outlet property="tableView" destination="t68-oq-YE3" id="bVg-oy-dlH"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nco-Hk-aKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="185" y="58"/>
         </scene>
     </scenes>
     <resources>

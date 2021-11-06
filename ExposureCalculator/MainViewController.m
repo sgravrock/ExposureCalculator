@@ -12,7 +12,6 @@
 #import "ConstrainedSettingsDataSource.h"
 #import "SupportedSettings.h"
 #import "Setting.h"
-#import "ConfigViewController.h"
 #import "ExposureCalculator-Swift.h"
 
 @interface MainViewController ()

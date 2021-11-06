@@ -11,9 +11,7 @@
 		7C64D40B27222AFB0057A1F0 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64D40A27222AFB0057A1F0 /* ConfigView.swift */; };
 		7CC0FB53272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */; };
 		AA271BCD16D0620300DBF4BE /* CliUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA271BCC16D0620300DBF4BE /* CliUtils.m */; };
-		AA33396216F56A17003C2454 /* MinMaxPair.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33396116F56A17003C2454 /* MinMaxPair.m */; };
 		AA33396416F5851C003C2454 /* MinMaxPairSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA33396316F5851C003C2454 /* MinMaxPairSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AA33396516F5863F003C2454 /* MinMaxPair.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33396116F56A17003C2454 /* MinMaxPair.m */; };
 		AA33396816F5917D003C2454 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33396716F5917C003C2454 /* NSArray+Functional.m */; };
 		AA33396916F5917D003C2454 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = AA33396716F5917C003C2454 /* NSArray+Functional.m */; };
 		AA35666B16ECFE6E00CED8D2 /* SettingSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA35666A16ECFE6E00CED8D2 /* SettingSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -41,7 +39,6 @@
 		AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B516D9CC3100346457 /* ChosenSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */; };
 		AA9915B816D9E70100346457 /* ChosenSettingsModelSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AAB6C81119D79A5300843F3A /* ConfigTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */; };
 		AAE9054616C619CE00CD025E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054516C619CE00CD025E /* UIKit.framework */; };
 		AAE9054816C619CE00CD025E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054716C619CE00CD025E /* Foundation.framework */; };
 		AAE9054A16C619CE00CD025E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE9054916C619CE00CD025E /* CoreGraphics.framework */; };
@@ -53,7 +50,6 @@
 		AAE9056216C619CE00CD025E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* MainViewController.m */; };
 		AAE9058916C61AFD00CD025E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
 		AAEC21AE16F4FABB000BA5EE /* SupportedSettingsSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAEC21AD16F4FABB000BA5EE /* SupportedSettingsSpec.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AAEC21C216F52FC3000BA5EE /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEC21C116F52FC3000BA5EE /* ConfigViewController.m */; };
 		AAFDF95216D013FB00A4DCDC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9056116C619CE00CD025E /* MainViewController.m */; };
 		AAFDF95416D0142200A4DCDC /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE9058816C61AFD00CD025E /* Calculator.m */; };
 		AAFDF95516D0142200A4DCDC /* SupportedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98CA2016C8792E00C13E14 /* SupportedSettings.m */; };
@@ -88,8 +84,6 @@
 		AA1662AF16C6C55400CD606F /* NSScanner+Throwing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Throwing.m"; path = "../ExposureCalculatorTests/NSScanner+Throwing.m"; sourceTree = "<group>"; };
 		AA271BCB16D0620300DBF4BE /* CliUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CliUtils.h; sourceTree = "<group>"; };
 		AA271BCC16D0620300DBF4BE /* CliUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CliUtils.m; sourceTree = "<group>"; };
-		AA33396016F56A17003C2454 /* MinMaxPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinMaxPair.h; sourceTree = "<group>"; };
-		AA33396116F56A17003C2454 /* MinMaxPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinMaxPair.m; sourceTree = "<group>"; };
 		AA33396316F5851C003C2454 /* MinMaxPairSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MinMaxPairSpec.mm; sourceTree = "<group>"; };
 		AA33396616F5917C003C2454 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
 		AA33396716F5917C003C2454 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
@@ -122,8 +116,6 @@
 		AA9915B316D9CC3100346457 /* ChosenSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChosenSettingsModel.m; sourceTree = "<group>"; };
 		AA9915B716D9E70100346457 /* ChosenSettingsModelSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChosenSettingsModelSpec.mm; sourceTree = "<group>"; };
 		AAA6991616DA75EA003F0E0C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
-		AAB6C80F19D79A5300843F3A /* ConfigTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigTableViewCell.h; sourceTree = "<group>"; };
-		AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigTableViewCell.m; sourceTree = "<group>"; };
 		AAE9054116C619CE00CD025E /* ExposureCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExposureCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE9054516C619CE00CD025E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAE9054716C619CE00CD025E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,8 +135,6 @@
 		AAE9058716C61AFD00CD025E /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		AAE9058816C61AFD00CD025E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		AAEC21AD16F4FABB000BA5EE /* SupportedSettingsSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SupportedSettingsSpec.mm; sourceTree = "<group>"; };
-		AAEC21C016F52FC3000BA5EE /* ConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewController.h; sourceTree = "<group>"; };
-		AAEC21C116F52FC3000BA5EE /* ConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigViewController.m; sourceTree = "<group>"; };
 		AAFDF96216D01B4600A4DCDC /* FakeProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeProperties.h; sourceTree = "<group>"; };
 		AAFDF96316D01B4600A4DCDC /* FakeProperties.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FakeProperties.mm; sourceTree = "<group>"; };
 		AAFDF96516D02F6C00A4DCDC /* FakePropertiesSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FakePropertiesSpec.mm; sourceTree = "<group>"; };
@@ -238,14 +228,8 @@
 		AA9A79ED16F6353800FA91E9 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				AAEC21C016F52FC3000BA5EE /* ConfigViewController.h */,
-				AAEC21C116F52FC3000BA5EE /* ConfigViewController.m */,
-				AA33396016F56A17003C2454 /* MinMaxPair.h */,
-				AA33396116F56A17003C2454 /* MinMaxPair.m */,
 				AA98CA1F16C8792E00C13E14 /* SupportedSettings.h */,
 				AA98CA2016C8792E00C13E14 /* SupportedSettings.m */,
-				AAB6C80F19D79A5300843F3A /* ConfigTableViewCell.h */,
-				AAB6C81019D79A5300843F3A /* ConfigTableViewCell.m */,
 				7C64D40A27222AFB0057A1F0 /* ConfigView.swift */,
 				7CC0FB52272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift */,
 				7C22909D2735F77A00CE3618 /* ConfigViewModels.swift */,
@@ -479,7 +463,6 @@
 				AA35666B16ECFE6E00CED8D2 /* SettingSpec.mm in Sources */,
 				AAEC21AE16F4FABB000BA5EE /* SupportedSettingsSpec.mm in Sources */,
 				AA33396416F5851C003C2454 /* MinMaxPairSpec.mm in Sources */,
-				AA33396516F5863F003C2454 /* MinMaxPair.m in Sources */,
 				AA33396916F5917D003C2454 /* NSArray+Functional.m in Sources */,
 				AA8F9CFF16F6594100FBB78B /* ViewControllerSpec.mm in Sources */,
 				AA8F9D0316F65EF800FBB78B /* JRSwizzle.m in Sources */,
@@ -503,7 +486,6 @@
 				AAE9055216C619CE00CD025E /* main.m in Sources */,
 				AAE9055616C619CE00CD025E /* AppDelegate.m in Sources */,
 				AAE9056216C619CE00CD025E /* MainViewController.m in Sources */,
-				AAB6C81119D79A5300843F3A /* ConfigTableViewCell.m in Sources */,
 				7CC0FB53272346A2003866E9 /* ConfigViewHostingWrapperFactory.swift in Sources */,
 				AAE9058916C61AFD00CD025E /* Calculator.m in Sources */,
 				7C22909E2735F77A00CE3618 /* ConfigViewModels.swift in Sources */,
@@ -513,8 +495,6 @@
 				AA9915B416D9CC3100346457 /* ChosenSettingsModel.m in Sources */,
 				AA68814D16EC21D800B4897F /* Setting.m in Sources */,
 				7C64D40B27222AFB0057A1F0 /* ConfigView.swift in Sources */,
-				AAEC21C216F52FC3000BA5EE /* ConfigViewController.m in Sources */,
-				AA33396216F56A17003C2454 /* MinMaxPair.m in Sources */,
 				AA33396816F5917D003C2454 /* NSArray+Functional.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
